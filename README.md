@@ -104,7 +104,8 @@ Navigation mechanism is Navigator 2.0. Each Screen is Wrapped in Page for better
 Static localization via JSON for 2 languages: Russian and English.
 
 #### Styles and themes
-Spacings are made with the step=2. E.g. spacing_1=8, spacing 1.25=10. Default theme 
+Spacings are made with the step=2. E.g. spacing_1=8, spacing 1.25=10. Default theme is dark. Has
+support for a light theme.
 
 ## Supported platforms
 * Android
