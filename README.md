@@ -1,16 +1,10 @@
 # FPMI Music Band
 
-***
-
 ## Name
 FPMI Flutter Music Band
 
----
-
 ## Description
 Streaming service for music made with Flutter by FAMCS students in Innowise Group.
-
-***
 
 ## GitFlow
 Configure your local config of the git-repository as shown in 
@@ -69,74 +63,47 @@ Description:
 #### Commit name
 `[Verb infinitive][description][.]` 
 
----
-
 ## Architecture
 Uses BloC and Clean Architecture. Dependency Injection made via GetIt. Dependency rule: inner layers are
 independent of outer layers.
 
----
-
 ## Code Development rules
 Code development rules are described in analysis_options.yaml and checked with Dart linter.
-
----
 
 ## Async
 Asynchronous tasks are processed with Flutter Async and Dart Streams.
 
----
-
 ## Data sources
 App uses last.fm API.
-
----
 
 ## Presentations abstractions
 Error handling is made via AppPresentationHandler which processes different error cases.
 Navigation made with Navigator 2.0. Each Screen is wrapped in Page for better route building.
 
----
-
 ## Remote logging
 Remote logging created with Firebase. Local terminal logging via logger package.
-
----
 
 ## Build process
 TODO
 
----
-
 ## UI approach
 Widgets
-
----
 
 ## Screen Structure
 Navigation mechanism is Navigator 2.0. Each Screen is Wrapped in Page for better route building.
 
----
-
 ## Localization
 Static localization via JSON for 2 languages: Russian and English.
-
----
 
 ## Styles and themes
 Spacings are made with the step=2. E.g. spacing_1=8, spacing 1.25=10. Default theme is dark. Has
 support for a light theme.
-
----
 
 ## Supported platforms
 * Android
 * IOS
 * Web
 
----
-
 ## Project status
 Active
 
-***
