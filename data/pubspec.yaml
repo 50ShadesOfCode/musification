@@ -1,11 +1,8 @@
 name: data
 description: A new Flutter project.
 version: 0.0.1
-homepage:
 
-environment:
-  sdk: ">=2.16.2 <3.0.0"
-  flutter: ">=1.17.0"
+environment:  !include flutterVersion.yaml
 
 dependencies:
   flutter:
