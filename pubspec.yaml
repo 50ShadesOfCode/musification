@@ -9,11 +9,19 @@ environment:
   sdk: ">=2.16.2 <3.0.0"
 
 dependencies:
-  flutter:
-    sdk: flutter
-
 
   cupertino_icons: ^1.0.2
+
+  core:
+    path: core
+  core_ui:
+    path: core_ui
+  data:
+    path: data
+  domain:
+    path: domain
+  shared_dependencies:
+    path: shared_dependencies
 
 dev_dependencies:
   flutter_test:

@@ -1,16 +1,10 @@
 # FPMI Music Band
 
-***
-
 ## Name
 FPMI Flutter Music Band
 
----
-
 ## Description
 Streaming service for music made with Flutter by FAMCS students in Innowise Group.
-
-***
 
 ## GitFlow
 Configure your local config of the git-repository as shown in 
@@ -25,7 +19,7 @@ And two other branches can be created:
 * `feature`
 * `bugfix`
 
-`feature` is associated with implementing new logic for application, as the `bugfix` with repairing the current one.
+`feature` is associated with implementing new logic for application, as the `bugfix` with repaigring the current one.
 
 #### Main branch
 `main` keeps released application version. New application version is created from `develop` to
@@ -57,7 +51,7 @@ description provides some additional details (problem, decision, edge case, and 
 ```
 Title: 
     Add forget password link to registration screen
-Descrition: 
+Descrition:
     Designer decided to add it as underline link instead of additional screen.
 
 Title:
@@ -69,14 +63,47 @@ Description:
 #### Commit name
 `[Verb infinitive][description][.]` 
 
----
+## Architecture
+Uses BloC and Clean Architecture. Dependency Injection made via GetIt. Dependency rule: inner layers are
+independent of outer layers.
+
+## Code Development rules
+Code development rules are described in analysis_options.yaml and checked with Dart linter.
+
+## Async
+Asynchronous tasks are processed with Flutter Async and Dart Streams.
+
+## Data sources
+App uses last.fm API.
+
+## Presentations abstractions
+Error handling is made via AppPresentationHandler which processes different error cases.
+Navigation made with Navigator 2.0. Each Screen is wrapped in Page for better route building.
+
+## Remote logging
+Remote logging created with Firebase. Local terminal logging via logger package.
+
+## Build process
+TODO
+
+## UI approach
+Widgets
+
+## Screen Structure
+Navigation mechanism is Navigator 2.0. Each Screen is Wrapped in Page for better route building.
+
+## Localization
+Static localization via JSON for 2 languages: Russian and English.
+
+## Styles and themes
+Spacings are made with the step=2. E.g. spacing_1=8, spacing 1.25=10. Default theme is dark. Has
+support for a light theme.
 
 ## Supported platforms
 * Android
 * IOS
 * Web
 
----
-
 ## Project status
 Active
+
