@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:shared_dependencies/flutter.dart';
 
 class Application extends StatelessWidget {
   const Application({Key? key}) : super(key: key);
