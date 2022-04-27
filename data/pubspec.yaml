@@ -1,12 +1,14 @@
 name: data
 description: A new Flutter project.
+publish_to: none
 version: 0.0.1
 
-environment:  !include flutterVersion.yaml
+environment:
+  sdk: ^2.16.2
 
 dependencies:
-  flutter:
-    sdk: flutter
+  shared_dependencies:
+    path: ../shared_dependencies
 
 dev_dependencies:
   flutter_test:
