@@ -1,6 +1,7 @@
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:fpmi_music_band/feature/home_dev.dart';
 import 'package:fpmi_music_band/router/router_configuration.dart';
-import 'package:shared_dependencies/flutter.dart';
 
 class AppRouteInformationParser
     extends RouteInformationParser<RouteConfiguration> {

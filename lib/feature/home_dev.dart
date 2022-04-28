@@ -1,4 +1,4 @@
-import 'package:shared_dependencies/flutter.dart';
+import 'package:flutter/material.dart';
 
 class Home {
   static const String routeName = '/home';

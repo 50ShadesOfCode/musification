@@ -1,6 +1,7 @@
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:fpmi_music_band/router/page_stack_controller.dart';
 import 'package:fpmi_music_band/router/router_configuration.dart';
-import 'package:shared_dependencies/flutter.dart';
 
 class AppRouter extends RouterDelegate<RouteConfiguration>
     with

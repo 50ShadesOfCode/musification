@@ -1,8 +1,8 @@
 import 'package:core/core.dart';
+import 'package:flutter/material.dart';
 import 'package:fpmi_music_band/router/app_route_information_parser.dart';
 import 'package:fpmi_music_band/router/router.dart';
 import 'package:fpmi_music_band/router/router_configuration.dart';
-import 'package:shared_dependencies/flutter.dart';
 
 class Application extends StatefulWidget{
   const Application({Key? key}) : super(key: key);

@@ -1,4 +1,4 @@
-import 'package:shared_dependencies/flutter.dart';
+import 'package:flutter/material.dart';
 import 'exception/navigation_exception.dart';
 
 mixin PageStackController on ChangeNotifier {
