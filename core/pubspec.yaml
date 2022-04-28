@@ -6,10 +6,16 @@ publish_to: none
 
 environment:
   sdk: ^2.16.2
+  flutter: ^1.17.0
 
 dependencies:
+  flutter:
+    sdk: flutter
+
   shared_dependencies:
     path: ../shared_dependencies
+  fpmi_music_band:
+    path: ../
 
 dev_dependencies:
   flutter_test:
