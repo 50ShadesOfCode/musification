@@ -1,3 +1,4 @@
+import 'package:core_ui/core_ui.dart';
 import 'package:flutter/material.dart';
 
 class Home {
@@ -17,8 +18,15 @@ class HomePage extends Page<void> {
   Route<dynamic> createRoute(BuildContext context) {
     return MaterialPageRoute<void>(
         settings: this,
-        builder: (BuildContext context) => const Center(
-              child: Text('home'),
-            ));
+        builder: (BuildContext context) =>
+            const Scaffold(
+              body: Center(
+                child: Text(
+                  'Home',
+                  style: AppFonts.main,
+                ),
+              ),
+            ),
+    );
   }
 }
