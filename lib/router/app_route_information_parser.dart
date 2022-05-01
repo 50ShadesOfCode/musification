@@ -5,7 +5,6 @@ import 'package:fpmi_music_band/router/router_configuration.dart';
 
 class AppRouteInformationParser
     extends RouteInformationParser<RouteConfiguration> {
-
   bool isStartUp = true;
   Uri? initialUri;
 
