@@ -10,5 +10,4 @@ class AppFonts {
     fontSize: 40,
     color: AppColors.white,
   );
-
 }
