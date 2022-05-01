@@ -6,9 +6,36 @@ class OnboardingForm extends StatefulWidget {
 }
 
 class OnboardingFormState extends State<OnboardingForm> {
+  late int _pageIndex;
+
+  @override
+  void initState() {
+    super.initState();
+    _pageIndex = 0;
+  }
+
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+    return SafeArea(
+      child: Scaffold(
+          extendBodyBehindAppBar: true,
+          appBar: AppBar(
+            actions: <Widget>[
+              TextButton(
+                child: const Text('Skip'),
+                onPressed: () => {},
+              )
+            ],
+          ),
+          backgroundColor: const Color(0xff2c1f35),
+          body: Column(
+            children: <Widget>[
+              Center(
+                child: Column(),
+              ),
+              ElevatedButton(onPressed: () => {}, child: const Text("Next"))
+            ],
+          )),
+    );
   }
 }
