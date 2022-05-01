@@ -17,7 +17,7 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
         super(OnboardingInitial());
 
   @override
-  Stream<OnboardingEvent> mapEventToState(OnboardingEvent event) async* {
+  Stream<OnboardingState> mapEventToState(OnboardingEvent event) async* {
     if (event is SkipEvent) {
       _appRouter.replace(Home.page);
     }
