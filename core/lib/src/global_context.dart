@@ -1,4 +1,4 @@
-import 'package:shared_dependencies/flutter.dart';
+import 'package:flutter/material.dart';
 
 class GlobalContext {
   final BuildContext Function() _getContext;

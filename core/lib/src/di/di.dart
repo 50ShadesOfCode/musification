@@ -8,7 +8,6 @@ final GetIt appLocator = GetIt.instance;
 
 class AppDI {
   void initDependencies() {
-
     final AppRouter appRouter = AppRouter();
 
     appLocator.registerSingleton<AppRouter>(appRouter);
