@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:fpmi_music_band/feature/home_page.dart';
+import 'package:fpmi_music_band/feature/onboarding/onboarding_page.dart';
 import 'package:fpmi_music_band/router/router_configuration.dart';
 
 class AppRouteInformationParser
@@ -20,11 +20,11 @@ class AppRouteInformationParser
     }
     late Page<dynamic> page;
     if (uri == null) {
-      page = Home.page;
+      page = Onboarding.page();
     } else {
       final List<String> uriSegments = uri.pathSegments;
       if (uriSegments.isEmpty) {
-        page = Home.page;
+        page = Onboarding.page();
       }
     }
 
