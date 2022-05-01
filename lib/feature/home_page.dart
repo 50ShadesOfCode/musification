@@ -17,16 +17,15 @@ class HomePage extends Page<void> {
   @override
   Route<dynamic> createRoute(BuildContext context) {
     return MaterialPageRoute<void>(
-        settings: this,
-        builder: (BuildContext context) =>
-            const Scaffold(
-              body: Center(
-                child: Text(
-                  'Home',
-                  style: AppFonts.main,
-                ),
-              ),
-            ),
+      settings: this,
+      builder: (BuildContext context) => const Scaffold(
+        body: Center(
+          child: Text(
+            'Home',
+            style: AppFonts.main,
+          ),
+        ),
+      ),
     );
   }
 }

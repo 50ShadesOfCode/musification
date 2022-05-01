@@ -5,15 +5,13 @@ import 'package:fpmi_music_band/router/app_route_information_parser.dart';
 import 'package:fpmi_music_band/router/router.dart';
 import 'package:fpmi_music_band/router/router_configuration.dart';
 
-class Application extends StatefulWidget{
+class Application extends StatefulWidget {
   const Application({Key? key}) : super(key: key);
   @override
   _ApplicationState createState() => _ApplicationState();
 }
 
 class _ApplicationState extends State<Application> {
-
-
   late final AppRouter appRouter;
   late final RouteInformationParser<RouteConfiguration> routeInformationParser;
 
@@ -30,7 +28,7 @@ class _ApplicationState extends State<Application> {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: AppTheme.colorPrimary,
-        scaffoldBackgroundColor:AppTheme.bgPrimaryColor,
+        scaffoldBackgroundColor: AppTheme.bgPrimaryColor,
       ),
       routerDelegate: appRouter,
       routeInformationParser: routeInformationParser,
