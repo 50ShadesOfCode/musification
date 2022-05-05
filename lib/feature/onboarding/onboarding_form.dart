@@ -9,6 +9,14 @@ class OnboardingForm extends StatefulWidget {
 }
 
 class OnboardingFormState extends State<OnboardingForm> {
+  
+  @override
+  void initState(){
+    super.initState();
+    BlocProvider.of<OnboardingBloc>(context)
+    .add(InitEvent());
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<OnboardingBloc, OnboardingState>(
@@ -40,10 +48,7 @@ class OnboardingFormState extends State<OnboardingForm> {
                     ),
                   ),
                 ),
-                AnimatedSwitcher(
-                  duration: const Duration(milliseconds: 250),
-                  child: content(state.index),
-                ),
+                content(state.index),
                 ElevatedButton(
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all<Color>(

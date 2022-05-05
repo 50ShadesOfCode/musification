@@ -28,7 +28,7 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
       emit(state);
     });
     on<InitEvent>((OnboardingEvent event, Emitter<OnboardingState> emit) {
-      emit(state);
+      emit(OnboardingState(index: 0));
     });
   }
 }
