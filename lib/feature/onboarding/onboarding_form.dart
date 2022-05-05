@@ -1,3 +1,4 @@
+import 'package:core_ui/core_ui.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingForm extends StatefulWidget {
@@ -33,7 +34,13 @@ class OnboardingFormState extends State<OnboardingForm> {
               Center(
                 child: Column(),
               ),
-              ElevatedButton(onPressed: () => {}, child: const Text("Next"))
+              ElevatedButton(
+                onPressed: () => {},
+                child: const Text("Next"),
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(AppColors.accent),
+                ),
+              )
             ],
           )),
     );

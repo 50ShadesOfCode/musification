@@ -5,18 +5,18 @@ class AppTheme {
 
   //In a MaterialColor object we have to put a swatch property, providing color values for the ten different luminances.
   static MaterialColor colorPrimary = MaterialColor(
-    AppColors.black.value,
+    AppColors.main.value,
     const <int, Color>{
-      50: AppColors.black,
-      100: AppColors.black,
-      200: AppColors.black,
-      300: AppColors.black,
-      400: AppColors.black,
-      500: AppColors.black,
-      600: AppColors.black,
-      700: AppColors.black,
-      800: AppColors.black,
-      900: AppColors.black,
+      50: AppColors.main,
+      100: AppColors.main,
+      200: AppColors.main,
+      300: AppColors.main,
+      400: AppColors.main,
+      500: AppColors.main,
+      600: AppColors.main,
+      700: AppColors.main,
+      800: AppColors.main,
+      900: AppColors.main,
     },
   );
 }

@@ -8,6 +8,6 @@ class AppFonts {
     fontFamily: _robotoFamily,
     fontWeight: FontWeight.w500,
     fontSize: 40,
-    color: AppColors.white,
+    color: AppColors.active,
   );
 }
