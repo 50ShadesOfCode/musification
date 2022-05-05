@@ -14,12 +14,21 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
   OnboardingBloc({
     required AppRouter appRouter,
   })  : _appRouter = appRouter,
-        super(OnboardingInitial());
-
-  @override
-  Stream<OnboardingState> mapEventToState(OnboardingEvent event) async* {
-    if (event is SkipEvent) {
+        super(OnboardingState(index: 0)) {
+    on<AddEvent>((OnboardingEvent event, Emitter<OnboardingState> emit) {
+      if (state.index == 3) {
+        _appRouter.replace(Home.page);
+        emit(state);
+      } else {
+        emit(state.copyWith(index: state.index + 1));
+      }
+    });
+    on<SkipEvent>((OnboardingEvent event, Emitter<OnboardingState> emit) {
       _appRouter.replace(Home.page);
-    }
+      emit(state);
+    });
+    on<InitEvent>((OnboardingEvent event, Emitter<OnboardingState> emit) {
+      emit(state);
+    });
   }
 }

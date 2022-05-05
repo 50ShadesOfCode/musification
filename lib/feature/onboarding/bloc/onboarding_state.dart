@@ -1,6 +1,11 @@
-import 'package:flutter/material.dart';
+class OnboardingState {
+  final int index;
 
-@immutable
-abstract class OnboardingState {}
+  OnboardingState({required this.index});
 
-class OnboardingInitial extends OnboardingState {}
+  OnboardingState copyWith({
+    required int index,
+  }) {
+    return OnboardingState(index: index);
+  }
+}
