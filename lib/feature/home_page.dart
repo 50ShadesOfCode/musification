@@ -22,7 +22,7 @@ class HomePage extends Page<void> {
         body: Center(
           child: Text(
             'Home',
-            style: AppFonts.main,
+            style: AppFonts.headline1,
           ),
         ),
       ),
