@@ -7,5 +7,4 @@ class AppImages {
   static const String logoPngKey = _basePngUrl + 'logo.png';
 
   static const String logoSvgKey = _baseSvgUrl + 'logo.svg';
-
 }

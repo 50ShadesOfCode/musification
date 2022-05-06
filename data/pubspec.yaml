@@ -11,8 +11,14 @@ dependencies:
   flutter:
     sdk: flutter
 
+  core:
+    path: ../core
+  domain:
+    path: ../domain
   shared_dependencies:
     path: ../shared_dependencies
+  fpmi_music_band:
+    path: ../
 
 dev_dependencies:
   flutter_test:

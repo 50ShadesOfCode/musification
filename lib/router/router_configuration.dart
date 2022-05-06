@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class RouteConfiguration {
-
   final Page<dynamic> page;
 
   RouteConfiguration({
