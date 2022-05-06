@@ -9,12 +9,10 @@ class OnboardingForm extends StatefulWidget {
 }
 
 class OnboardingFormState extends State<OnboardingForm> {
-  
   @override
-  void initState(){
+  void initState() {
     super.initState();
-    BlocProvider.of<OnboardingBloc>(context)
-    .add(InitEvent());
+    BlocProvider.of<OnboardingBloc>(context).add(InitEvent());
   }
 
   @override
