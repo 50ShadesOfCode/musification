@@ -17,5 +17,5 @@ class OnboardingState extends Equatable {
   }
 
   @override
-  List<Object> get props => [index];
+  List<Object> get props => <int>[index];
 }

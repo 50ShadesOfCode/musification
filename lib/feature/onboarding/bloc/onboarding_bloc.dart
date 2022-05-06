@@ -14,7 +14,7 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
   OnboardingBloc({
     required AppRouter appRouter,
   })  : _appRouter = appRouter,
-        super(OnboardingState(index: 0)) {
+        super(const OnboardingState(index: 0)) {
     on<AddEvent>((OnboardingEvent event, Emitter<OnboardingState> emit) {
       if (state.index == 3) {
         _appRouter.replace(Home.page);
@@ -28,7 +28,7 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
       emit(state);
     });
     on<InitEvent>((OnboardingEvent event, Emitter<OnboardingState> emit) {
-      emit(OnboardingState(index: 0));
+      emit(const OnboardingState(index: 0));
     });
   }
 }
