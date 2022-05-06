@@ -3,5 +3,5 @@ abstract class LaunchRepository {
 
   bool isFirstLaunch();
 
-  Future<void> firstLaunch();
+  Future<void> setFirstLaunch();
 }
