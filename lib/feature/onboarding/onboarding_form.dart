@@ -10,70 +10,61 @@ class OnboardingForm extends StatefulWidget {
 
 class OnboardingFormState extends State<OnboardingForm> {
   @override
-  void initState() {
-    super.initState();
-    BlocProvider.of<OnboardingBloc>(context).add(InitEvent());
-  }
-
-  @override
   Widget build(BuildContext context) {
     return BlocBuilder<OnboardingBloc, OnboardingState>(
       builder: (BuildContext context, OnboardingState state) {
-        return SafeArea(
-          child: Scaffold(
-            backgroundColor: AppColors.main,
-            body: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Expanded(
-                  child: Container(
-                    alignment: Alignment.topRight,
-                    padding: const EdgeInsets.only(
-                      right: 20,
-                      top: 15,
-                    ),
-                    child: TextButton(
-                      onPressed: () {
-                        BlocProvider.of<OnboardingBloc>(context)
-                            .add(SkipEvent());
-                      },
-                      child: const Text(
-                        'Skip',
-                        textAlign: TextAlign.center,
-                        style: AppFonts.button,
-                      ),
+        return Scaffold(
+          backgroundColor: AppColors.main,
+          body: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Expanded(
+                child: Container(
+                  alignment: Alignment.topRight,
+                  padding: const EdgeInsets.only(
+                    right: 20,
+                    top: 15,
+                  ),
+                  child: TextButton(
+                    onPressed: () {
+                      BlocProvider.of<OnboardingBloc>(context).add(SkipEvent());
+                    },
+                    child: const Text(
+                      'Skip',
+                      textAlign: TextAlign.center,
+                      style: AppFonts.button,
                     ),
                   ),
                 ),
-                content(state.index),
-                ElevatedButton(
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all<Color>(
-                      const Color(0xffd90429),
-                    ),
-                    fixedSize:
-                        MaterialStateProperty.all<Size>(const Size(130, 50)),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
-                        side: const BorderSide(color: Color(0xffd90429)),
-                      ),
-                    ),
+              ),
+              content(state.index),
+              ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(
+                    const Color(0xffd90429),
                   ),
-                  onPressed: () {
-                    BlocProvider.of<OnboardingBloc>(context).add(AddEvent());
-                  },
-                  child: const Text(
-                    'Next',
-                    style: AppFonts.button,
+                  fixedSize:
+                      MaterialStateProperty.all<Size>(const Size(130, 50)),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                      side: const BorderSide(color: Color(0xffd90429)),
+                    ),
                   ),
                 ),
-                const SizedBox(
-                  height: 60,
-                )
-              ],
-            ),
+                onPressed: () {
+                  BlocProvider.of<OnboardingBloc>(context).add(AddEvent());
+                },
+                child: const Text(
+                  'Next',
+                  style: AppFonts.button,
+                ),
+              ),
+              const SizedBox(
+                height: 60,
+              )
+            ],
           ),
         );
       },
