@@ -1,4 +1,5 @@
 import 'package:core/core.dart';
+import 'package:core_ui/core_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:fpmi_music_band/router/app_route_information_parser.dart';
 import 'package:fpmi_music_band/router/router.dart';
@@ -26,6 +27,9 @@ class _ApplicationState extends State<Application> {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       //TODO : Application theme.
+      theme: ThemeData(
+        scaffoldBackgroundColor: AppTheme.bgPrimaryColor,
+      ),
       routerDelegate: appRouter,
       routeInformationParser: routeInformationParser,
     );
