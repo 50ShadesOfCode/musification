@@ -1,3 +1,4 @@
+import 'package:core/core.dart';
 import 'package:core_ui/core_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:fpmi_music_band/feature/onboarding/bloc/onboarding_bloc.dart';
@@ -29,8 +30,8 @@ class OnboardingFormState extends State<OnboardingForm> {
                     onPressed: () {
                       BlocProvider.of<OnboardingBloc>(context).add(SkipEvent());
                     },
-                    child: const Text(
-                      'Skip',
+                    child: Text(
+                      AppLocalizations.of(context).translate('skip')!,
                       textAlign: TextAlign.center,
                       style: AppFonts.button,
                     ),
@@ -55,8 +56,8 @@ class OnboardingFormState extends State<OnboardingForm> {
                 onPressed: () {
                   BlocProvider.of<OnboardingBloc>(context).add(AddEvent());
                 },
-                child: const Text(
-                  'Next',
+                child: Text(
+                  AppLocalizations.of(context).translate('next')!,
                   style: AppFonts.button,
                 ),
               ),
