@@ -3,7 +3,6 @@ part of core_ui;
 class AppFonts {
   static const String _robotoFamily = 'Roboto';
   static const String _sfuiFamily = 'SF UI Display';
-  // Test TextStyle
   static const TextStyle headline1 = TextStyle(
     fontFamily: _sfuiFamily,
     fontWeight: FontWeight.w700,
