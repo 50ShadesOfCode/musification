@@ -14,7 +14,6 @@ class OnboardingFormState extends State<OnboardingForm> {
     return BlocBuilder<OnboardingBloc, OnboardingState>(
       builder: (BuildContext context, OnboardingState state) {
         return Scaffold(
-          backgroundColor: AppColors.main,
           body: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -109,6 +108,7 @@ const List<String> texts = <String>[
   'Sound\nthat pleases',
   'Listen on any device\neven without internet',
 ];
+
 List<Widget> dots = <Widget>[
   Container(
     width: 56,
@@ -149,123 +149,36 @@ List<Widget> dots = <Widget>[
   ),
   Container(
     width: 56,
-    height: 46,
-    child: Column(
+    height: 8,
+    child: Row(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.end,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         Container(
-          width: 56,
+          width: 8,
           height: 8,
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Container(
-                width: 8,
-                height: 8,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: const Color(0xff8d99ae),
-                ),
-              ),
-              const SizedBox(width: 8),
-              Container(
-                width: 8,
-                height: 8,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: const Color(0xff8d99ae),
-                ),
-              ),
-              const SizedBox(width: 8),
-              Container(
-                width: 24,
-                height: 8,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: const Color(0xffedf2f4),
-                ),
-              ),
-            ],
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: const Color(0xff8d99ae),
           ),
         ),
-        const SizedBox(height: 11),
+        const SizedBox(width: 8),
         Container(
-          width: 56,
+          width: 24,
           height: 8,
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Container(
-                width: 8,
-                height: 8,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: const Color(0xff8d99ae),
-                ),
-              ),
-              const SizedBox(width: 8),
-              Container(
-                width: 24,
-                height: 8,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: const Color(0xffedf2f4),
-                ),
-              ),
-              const SizedBox(width: 8),
-              Container(
-                width: 8,
-                height: 8,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: const Color(0xff8d99ae),
-                ),
-              ),
-            ],
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: const Color(0xffedf2f4),
           ),
         ),
-        const SizedBox(height: 11),
+        const SizedBox(width: 8),
         Container(
-          width: 56,
+          width: 8,
           height: 8,
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Container(
-                width: 24,
-                height: 8,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: const Color(0xffedf2f4),
-                ),
-              ),
-              const SizedBox(width: 8),
-              Container(
-                width: 8,
-                height: 8,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: const Color(0xff8d99ae),
-                ),
-              ),
-              const SizedBox(width: 8),
-              Container(
-                width: 8,
-                height: 8,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: const Color(0xff8d99ae),
-                ),
-              ),
-            ],
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: const Color(0xff8d99ae),
           ),
         ),
       ],
