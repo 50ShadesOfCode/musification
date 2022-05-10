@@ -10,11 +10,11 @@ class PrefsProvider {
   }
 
   Future<void> firstLaunch() async {
-    await _sharedPreferences.setBool(_keyIsFirstLaunch, true);
+    await _sharedPreferences.setBool(_keyIsFirstLaunch, false);
   }
 
   bool isFirstLaunch() {
     final bool? isFirst = _sharedPreferences.getBool(_keyIsFirstLaunch);
-    return isFirst ?? false;
+    return isFirst ?? true;
   }
 }
