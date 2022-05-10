@@ -18,10 +18,12 @@ class OnboardingPage extends PageWithScaffoldKey<dynamic> {
         builder: (BuildContext context) => BlocProvider<OnboardingBloc>(
           create: (_) => OnboardingBloc(
             appRouter: appLocator.get<AppRouter>(),
-          )..add(InitEvent()),
-          child: ScaffoldMessenger(
-            key: scaffoldKey,
-            child: OnboardingForm(),
+          ),
+          child: SafeArea(
+            child: ScaffoldMessenger(
+              key: scaffoldKey,
+              child: OnboardingForm(),
+            ),
           ),
         ),
       );

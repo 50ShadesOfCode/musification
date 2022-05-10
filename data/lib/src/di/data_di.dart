@@ -18,8 +18,8 @@ class DataDI {
       ),
     );
 
-    appLocator.registerFactory<FirstLaunchUseCase>(
-      () => FirstLaunchUseCase(
+    appLocator.registerFactory<SetFirstLaunchUseCase>(
+      () => SetFirstLaunchUseCase(
         launchRepository: appLocator.get<LaunchRepository>(),
       ),
     );

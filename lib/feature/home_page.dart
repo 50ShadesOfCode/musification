@@ -2,6 +2,7 @@ import 'package:core_ui/core_ui.dart';
 import 'package:flutter/material.dart';
 
 class Home {
+  //TODO : Home. Now it is dev page for routing
   static const String routeName = '/home';
 
   static Page<void> get page => HomePage();

@@ -1,6 +1,7 @@
 import 'package:core/core.dart';
 import 'package:core_ui/core_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:fpmi_music_band/router/app_route_information_parser.dart';
 import 'package:fpmi_music_band/router/router.dart';
 import 'package:fpmi_music_band/router/router_configuration.dart';
@@ -26,10 +27,17 @@ class _ApplicationState extends State<Application> {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      /*theme: ThemeData(
-        primarySwatch: AppTheme.colorPrimary,
+      //TODO : Application theme.
+      theme: ThemeData(
         scaffoldBackgroundColor: AppTheme.bgPrimaryColor,
-      ),*/
+      ),
+      localizationsDelegates: const <LocalizationsDelegate<dynamic>> [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: AppLocalizations.supportedLocales,
       routerDelegate: appRouter,
       routeInformationParser: routeInformationParser,
     );
