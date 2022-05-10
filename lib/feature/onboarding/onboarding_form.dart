@@ -1,3 +1,4 @@
+import 'package:core/core.dart';
 import 'package:core_ui/core_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:fpmi_music_band/feature/onboarding/bloc/onboarding_bloc.dart';
@@ -14,7 +15,6 @@ class OnboardingFormState extends State<OnboardingForm> {
     return BlocBuilder<OnboardingBloc, OnboardingState>(
       builder: (BuildContext context, OnboardingState state) {
         return Scaffold(
-          backgroundColor: AppColors.main,
           body: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -30,8 +30,8 @@ class OnboardingFormState extends State<OnboardingForm> {
                     onPressed: () {
                       BlocProvider.of<OnboardingBloc>(context).add(SkipEvent());
                     },
-                    child: const Text(
-                      'Skip',
+                    child: Text(
+                      AppLocalizations.of(context).translate('skip')!,
                       textAlign: TextAlign.center,
                       style: AppFonts.button,
                     ),
@@ -56,8 +56,8 @@ class OnboardingFormState extends State<OnboardingForm> {
                 onPressed: () {
                   BlocProvider.of<OnboardingBloc>(context).add(AddEvent());
                 },
-                child: const Text(
-                  'Next',
+                child: Text(
+                  AppLocalizations.of(context).translate('next')!,
                   style: AppFonts.button,
                 ),
               ),
@@ -109,6 +109,7 @@ const List<String> texts = <String>[
   'Sound\nthat pleases',
   'Listen on any device\neven without internet',
 ];
+
 List<Widget> dots = <Widget>[
   Container(
     width: 56,
@@ -149,123 +150,36 @@ List<Widget> dots = <Widget>[
   ),
   Container(
     width: 56,
-    height: 46,
-    child: Column(
+    height: 8,
+    child: Row(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.end,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         Container(
-          width: 56,
+          width: 8,
           height: 8,
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Container(
-                width: 8,
-                height: 8,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: const Color(0xff8d99ae),
-                ),
-              ),
-              const SizedBox(width: 8),
-              Container(
-                width: 8,
-                height: 8,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: const Color(0xff8d99ae),
-                ),
-              ),
-              const SizedBox(width: 8),
-              Container(
-                width: 24,
-                height: 8,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: const Color(0xffedf2f4),
-                ),
-              ),
-            ],
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: const Color(0xff8d99ae),
           ),
         ),
-        const SizedBox(height: 11),
+        const SizedBox(width: 8),
         Container(
-          width: 56,
+          width: 24,
           height: 8,
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Container(
-                width: 8,
-                height: 8,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: const Color(0xff8d99ae),
-                ),
-              ),
-              const SizedBox(width: 8),
-              Container(
-                width: 24,
-                height: 8,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: const Color(0xffedf2f4),
-                ),
-              ),
-              const SizedBox(width: 8),
-              Container(
-                width: 8,
-                height: 8,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: const Color(0xff8d99ae),
-                ),
-              ),
-            ],
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: const Color(0xffedf2f4),
           ),
         ),
-        const SizedBox(height: 11),
+        const SizedBox(width: 8),
         Container(
-          width: 56,
+          width: 8,
           height: 8,
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Container(
-                width: 24,
-                height: 8,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: const Color(0xffedf2f4),
-                ),
-              ),
-              const SizedBox(width: 8),
-              Container(
-                width: 8,
-                height: 8,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: const Color(0xff8d99ae),
-                ),
-              ),
-              const SizedBox(width: 8),
-              Container(
-                width: 8,
-                height: 8,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: const Color(0xff8d99ae),
-                ),
-              ),
-            ],
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: const Color(0xff8d99ae),
           ),
         ),
       ],
