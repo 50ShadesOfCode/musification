@@ -20,10 +20,12 @@ class AppRouteInformationParser
     }
     late Page<dynamic> page;
     if (uri == null) {
+      //TODO : Set to splash
       page = Onboarding.page();
     } else {
       final List<String> uriSegments = uri.pathSegments;
       if (uriSegments.isEmpty) {
+        //TODO : Set to splash
         page = Onboarding.page();
       }
     }

@@ -22,6 +22,7 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
   Future<void> _onAddEvent(
       OnboardingEvent event, Emitter<OnboardingState> emit) async {
     if (state.index == 3) {
+      //TODO : Set to login
       _appRouter.replace(Home.page);
       emit(state);
     } else {
@@ -31,6 +32,7 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
 
   Future<void> _onSkipEvent(
       OnboardingEvent event, Emitter<OnboardingState> emit) async {
+    //TODO : Set to login
     _appRouter.replace(Home.page);
     emit(state);
   }

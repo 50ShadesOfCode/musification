@@ -25,10 +25,7 @@ class _ApplicationState extends State<Application> {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      /*theme: ThemeData(
-        primarySwatch: AppTheme.colorPrimary,
-        scaffoldBackgroundColor: AppTheme.bgPrimaryColor,
-      ),*/
+      //TODO : Application theme.
       routerDelegate: appRouter,
       routeInformationParser: routeInformationParser,
     );
