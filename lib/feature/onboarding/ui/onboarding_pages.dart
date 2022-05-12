@@ -78,9 +78,9 @@ Widget dots(int index) {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         index == 0 ? activeDot() : inactiveDot(),
-        const SizedBox(width: 8),
+        const SizedBox(width: Dimensions.SPACE_8),
         index == 1 ? activeDot() : inactiveDot(),
-        const SizedBox(width: 8),
+        const SizedBox(width: Dimensions.SPACE_8),
         index == 2 ? activeDot() : inactiveDot(),
       ],
     ),

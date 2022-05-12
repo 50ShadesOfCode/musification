@@ -1,6 +1,7 @@
 part of core_ui;
 
 class Dimensions {
+  static const double SPACE_8 = 8.0;
   static const double SPACE_16 = 16.0;
   static const double SPACE_24 = 24.0;
   static const double SPACE_30 = 30.0;

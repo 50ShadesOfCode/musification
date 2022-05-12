@@ -58,5 +58,5 @@ flutter:
           weight: 400
     - family: Roboto
       fonts:
-            - asset: assets/fonts/roboto/Roboto-Medium.ttf
-              weight: 500
+        - asset: assets/fonts/roboto/Roboto-Medium.ttf
+          weight: 500
