@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:core/core.dart';
 import 'package:domain/domain.dart';
 import 'package:fpmi_music_band/feature/home/home.dart';
 import 'package:fpmi_music_band/feature/onboarding/onboarding.dart';

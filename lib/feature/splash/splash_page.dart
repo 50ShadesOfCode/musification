@@ -23,7 +23,7 @@ class SplashPage extends PageWithScaffoldKey<dynamic> {
           child: SafeArea(
             child: ScaffoldMessenger(
               key: scaffoldKey,
-              child: SplashForm(),
+              child: const SplashForm(),
             ),
           ),
         ),

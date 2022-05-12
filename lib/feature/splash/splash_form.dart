@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:shared_dependencies/bloc.dart';
 
 import 'bloc/splash_bloc.dart';
-import 'bloc/splash_event.dart';
 
 class SplashForm extends StatefulWidget {
   const SplashForm({Key? key}) : super(key: key);
