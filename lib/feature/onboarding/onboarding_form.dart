@@ -5,7 +5,7 @@ import 'package:fpmi_music_band/feature/onboarding/bloc/onboarding_bloc.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:shared_dependencies/bloc.dart';
 
-import 'ui/pages.dart';
+import 'ui/onboarding_pages.dart';
 
 class OnboardingForm extends StatefulWidget {
   @override
