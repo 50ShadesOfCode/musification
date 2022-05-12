@@ -40,7 +40,7 @@ class OnboardingFormState extends State<OnboardingForm> {
                   BlocProvider.of<OnboardingBloc>(context).add(SkipEvent());
                 },
                 child: Text(
-                  AppLocalizations.of(context).translate('skip')!,
+                  AppLocalizations.ofGlobalContext('skip'),
                   textAlign: TextAlign.center,
                   style: AppFonts.button,
                 ),
@@ -72,7 +72,7 @@ class OnboardingFormState extends State<OnboardingForm> {
                 BlocProvider.of<OnboardingBloc>(context).add(AddEvent());
               },
               child: Text(
-                AppLocalizations.of(context).translate('next')!,
+                AppLocalizations.ofGlobalContext('next'),
                 style: AppFonts.button,
               ),
             ),
