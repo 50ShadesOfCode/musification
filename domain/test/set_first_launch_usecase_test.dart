@@ -6,13 +6,13 @@ import 'launch_repository_test.mocks.dart';
 
 void main() {
   final MockLaunchRepository repo = MockLaunchRepository();
+  final SetFirstLaunchUseCase useCase =
+      SetFirstLaunchUseCase(launchRepository: repo);
   group('SetFirstLaunchUseCase tests', () {
-    test('Check if setFirstLaunch is called', () {
+    test('verify setFirstLaunch called once', () {
       final NoParams params = NoParams();
-      final SetFirstLaunchUseCase usecase =
-          SetFirstLaunchUseCase(launchRepository: repo);
-      usecase.execute(params);
-      verify(repo.setFirstLaunch());
+      useCase.execute(params);
+      verify(repo.setFirstLaunch()).called(1);
     });
   });
 }

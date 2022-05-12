@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:core/core.dart';
-import 'package:domain/domain.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fpmi_music_band/router/router.dart';
 
@@ -54,8 +53,7 @@ class AppLocalizations {
     if (localizedString != null) {
       return localizedString;
     } else {
-      throw AppException(
-          'AppLocalizations Exception: Failed to translate $key');
+      return 'Unknown key';
     }
   }
 }

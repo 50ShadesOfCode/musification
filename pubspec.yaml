@@ -25,6 +25,7 @@ dependencies:
     path: domain
   shared_dependencies:
     path: shared_dependencies
+  introduction_screen: ^3.0.2
 
 dev_dependencies:
   flutter_test:

@@ -6,10 +6,6 @@ import 'package:fpmi_music_band/router/page_with_scaffold_key.dart';
 import 'package:fpmi_music_band/router/router.dart';
 import 'package:shared_dependencies/bloc.dart';
 
-class Onboarding {
-  static Page<dynamic> page() => OnboardingPage();
-}
-
 class OnboardingPage extends PageWithScaffoldKey<dynamic> {
   @override
   Route<dynamic> createRoute(BuildContext context) =>

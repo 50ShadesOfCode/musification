@@ -2,7 +2,10 @@ import 'package:core/core.dart';
 import 'package:core_ui/core_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:fpmi_music_band/feature/onboarding/bloc/onboarding_bloc.dart';
+import 'package:introduction_screen/introduction_screen.dart';
 import 'package:shared_dependencies/bloc.dart';
+
+import 'ui/pages.dart';
 
 class OnboardingForm extends StatefulWidget {
   @override
@@ -10,216 +13,72 @@ class OnboardingForm extends StatefulWidget {
 }
 
 class OnboardingFormState extends State<OnboardingForm> {
+  final GlobalKey<IntroductionScreenState> introKey =
+      GlobalKey<IntroductionScreenState>();
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<OnboardingBloc, OnboardingState>(
       builder: (BuildContext context, OnboardingState state) {
-        return Scaffold(
-          body: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Expanded(
-                child: Container(
-                  alignment: Alignment.topRight,
-                  padding: const EdgeInsets.only(
-                    right: 20,
-                    top: 15,
-                  ),
-                  child: TextButton(
-                    onPressed: () {
-                      BlocProvider.of<OnboardingBloc>(context).add(SkipEvent());
-                    },
-                    child: Text(
-                      AppLocalizations.of(context).translate('skip')!,
-                      textAlign: TextAlign.center,
-                      style: AppFonts.button,
-                    ),
-                  ),
-                ),
+        return IntroductionScreen(
+          key: introKey,
+          pages: pages,
+          showBackButton: false,
+          showNextButton: false,
+          showDoneButton: false,
+          isProgress: false,
+          globalHeader: Align(
+            alignment: Alignment.topRight,
+            child: Container(
+              alignment: Alignment.topRight,
+              padding: const EdgeInsets.only(
+                right: 20,
+                top: 15,
               ),
-              content(state.index),
-              ElevatedButton(
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(
-                    const Color(0xffd90429),
-                  ),
-                  fixedSize:
-                      MaterialStateProperty.all<Size>(const Size(130, 50)),
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
-                      side: const BorderSide(color: Color(0xffd90429)),
-                    ),
-                  ),
-                ),
+              child: TextButton(
                 onPressed: () {
-                  BlocProvider.of<OnboardingBloc>(context).add(AddEvent());
+                  BlocProvider.of<OnboardingBloc>(context).add(SkipEvent());
                 },
                 child: Text(
-                  AppLocalizations.of(context).translate('next')!,
+                  AppLocalizations.of(context).translate('skip')!,
+                  textAlign: TextAlign.center,
                   style: AppFonts.button,
                 ),
               ),
-              const SizedBox(
-                height: 60,
-              )
-            ],
+            ),
+          ),
+          globalFooter: Container(
+            padding: const EdgeInsets.only(
+              bottom: 60,
+            ),
+            child: ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all<Color>(
+                  AppColors.accent,
+                ),
+                fixedSize: MaterialStateProperty.all<Size>(const Size(130, 50)),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
+                    side: const BorderSide(color: AppColors.accent),
+                  ),
+                ),
+              ),
+              onPressed: () {
+                if (introKey.currentState!.controller.page!.toInt() < 2) {
+                  introKey.currentState!.animateScroll(
+                      introKey.currentState!.controller.page!.toInt() + 1);
+                }
+                BlocProvider.of<OnboardingBloc>(context).add(AddEvent());
+              },
+              child: Text(
+                AppLocalizations.of(context).translate('next')!,
+                style: AppFonts.button,
+              ),
+            ),
           ),
         );
       },
     );
   }
 }
-
-Widget content(int index) {
-  return Expanded(
-    flex: 2,
-    child: Column(
-      children: <Widget>[
-        Container(
-            width: 100,
-            height: 100,
-            padding: const EdgeInsets.symmetric(
-              vertical: 2,
-            ),
-            child: Image(
-              image: AssetImage(icons[index]),
-            )),
-        const SizedBox(height: 40),
-        Text(
-          texts[index],
-          textAlign: TextAlign.center,
-          style: AppFonts.headline1,
-        ),
-        const SizedBox(height: 40),
-        dots[index]
-      ],
-    ),
-  );
-}
-
-const List<String> icons = <String>[
-  'assets/images/png/music_folder.png',
-  'assets/images/png/like.png',
-  'assets/images/png/earphone.png',
-];
-const List<String> texts = <String>[
-  'Music collected\nespecially for you',
-  'Sound\nthat pleases',
-  'Listen on any device\neven without internet',
-];
-
-List<Widget> dots = <Widget>[
-  Container(
-    width: 56,
-    height: 8,
-    child: Row(
-      mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.end,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        Container(
-          width: 24,
-          height: 8,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: const Color(0xffedf2f4),
-          ),
-        ),
-        const SizedBox(width: 8),
-        Container(
-          width: 8,
-          height: 8,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: const Color(0xff8d99ae),
-          ),
-        ),
-        const SizedBox(width: 8),
-        Container(
-          width: 8,
-          height: 8,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: const Color(0xff8d99ae),
-          ),
-        ),
-      ],
-    ),
-  ),
-  Container(
-    width: 56,
-    height: 8,
-    child: Row(
-      mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.end,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        Container(
-          width: 8,
-          height: 8,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: const Color(0xff8d99ae),
-          ),
-        ),
-        const SizedBox(width: 8),
-        Container(
-          width: 24,
-          height: 8,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: const Color(0xffedf2f4),
-          ),
-        ),
-        const SizedBox(width: 8),
-        Container(
-          width: 8,
-          height: 8,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: const Color(0xff8d99ae),
-          ),
-        ),
-      ],
-    ),
-  ),
-  Container(
-    width: 56,
-    height: 8,
-    child: Row(
-      mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        Container(
-          width: 8,
-          height: 8,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: const Color(0xff8d99ae),
-          ),
-        ),
-        const SizedBox(width: 8),
-        Container(
-          width: 8,
-          height: 8,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: const Color(0xff8d99ae),
-          ),
-        ),
-        const SizedBox(width: 8),
-        Container(
-          width: 24,
-          height: 8,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: const Color(0xffedf2f4),
-          ),
-        ),
-      ],
-    ),
-  )
-];

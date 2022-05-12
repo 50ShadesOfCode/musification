@@ -9,7 +9,7 @@ class PrefsProvider {
     _sharedPreferences = await SharedPreferences.getInstance();
   }
 
-  Future<void> firstLaunch() async {
+  Future<void> setFirstLaunch() async {
     await _sharedPreferences.setBool(_keyIsFirstLaunch, false);
   }
 
