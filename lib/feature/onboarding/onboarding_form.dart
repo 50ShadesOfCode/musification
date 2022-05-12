@@ -13,7 +13,8 @@ class OnboardingForm extends StatefulWidget {
 }
 
 class OnboardingFormState extends State<OnboardingForm> {
-  final introKey = GlobalKey<IntroductionScreenState>();
+  final GlobalKey<IntroductionScreenState> introKey =
+      GlobalKey<IntroductionScreenState>();
 
   @override
   Widget build(BuildContext context) {

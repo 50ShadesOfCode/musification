@@ -1,8 +1,9 @@
+import 'package:core/core.dart';
 import 'package:core_ui/core_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
-List<PageViewModel> pages = [
+List<PageViewModel> pages = <PageViewModel>[
   PageViewModel(
     titleWidget: Text(
       texts[0],
@@ -61,10 +62,10 @@ const List<String> icons = <String>[
   'assets/images/png/like.png',
   'assets/images/png/earphone.png',
 ];
-const List<String> texts = <String>[
-  'Music collected\nespecially for you',
-  'Sound\nthat pleases',
-  'Listen on any device\neven without internet',
+List<String> texts = <String>[
+  AppLocalizations.ofGlobalContext('onboarding_text_1'),
+  AppLocalizations.ofGlobalContext('onboarding_text_2'),
+  AppLocalizations.ofGlobalContext('onboarding_text_3'),
 ];
 
 List<Widget> dots = <Widget>[

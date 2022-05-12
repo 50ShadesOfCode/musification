@@ -1,4 +1,4 @@
-import 'package:fpmi_music_band/feature/home_page.dart';
+import 'package:fpmi_music_band/feature/home/home.dart';
 import 'package:fpmi_music_band/router/router.dart';
 import 'package:shared_dependencies/bloc.dart';
 
