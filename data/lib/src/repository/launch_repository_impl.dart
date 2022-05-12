@@ -11,5 +11,5 @@ class LaunchRepositoryImpl extends LaunchRepository {
   bool isFirstLaunch() => _prefsProvider.isFirstLaunch();
 
   @override
-  Future<void> setFirstLaunch() => _prefsProvider.firstLaunch();
+  Future<void> setFirstLaunch() => _prefsProvider.setFirstLaunch();
 }
