@@ -1,11 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:fpmi_music_band/feature/home_dev.dart';
+import 'package:fpmi_music_band/feature/onboarding/onboarding.dart';
 import 'package:fpmi_music_band/router/router_configuration.dart';
 
 class AppRouteInformationParser
     extends RouteInformationParser<RouteConfiguration> {
-
   bool isStartUp = true;
   Uri? initialUri;
 
@@ -21,11 +20,13 @@ class AppRouteInformationParser
     }
     late Page<dynamic> page;
     if (uri == null) {
-      page = Home.page;
+      //TODO : Set to splash
+      page = Onboarding.page();
     } else {
       final List<String> uriSegments = uri.pathSegments;
       if (uriSegments.isEmpty) {
-        page = Home.page;
+        //TODO : Set to splash
+        page = Onboarding.page();
       }
     }
 

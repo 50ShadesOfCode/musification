@@ -9,6 +9,7 @@ class AppRouter extends RouterDelegate<RouteConfiguration>
         PopNavigatorRouterDelegateMixin<RouteConfiguration>,
         PageStackController {
   final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
+
   @override
   Widget build(BuildContext context) {
     return Navigator(
@@ -35,5 +36,4 @@ class AppRouter extends RouterDelegate<RouteConfiguration>
     resetTo(configuration.page);
     return SynchronousFuture<void>(null);
   }
-
 }
