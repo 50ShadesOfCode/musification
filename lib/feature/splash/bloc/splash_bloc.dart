@@ -42,5 +42,4 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
       _appRouter.replace(Home.page);
     }
   }
-
 }
