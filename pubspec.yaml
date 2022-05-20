@@ -25,6 +25,8 @@ dependencies:
     path: domain
   shared_dependencies:
     path: shared_dependencies
+  authorization:
+    path: features/authorization
   introduction_screen: ^3.0.2
 
 dev_dependencies:
