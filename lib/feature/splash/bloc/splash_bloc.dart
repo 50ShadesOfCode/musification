@@ -31,7 +31,6 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
 
   Future<void> _onInitEvent (
       SplashEvent event, Emitter<SplashState> emit) async {
-    _initPresentationHandler();
   }
 
   Future<void> _onStartedEvent (
@@ -44,8 +43,4 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
     }
   }
 
-
-  void _initPresentationHandler() {
-    // TODO: Add AppPresentationHandler
-  }
 }

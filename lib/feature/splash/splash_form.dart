@@ -56,5 +56,4 @@ class _SplashFormState extends State<SplashForm>
     _controller.dispose();
     super.dispose();
   }
-
 }
