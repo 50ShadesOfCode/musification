@@ -1,7 +1,7 @@
 import 'dart:async';
 
+import 'package:authorization/authorization_feature.dart';
 import 'package:domain/domain.dart';
-import 'package:fpmi_music_band/feature/home/home.dart';
 import 'package:fpmi_music_band/feature/onboarding/onboarding.dart';
 import 'package:fpmi_music_band/router/router.dart';
 import 'package:shared_dependencies/bloc.dart';
@@ -39,7 +39,7 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
       _setFirstLaunchUseCase.execute(NoParams());
       _appRouter.replace(Onboarding.page());
     } else {
-      _appRouter.replace(Home.page);
-    }
+      _appRouter.replace(AuthFeature.page());
+    } // TODO: Add usecase for auth
   }
 }
