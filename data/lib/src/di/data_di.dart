@@ -1,5 +1,6 @@
 import 'package:core/core.dart';
 import 'package:data/src/prefs/prefs_provider.dart';
+import 'package:data/src/repository/auth_repository_impl.dart';
 import 'package:data/src/repository/launch_repository_impl.dart';
 import 'package:domain/domain.dart';
 
@@ -12,10 +13,21 @@ class DataDI {
         .registerLazySingleton<LaunchRepository>(() => LaunchRepositoryImpl(
               prefsProvider: appLocator.get<PrefsProvider>(),
             ));
+    appLocator.registerLazySingleton<AuthRepository>(() =>
+        AuthRepositoryImpl(prefsProvider: appLocator.get<PrefsProvider>()));
     appLocator.registerFactory<IsFirstLaunchUseCase>(
       () => IsFirstLaunchUseCase(
         launchRepository: appLocator.get<LaunchRepository>(),
       ),
+    );
+    
+    appLocator.registerFactory<SignInUseCase>(()=> SignInUseCase(authRepository: appLocator.get<AuthRepository>(),
+      
+    ));
+
+    appLocator.registerFactory<IsUserAuthorizedUseCase>(
+      () => IsUserAuthorizedUseCase(
+          authRepository: appLocator.get<AuthRepository>()),
     );
 
     appLocator.registerFactory<SetFirstLaunchUseCase>(

@@ -11,5 +11,7 @@ export 'src/helpers/post_response_helper.dart';
 export 'src/repositories/auth_repository.dart';
 export 'src/repositories/launch_repository.dart';
 export 'src/usecase/is_first_launch_usecase.dart';
+export 'src/usecase/is_user_authorized_usecase.dart';
 export 'src/usecase/set_first_launch_usecase.dart';
+export 'src/usecase/sign_in_usecase.dart';
 export 'src/usecase/usecase.dart';

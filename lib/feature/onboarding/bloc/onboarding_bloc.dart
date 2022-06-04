@@ -20,9 +20,9 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
   }
 
   Future<void> _onAddEvent(
-      OnboardingEvent event, Emitter<OnboardingState> emit) async {
+      AddEvent event, Emitter<OnboardingState> emit) async {
     if (state.index == 2) {
-      _appRouter.replace(AuthFeature.page()); // TODO: Add usecase for auth
+      _appRouter.replace(AuthFeature.page());
       emit(state);
     } else {
       emit(state.copyWith(index: state.index + 1));
@@ -30,8 +30,8 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
   }
 
   Future<void> _onSkipEvent(
-      OnboardingEvent event, Emitter<OnboardingState> emit) async {
-    _appRouter.replace(AuthFeature.page()); // TODO: Add usecase for auth
+      SkipEvent event, Emitter<OnboardingState> emit) async {
+    _appRouter.replace(AuthFeature.page());
     emit(state);
   }
 }

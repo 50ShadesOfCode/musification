@@ -7,7 +7,7 @@ import 'package:shared_dependencies/firebase.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  //await Firebase.initializeApp();
   appDI.initDependencies();
   await dataDI.initDependencies();
   runApp(const Application());
