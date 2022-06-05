@@ -20,7 +20,7 @@ class Request {
     required String method,
     Map<String, dynamic>? parameters,
   })  : _api = api,
-        _parameters = {} {
+        _parameters = <String, dynamic>{} {
     parameters?.forEach((String key, dynamic value) {
       if (value != null) {
         _parameters[key] = formatUnicode(text: value);

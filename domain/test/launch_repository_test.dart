@@ -1,5 +1,5 @@
 import 'package:domain/domain.dart';
 import 'package:mockito/annotations.dart';
 
-@GenerateMocks([LaunchRepository])
+@GenerateMocks(<Type>[LaunchRepository])
 void main() {}

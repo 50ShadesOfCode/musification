@@ -1,4 +1,5 @@
 import 'package:domain/domain.dart';
+import 'package:fpmi_music_band/feature/connection_error_view/connection_error.dart';
 import 'package:fpmi_music_band/feature/home/home.dart';
 import 'package:fpmi_music_band/router/router.dart';
 import 'package:shared_dependencies/bloc.dart';
@@ -22,7 +23,15 @@ class AuthBloc extends Bloc<AuthEvent, AuthorizationState> {
             username: '', password: '', needRegistration: false)) {
     on<SignInEvent>(_onSignInEvent);
     on<RegisterEvent>(_onRegisterEvent);
+    on<OnRegisteredEvent>(_onOnRegisteredEvent);
+    on<ConnectionErrorEvent>(_onConnectionErrorEvent);
   }
+
+  Future<void> _onConnectionErrorEvent(
+      ConnectionErrorEvent event, Emitter<AuthorizationState> emit) async {
+    _appRouter.push(ConnectionError.page());
+  }
+
   Future<void> _onSignInEvent(
       SignInEvent event, Emitter<AuthorizationState> emit) async {
     if (event.username.isNotEmpty && event.password.isNotEmpty) {
@@ -41,5 +50,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthorizationState> {
         username: state.username,
         password: state.password,
         needRegistration: true));
+  }
+
+  Future<void> _onOnRegisteredEvent(
+      OnRegisteredEvent event, Emitter<AuthorizationState> emit) async {
+    emit(state.copyWith(
+        username: state.username,
+        password: state.password,
+        needRegistration: false));
   }
 }

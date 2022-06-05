@@ -14,11 +14,6 @@ export 'splash_event.dart';
 export 'splash_state.dart';
 
 class SplashBloc extends Bloc<SplashEvent, SplashState> {
-  final AppRouter _appRouter;
-  final IsFirstLaunchUseCase _isFirstLaunchUseCase;
-  final SetFirstLaunchUseCase _setFirstLaunchUseCase;
-  final IsUserAuthorizedUseCase _isUserAuthorizedUseCase;
-
   SplashBloc({
     required AppRouter appRouter,
     required IsFirstLaunchUseCase isFirstLaunchUseCase,
@@ -33,6 +28,11 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
     on<AppStarted>(_onStartedEvent);
   }
 
+  final AppRouter _appRouter;
+  final IsFirstLaunchUseCase _isFirstLaunchUseCase;
+  final IsUserAuthorizedUseCase _isUserAuthorizedUseCase;
+  final SetFirstLaunchUseCase _setFirstLaunchUseCase;
+
   Future<void> _onInitEvent(InitEvent event, Emitter<SplashState> emit) async {}
 
   Future<void> _onStartedEvent(
@@ -40,12 +40,15 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
     if (_isFirstLaunchUseCase.execute(NoParams())) {
       _setFirstLaunchUseCase.execute(NoParams());
       _appRouter.replace(Onboarding.page());
+      emit(state);
     }
     if (_isUserAuthorizedUseCase.execute(NoParams())) {
       _appRouter.replace(Home.page);
+      emit(state);
     }
     if (!_isUserAuthorizedUseCase.execute(NoParams())) {
       _appRouter.replace(AuthFeature.page());
+      emit(state);
     }
   }
 }

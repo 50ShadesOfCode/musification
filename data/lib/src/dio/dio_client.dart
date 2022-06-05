@@ -12,7 +12,7 @@ class DioClient {
       : _dio = Dio(
           BaseOptions(
               baseUrl: baseUrl,
-              headers: {
+              headers: <String, dynamic>{
                 'Content-type': 'application/x-www-form-urlencoded',
                 'Accept-Charset': 'utf-8',
                 'User-Agent': 'DartyFM'
