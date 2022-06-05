@@ -13,5 +13,3 @@ class SignInEvent extends AuthEvent {
 class RegisterEvent extends AuthEvent {}
 
 class OnRegisteredEvent extends AuthEvent {}
-
-class ConnectionErrorEvent extends AuthEvent {}

@@ -3,9 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:shared_dependencies/bloc.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-class AuthForm extends StatelessWidget {
-  const AuthForm();
+class AuthForm extends StatefulWidget {
+  @override
+  _AuthFormState createState() => _AuthFormState();
+}
 
+class _AuthFormState extends State<AuthForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,10 +26,6 @@ class AuthForm extends StatelessWidget {
                     return NavigationDecision.prevent;
                   }
                   return NavigationDecision.navigate;
-                },
-                //TODO: Use connectivity package for no internet case
-                onWebResourceError: (WebResourceError error) => <void>{
-                  BlocProvider.of<AuthBloc>(context).add(ConnectionErrorEvent())
                 },
               ),
             );
@@ -46,7 +45,6 @@ class AuthForm extends StatelessWidget {
                     ),
                     ElevatedButton(
                         onPressed: () => <void>{
-                              //TODO: SignIn form
                               BlocProvider.of<AuthBloc>(context).add(
                                 SignInEvent(
                                     username: 'artyomkaktysh',
