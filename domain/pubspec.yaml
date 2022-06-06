@@ -21,7 +21,7 @@ dependencies:
   shared_dependencies:
     path: ../shared_dependencies
   
-  mockito: ^5.1.0
+  mockito: ^5.2.0
   
   json_annotation: ^4.5.0
 
