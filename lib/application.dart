@@ -27,9 +27,9 @@ class _ApplicationState extends State<Application> {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      //TODO : Application theme.
       theme: ThemeData(
         scaffoldBackgroundColor: AppTheme.bgPrimaryColor,
+        appBarTheme: const AppBarTheme(backgroundColor: AppTheme.bgPrimaryColor),
       ),
       localizationsDelegates: const <LocalizationsDelegate<dynamic>> [
         AppLocalizations.delegate,
