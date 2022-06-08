@@ -22,7 +22,7 @@ class AuthorizationState extends Equatable {
 
   @override
   String toString() {
-    return 'AUthorizationState: { username: $username, password: $password, needRegistration: $needRegistration }';
+    return 'AuthorizationState: { username: $username, password: $password, needRegistration: $needRegistration }';
   }
 
   @override

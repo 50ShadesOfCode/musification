@@ -1,5 +1,7 @@
 import 'package:authorization/bloc/auth_bloc.dart';
+import 'package:core_ui/core_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_dependencies/bloc.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -9,6 +11,18 @@ class AuthForm extends StatefulWidget {
 }
 
 class _AuthFormState extends State<AuthForm> {
+  final TextEditingController usernameController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  String username = ''; // artyomkaktysh
+  String password = ''; // zte14858_
+
+  @override
+  void dispose() {
+    usernameController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,29 +44,83 @@ class _AuthFormState extends State<AuthForm> {
               ),
             );
           }
-          //TODO: Add login page
-          return Scaffold(
-            body: Center(
-              child: Column(
+          return Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: <Widget>[
+                Container(
+                  width: 350,
+                  height: 40,
+                  child: TextField(
+                    controller: usernameController,
+                    onChanged: (String text) {
+                      username = text;
+                    },
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                      ),
+                      hintText: 'Username',
+                      fillColor: AppColors.secondary2,
+                      filled: true,
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
+                Container(
+                  width: 350,
+                  height: 40,
+                  child: TextField(
+                    controller: passwordController,
+                    onChanged: (String text) {
+                      password = text;
+                    },
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                      ),
+                      hintText: 'Password',
+                      fillColor: AppColors.secondary2,
+                      filled: true,
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 16,
+                ),
+                ElevatedButton(
+                  onPressed: () => <void>{
+                    BlocProvider.of<AuthBloc>(context).add(SignInEvent(
+                      username: username,
+                      password: password,
+                    )),
+                  },
+                  child: const Text('Sign In'),
+                ),
+                const SizedBox(
+                  height: 160,
+                ),
+                Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    const Text('login page'),
+                  children: [
+                    const Text('Don\'t have an account?'),
+                    const SizedBox(
+                      width: 16,
+                    ),
                     ElevatedButton(
                       onPressed: () => <void>{
                         BlocProvider.of<AuthBloc>(context).add(RegisterEvent())
                       },
                       child: const Text('Register'),
                     ),
-                    ElevatedButton(
-                        onPressed: () => <void>{
-                              BlocProvider.of<AuthBloc>(context).add(
-                                SignInEvent(
-                                    username: 'artyomkaktysh',
-                                    password: 'zte14858_'),
-                              ),
-                            },
-                        child: const Text('Sign In'))
-                  ]),
+                  ],
+                ),
+                const SizedBox(
+                  height: 128,
+                ),
+              ],
             ),
           );
         },
