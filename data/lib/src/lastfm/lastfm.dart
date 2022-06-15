@@ -10,7 +10,7 @@ import 'session_key_generator.dart';
 
 /// It stores useful information and a client for HTTP requests.
 class LastFM {
-  DioClient _client;
+  HttpApiClient _client;
 
   static const String _API_KEY = '9f40d4ad9040a038459af70e0aa6801f';
   static const String _API_SECRET = '378a01463883c3c136ee38e970fb5a74';
@@ -21,7 +21,7 @@ class LastFM {
 
   /// Default constructor.
   LastFM._(this._sessionKey, this._username, this._passwordHash, this._isAuth)
-      : _client = DioClient(
+      : _client = HttpApiClient(
           baseUrl: 'https://ws.audioscrobbler.com/2.0/',
         );
 
@@ -102,7 +102,7 @@ class LastFM {
   }
 
   /// It returns the created client.
-  DioClient get client => _client;
+  HttpApiClient get client => _client;
 
   String get apiKey => _API_KEY;
 

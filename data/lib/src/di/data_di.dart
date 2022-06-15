@@ -9,21 +9,30 @@ final DataDI dataDI = DataDI();
 class DataDI {
   Future<void> initDependencies() async {
     await initPrefs();
-    appLocator
-        .registerLazySingleton<LaunchRepository>(() => LaunchRepositoryImpl(
-              prefsProvider: appLocator.get<PrefsProvider>(),
-            ));
-    appLocator.registerLazySingleton<AuthRepository>(() =>
-        AuthRepositoryImpl(prefsProvider: appLocator.get<PrefsProvider>()));
+
+    appLocator.registerLazySingleton<LaunchRepository>(
+      () => LaunchRepositoryImpl(
+        prefsProvider: appLocator.get<PrefsProvider>(),
+      ),
+    );
+
+    appLocator.registerLazySingleton<AuthRepository>(
+      () => AuthRepositoryImpl(
+        prefsProvider: appLocator.get<PrefsProvider>(),
+      ),
+    );
+
     appLocator.registerFactory<IsFirstLaunchUseCase>(
       () => IsFirstLaunchUseCase(
         launchRepository: appLocator.get<LaunchRepository>(),
       ),
     );
-    
-    appLocator.registerFactory<SignInUseCase>(()=> SignInUseCase(authRepository: appLocator.get<AuthRepository>(),
-      
-    ));
+
+    appLocator.registerFactory<SignInUseCase>(
+      () => SignInUseCase(
+        authRepository: appLocator.get<AuthRepository>(),
+      ),
+    );
 
     appLocator.registerFactory<IsUserAuthorizedUseCase>(
       () => IsUserAuthorizedUseCase(
