@@ -44,83 +44,88 @@ class _AuthFormState extends State<AuthForm> {
               ),
             );
           }
-          return Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: <Widget>[
-                Container(
-                  width: 350,
-                  height: 40,
-                  child: TextField(
-                    controller: usernameController,
-                    onChanged: (String text) {
-                      username = text;
-                    },
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(20)),
-                      ),
-                      hintText: 'Username',
-                      fillColor: AppColors.secondary2,
-                      filled: true,
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 16,
-                ),
-                Container(
-                  width: 350,
-                  height: 40,
-                  child: TextField(
-                    controller: passwordController,
-                    onChanged: (String text) {
-                      password = text;
-                    },
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(20)),
-                      ),
-                      hintText: 'Password',
-                      fillColor: AppColors.secondary2,
-                      filled: true,
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 16,
-                ),
-                ElevatedButton(
-                  onPressed: () => <void>{
-                    BlocProvider.of<AuthBloc>(context).add(SignInEvent(
-                      username: username,
-                      password: password,
-                    )),
-                  },
-                  child: const Text('Sign In'),
-                ),
-                const SizedBox(
-                  height: 160,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text('Don\'t have an account?'),
-                    const SizedBox(
-                      width: 16,
-                    ),
-                    ElevatedButton(
-                      onPressed: () => <void>{
-                        BlocProvider.of<AuthBloc>(context).add(RegisterEvent())
+          return SafeArea(
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  Container(
+                    width: 350,
+                    height: 40,
+                    child: TextField(
+                      controller: usernameController,
+                      onChanged: (String text) {
+                        username = text;
                       },
-                      child: const Text('Register'),
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                          borderSide: BorderSide.none,
+                        ),
+                        contentPadding: EdgeInsets.all(10),
+                        hintText: 'Username',
+                        fillColor: AppColors.secondary2,
+                        filled: true,
+                      ),
                     ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 128,
-                ),
-              ],
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  Container(
+                    width: 350,
+                    height: 40,
+                    child: TextField(
+                      controller: passwordController,
+                      onChanged: (String text) {
+                        password = text;
+                      },
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(20)),
+                        ),
+                        contentPadding: EdgeInsets.all(10),
+                        hintText: 'Password',
+                        fillColor: AppColors.secondary2,
+                        filled: true,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
+                  ElevatedButton(
+                    onPressed: () => <void>{
+                      BlocProvider.of<AuthBloc>(context).add(SignInEvent(
+                        username: username,
+                        password: password,
+                      )),
+                    },
+                    child: const Text('Sign In'),
+                  ),
+                  const SizedBox(
+                    height: 160,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text('Don\'t have an account?'),
+                      const SizedBox(
+                        width: 16,
+                      ),
+                      ElevatedButton(
+                        onPressed: () => <void>{
+                          BlocProvider.of<AuthBloc>(context).add(RegisterEvent())
+                        },
+                        child: const Text('Register'),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 128,
+                  ),
+                ],
+              ),
             ),
           );
         },
