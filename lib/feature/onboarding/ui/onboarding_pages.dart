@@ -62,6 +62,7 @@ const List<String> icons = <String>[
   'assets/images/png/like.png',
   'assets/images/png/earphone.png',
 ];
+
 List<String> texts = <String>[
   AppLocalizations.ofGlobalContext('onboarding_text_1'),
   AppLocalizations.ofGlobalContext('onboarding_text_2'),

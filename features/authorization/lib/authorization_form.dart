@@ -1,7 +1,6 @@
 import 'package:authorization/bloc/auth_bloc.dart';
 import 'package:core_ui/core_ui.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_dependencies/bloc.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -125,11 +124,11 @@ class _AuthFormState extends State<AuthForm> {
                       ),
                     ),
                     const SizedBox(
-                      height: 200,
+                      height: 180,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
+                      children: const <Widget>[
                         SizedBox(
                           width: 150,
                           child: Divider(
@@ -160,7 +159,7 @@ class _AuthFormState extends State<AuthForm> {
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
+                      children: <Widget>[
                         const Text(
                           'Don\'t have an account?',
                           style: TextStyle(
