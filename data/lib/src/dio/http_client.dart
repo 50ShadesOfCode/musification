@@ -84,7 +84,7 @@ class HttpClient {
         parameters[key] = formatUnicode(text: value);
       }
     });
-    String sk = _prefsProvider.getSessionKey();
+    final String sk = _prefsProvider.getSessionKey();
     if (sk != '') {
       parameters['sk'] = sk;
       if (!parameters.containsKey('api_sig')) {
@@ -108,7 +108,7 @@ class HttpClient {
     });
     parameters['api_key'] = _API_KEY;
     parameters['method'] = method;
-    String sk = _prefsProvider.getSessionKey();
+    final String sk = _prefsProvider.getSessionKey();
     if (sk != '') {
       parameters['sk'] = sk;
       if (!parameters.containsKey('api_sig')) {

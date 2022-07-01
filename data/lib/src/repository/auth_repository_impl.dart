@@ -38,8 +38,7 @@ class AuthRepositoryImpl extends AuthRepository {
   }
 
   @override
-  Future<void> signOut() {
-    // TODO: implement signOut
-    throw UnimplementedError();
+  Future<void> signOut() async {
+    _prefsProvider.setSessionKey('');
   }
 }
