@@ -7,27 +7,15 @@ import 'package:shared_dependencies/crypto.dart';
 import 'package:shared_dependencies/dio.dart';
 import 'package:shared_dependencies/utils.dart';
 
-<<<<<<< HEAD:data/lib/src/dio/dio_client.dart
-/// It helps creating a Http Connection to [LastFM] APIs,
-/// for sending and receiving requests.
-class HttpApiClient {
-=======
 class HttpClient {
->>>>>>> f221a2e (Rework api provider.):data/lib/src/dio/http_client.dart
   final Dio _dio;
   final PrefsProvider _prefsProvider;
   static const String _API_KEY = '9f40d4ad9040a038459af70e0aa6801f';
   static const String _API_SECRET = '378a01463883c3c136ee38e970fb5a74';
 
-<<<<<<< HEAD:data/lib/src/dio/dio_client.dart
-  HttpApiClient({
-    required String baseUrl,
-  }) : _dio = Dio(
-=======
   HttpClient({required PrefsProvider prefsProvider, required String baseUrl})
       : _prefsProvider = prefsProvider,
         _dio = Dio(
->>>>>>> f221a2e (Rework api provider.):data/lib/src/dio/http_client.dart
           BaseOptions(
             baseUrl: baseUrl,
             headers: <String, dynamic>{
@@ -109,12 +97,8 @@ class HttpClient {
     return (await _dio.get('', queryParameters: parameters)).data;
   }
 
-<<<<<<< HEAD:data/lib/src/dio/dio_client.dart
-  Future<dynamic> post({
-=======
   Future<dynamic> post(
     String method, {
->>>>>>> f221a2e (Rework api provider.):data/lib/src/dio/http_client.dart
     required Map<String, dynamic> parameters,
   }) async {
     parameters.forEach((String key, dynamic value) {
