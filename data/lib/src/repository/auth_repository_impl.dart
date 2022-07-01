@@ -1,12 +1,16 @@
-import 'package:data/src/lastfm/lastfm.dart';
+import 'package:data/src/lastfm/lastfm_api_provider.dart';
 import 'package:data/src/prefs/prefs_provider.dart';
 import 'package:domain/domain.dart';
 
 class AuthRepositoryImpl extends AuthRepository {
   final PrefsProvider _prefsProvider;
+  final LastFMProvider _apiProvider;
 
-  const AuthRepositoryImpl({required PrefsProvider prefsProvider})
-      : _prefsProvider = prefsProvider;
+  const AuthRepositoryImpl(
+      {required PrefsProvider prefsProvider,
+      required LastFMProvider apiProvider})
+      : _prefsProvider = prefsProvider,
+        _apiProvider = apiProvider;
 
   @override
   bool isAuthorized() {
@@ -27,9 +31,10 @@ class AuthRepositoryImpl extends AuthRepository {
 
   @override
   Future<void> signIn(String username, String password) async {
-    final LastFM lastFMAuth =
-        await LastFM.authenticate(username: username, password: password);
-    _prefsProvider.setSessionKey(lastFMAuth.sessionKey ?? '');
+    final String passwordHash = generateMD5(password);
+    final String sessionKey = await _apiProvider.authenticate(
+        username: username, passwordHash: passwordHash);
+    _prefsProvider.setSessionKey(sessionKey);
   }
 
   @override

@@ -1,14 +1,33 @@
-import 'package:domain/domain.dart';
-import 'package:shared_dependencies/dio.dart';
+import 'dart:convert';
+import 'dart:typed_data';
 
+import 'package:data/src/prefs/prefs_provider.dart';
+import 'package:domain/domain.dart';
+import 'package:shared_dependencies/crypto.dart';
+import 'package:shared_dependencies/dio.dart';
+import 'package:shared_dependencies/utils.dart';
+
+<<<<<<< HEAD:data/lib/src/dio/dio_client.dart
 /// It helps creating a Http Connection to [LastFM] APIs,
 /// for sending and receiving requests.
 class HttpApiClient {
+=======
+class HttpClient {
+>>>>>>> f221a2e (Rework api provider.):data/lib/src/dio/http_client.dart
   final Dio _dio;
+  final PrefsProvider _prefsProvider;
+  static const String _API_KEY = '9f40d4ad9040a038459af70e0aa6801f';
+  static const String _API_SECRET = '378a01463883c3c136ee38e970fb5a74';
 
+<<<<<<< HEAD:data/lib/src/dio/dio_client.dart
   HttpApiClient({
     required String baseUrl,
   }) : _dio = Dio(
+=======
+  HttpClient({required PrefsProvider prefsProvider, required String baseUrl})
+      : _prefsProvider = prefsProvider,
+        _dio = Dio(
+>>>>>>> f221a2e (Rework api provider.):data/lib/src/dio/http_client.dart
           BaseOptions(
             baseUrl: baseUrl,
             headers: <String, dynamic>{
@@ -66,16 +85,82 @@ class HttpApiClient {
             ),
           );
 
-  Future<dynamic> get({
+  Future<dynamic> get(
+    String method, {
     required Map<String, dynamic> parameters,
   }) async {
     parameters['format'] = 'json';
+
+    parameters.forEach((String key, dynamic value) {
+      if (value != null) {
+        parameters[key] = formatUnicode(text: value);
+      }
+    });
+    String sk = _prefsProvider.getSessionKey();
+    if (sk != '') {
+      parameters['sk'] = sk;
+      if (!parameters.containsKey('api_sig')) {
+        parameters['api_sig'] = _getSignature(parameters);
+      }
+    }
+    parameters['api_key'] = _API_KEY;
+    parameters['method'] = method;
+
     return (await _dio.get('', queryParameters: parameters)).data;
   }
 
+<<<<<<< HEAD:data/lib/src/dio/dio_client.dart
   Future<dynamic> post({
+=======
+  Future<dynamic> post(
+    String method, {
+>>>>>>> f221a2e (Rework api provider.):data/lib/src/dio/http_client.dart
     required Map<String, dynamic> parameters,
   }) async {
+    parameters.forEach((String key, dynamic value) {
+      if (value != null) {
+        parameters[key] = formatUnicode(text: value);
+      }
+    });
+    parameters['api_key'] = _API_KEY;
+    parameters['method'] = method;
+    String sk = _prefsProvider.getSessionKey();
+    if (sk != '') {
+      parameters['sk'] = sk;
+      if (!parameters.containsKey('api_sig')) {
+        parameters['api_sig'] = _getSignature(parameters);
+      }
+    }
     return (await _dio.post('', data: parameters)).data;
   }
+
+  String _getSignature(Map<String, dynamic> _parameters) {
+    String signature = '';
+    final List<String> sortedKeys = _parameters.keys.toList()..sort();
+
+    for (final String key in sortedKeys) {
+      signature += key;
+      signature += _parameters[key] as String;
+    }
+
+    signature += _API_SECRET;
+
+    return generateMD5(signature);
+  }
+}
+
+String formatUnicode({required dynamic text}) {
+  if (text is List<int>) {
+    return utf8.decode(text);
+  } else if (text is String) {
+    return utf8.decode(utf8.encode(text));
+  } else {
+    return text.toString();
+  }
+}
+
+String generateMD5(String value) {
+  final Uint8List content = const Utf8Encoder().convert(value);
+  final Digest digest = md5.convert(content);
+  return hex.encode(digest.bytes);
 }
