@@ -29,7 +29,7 @@ class _ApplicationState extends State<Application> {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         scaffoldBackgroundColor: AppTheme.bgPrimaryColor,
-        appBarTheme: const AppBarTheme(backgroundColor: AppTheme.bgPrimaryColor),
+        appBarTheme: const AppBarTheme(backgroundColor: AppColors.main),
       ),
       localizationsDelegates: const <LocalizationsDelegate<dynamic>> [
         AppLocalizations.delegate,
