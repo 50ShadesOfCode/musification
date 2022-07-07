@@ -11,17 +11,27 @@ final DataDI dataDI = DataDI();
 class DataDI {
   Future<void> initDependencies() async {
     await initPrefs();
-    appLocator.registerSingleton<HttpClient>(HttpClient(
-        prefsProvider: appLocator.get<PrefsProvider>(), baseUrl: ''));
+    appLocator.registerSingleton<HttpClient>(
+      HttpClient(
+          prefsProvider: appLocator.get<PrefsProvider>(),
+          baseUrl: 'http://ws.audioscrobbler.com/2.0/'),
+    );
     appLocator.registerSingleton<LastFMProvider>(
-        LastFMProvider(client: appLocator.get<HttpClient>()));
-    appLocator
-        .registerLazySingleton<LaunchRepository>(() => LaunchRepositoryImpl(
-              prefsProvider: appLocator.get<PrefsProvider>(),
-            ));
-    appLocator.registerLazySingleton<AuthRepository>(() => AuthRepositoryImpl(
+      LastFMProvider(
+        client: appLocator.get<HttpClient>(),
+      ),
+    );
+    appLocator.registerLazySingleton<LaunchRepository>(
+      () => LaunchRepositoryImpl(
+        prefsProvider: appLocator.get<PrefsProvider>(),
+      ),
+    );
+    appLocator.registerLazySingleton<AuthRepository>(
+      () => AuthRepositoryImpl(
         apiProvider: appLocator.get<LastFMProvider>(),
-        prefsProvider: appLocator.get<PrefsProvider>()));
+        prefsProvider: appLocator.get<PrefsProvider>(),
+      ),
+    );
     appLocator.registerFactory<IsFirstLaunchUseCase>(
       () => IsFirstLaunchUseCase(
         launchRepository: appLocator.get<LaunchRepository>(),
@@ -36,7 +46,8 @@ class DataDI {
 
     appLocator.registerFactory<IsUserAuthorizedUseCase>(
       () => IsUserAuthorizedUseCase(
-          authRepository: appLocator.get<AuthRepository>()),
+        authRepository: appLocator.get<AuthRepository>(),
+      ),
     );
 
     appLocator.registerFactory<SetFirstLaunchUseCase>(

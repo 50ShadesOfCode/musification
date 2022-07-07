@@ -13,8 +13,10 @@ class LastFMProvider {
     required HttpClient client,
   }) : _client = client;
 
-  Future<String> authenticate(
-      {required String username, required String passwordHash}) async {
+  Future<String> authenticate({
+    required String username,
+    required String passwordHash,
+  }) async {
     final Map<String, String> parameters = <String, String>{
       'username': username,
       'authToken': generateMD5(username + passwordHash)

@@ -35,7 +35,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthorizationState> {
       _appRouter.push(ConnectionError.page());
       emit(state);
     }
-    if (event.username.isNotEmpty && event.password.isNotEmpty) {
+    if (validateCredentials(event.username, event.password)) {
       _signInUseCase.execute(<String>[event.username, event.password]);
       _appRouter.replace(Home.page);
       emit(state.copyWith(
@@ -66,4 +66,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthorizationState> {
         password: state.password,
         needRegistration: false));
   }
+}
+
+bool validateCredentials(String username, String password) {
+  if (username.isNotEmpty && password.isNotEmpty) {
+    return true;
+  }
+  return false;
 }

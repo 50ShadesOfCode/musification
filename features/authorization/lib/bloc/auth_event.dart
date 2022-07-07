@@ -7,7 +7,10 @@ class SignInEvent extends AuthEvent {
   final String password;
   final String username;
 
-  SignInEvent({required this.username, required this.password});
+  SignInEvent({
+    required this.username,
+    required this.password,
+  });
 }
 
 class RegisterEvent extends AuthEvent {}

@@ -4,16 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:shared_dependencies/bloc.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-class AuthForm extends StatefulWidget {
+class AuthScreen extends StatefulWidget {
   @override
-  _AuthFormState createState() => _AuthFormState();
+  _AuthScreenState createState() => _AuthScreenState();
 }
 
-class _AuthFormState extends State<AuthForm> {
+class _AuthScreenState extends State<AuthScreen> {
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  String username = ''; // artyomkaktysh
-  String password = ''; // zte14858_
+  String username = '';
+  String password = '';
 
   @override
   void dispose() {
@@ -108,18 +108,17 @@ class _AuthFormState extends State<AuthForm> {
                       height: 40,
                       child: TextButton(
                         onPressed: () => <void>{
-                            BlocProvider.of<AuthBloc>(context).add(SignInEvent(
-                              username: username,
-                              password: password,
-                            )),
-                          },
+                          BlocProvider.of<AuthBloc>(context).add(SignInEvent(
+                            username: username,
+                            password: password,
+                          )),
+                        },
                         style: TextButton.styleFrom(
-                          backgroundColor: AppColors.accent,
-                          primary: AppColors.active,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
-                          )
-                        ),
+                            backgroundColor: AppColors.accent,
+                            primary: AppColors.active,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            )),
                         child: const Text('Sign In'),
                       ),
                     ),
@@ -168,7 +167,8 @@ class _AuthFormState extends State<AuthForm> {
                         ),
                         TextButton(
                           onPressed: () => <void>{
-                            BlocProvider.of<AuthBloc>(context).add(RegisterEvent())
+                            BlocProvider.of<AuthBloc>(context)
+                                .add(RegisterEvent())
                           },
                           style: TextButton.styleFrom(
                             primary: AppColors.active,

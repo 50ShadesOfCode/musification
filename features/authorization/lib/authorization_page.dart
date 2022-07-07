@@ -18,7 +18,7 @@ class AuthPage extends Page<void> {
           appRouter: appLocator.get<AppRouter>(),
           signInUseCase: appLocator.get<SignInUseCase>(),
         ),
-        child: AuthForm(),
+        child: AuthScreen(),
       ),
     );
   }

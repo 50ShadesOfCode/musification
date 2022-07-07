@@ -4,10 +4,11 @@ class AuthorizationState extends Equatable {
   final String username;
   final String password;
   final bool needRegistration;
-  const AuthorizationState(
-      {required this.username,
-      required this.password,
-      required this.needRegistration});
+  const AuthorizationState({
+    required this.username,
+    required this.password,
+    required this.needRegistration,
+  });
 
   AuthorizationState copyWith({
     required String username,
@@ -15,14 +16,10 @@ class AuthorizationState extends Equatable {
     required bool needRegistration,
   }) {
     return AuthorizationState(
-        username: username,
-        password: password,
-        needRegistration: needRegistration);
-  }
-
-  @override
-  String toString() {
-    return 'AuthorizationState: { username: $username, password: $password, needRegistration: $needRegistration }';
+      username: username,
+      password: password,
+      needRegistration: needRegistration,
+    );
   }
 
   @override
