@@ -5,6 +5,7 @@ import 'package:data/src/prefs/prefs_provider.dart';
 import 'package:domain/domain.dart';
 import 'package:shared_dependencies/crypto.dart';
 import 'package:shared_dependencies/dio.dart';
+import 'package:shared_dependencies/network.dart';
 import 'package:shared_dependencies/utils.dart';
 
 class HttpClient {
@@ -63,7 +64,13 @@ class HttpClient {
 
                 return handler.next(response);
               },
-              onError: (DioError error, ErrorInterceptorHandler handler) {
+              onError: (DioError error, ErrorInterceptorHandler handler) async {
+                final ConnectivityResult connectivityResult =
+                    await Connectivity().checkConnectivity();
+                if (connectivityResult == ConnectivityResult.none) {
+                  throw NoInternetError('No internet connection');
+                }
+
                 if (error.type == DioErrorType.response) {
                   throw LastFMException.generate(error.response!.data);
                 } else {

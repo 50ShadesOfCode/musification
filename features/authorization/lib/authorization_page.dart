@@ -17,6 +17,7 @@ class AuthPage extends Page<void> {
         create: (BuildContext context) => AuthBloc(
           appRouter: appLocator.get<AppRouter>(),
           signInUseCase: appLocator.get<SignInUseCase>(),
+          exceptionMapper: appLocator.get<AppExceptionMapper>(),
         ),
         child: AuthScreen(),
       ),

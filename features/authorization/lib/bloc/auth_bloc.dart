@@ -1,5 +1,6 @@
+import 'package:core/core.dart';
 import 'package:domain/domain.dart';
-import 'package:fpmi_music_band/feature/connection_error_view/connection_error.dart';
+import 'package:fpmi_music_band/feature/error_view/error.dart';
 import 'package:fpmi_music_band/feature/home/home.dart';
 import 'package:fpmi_music_band/router/router.dart';
 import 'package:shared_dependencies/bloc.dart';
@@ -14,12 +15,15 @@ export 'auth_state.dart';
 class AuthBloc extends Bloc<AuthEvent, AuthorizationState> {
   final AppRouter _appRouter;
   final SignInUseCase _signInUseCase;
+  final AppExceptionMapper _exceptionMapper;
 
   AuthBloc({
     required AppRouter appRouter,
     required SignInUseCase signInUseCase,
+    required AppExceptionMapper exceptionMapper,
   })  : _appRouter = appRouter,
         _signInUseCase = signInUseCase,
+        _exceptionMapper = exceptionMapper,
         super(const AuthorizationState(
             username: '', password: '', needRegistration: false)) {
     on<SignInEvent>(_onSignInEvent);
@@ -29,19 +33,18 @@ class AuthBloc extends Bloc<AuthEvent, AuthorizationState> {
 
   Future<void> _onSignInEvent(
       SignInEvent event, Emitter<AuthorizationState> emit) async {
-    final ConnectivityResult connectivityResult =
-        await Connectivity().checkConnectivity();
-    if (connectivityResult == ConnectivityResult.none) {
-      _appRouter.push(ConnectionError.page());
-      emit(state);
-    }
-    if (validateCredentials(event.username, event.password)) {
-      _signInUseCase.execute(<String>[event.username, event.password]);
-      _appRouter.replace(Home.page);
-      emit(state.copyWith(
-          username: event.username,
-          password: event.password,
-          needRegistration: false));
+    try {
+      if (validateCredentials(event.username, event.password)) {
+        _signInUseCase.execute(<String>[event.username, event.password]);
+        _appRouter.replace(Home.page);
+        emit(state.copyWith(
+            username: event.username,
+            password: event.password,
+            needRegistration: false));
+      }
+    } on AppException catch (e) {
+      _appRouter
+          .push(ErrorScreen.page(_exceptionMapper.mapExceptionToErrorText(e)));
     }
   }
 
@@ -50,7 +53,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthorizationState> {
     final ConnectivityResult connectivityResult =
         await Connectivity().checkConnectivity();
     if (connectivityResult == ConnectivityResult.none) {
-      _appRouter.push(ConnectionError.page());
+      _appRouter.push(ErrorScreen.page(
+        AppLocalizations.ofGlobalContext('errorsNoInternet'),
+      ));
       emit(state);
     }
     emit(state.copyWith(

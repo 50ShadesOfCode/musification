@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:fpmi_music_band/router/page_with_scaffold_key.dart';
 
-class ConnectionErrorPage extends PageWithScaffoldKey<dynamic> {
+class ErrorPage extends PageWithScaffoldKey<dynamic> {
+  final String message;
+
+  ErrorPage({required this.message});
+
   @override
   Route<dynamic> createRoute(BuildContext context) =>
       MaterialPageRoute<dynamic>(
