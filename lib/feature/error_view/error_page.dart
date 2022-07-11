@@ -13,10 +13,9 @@ class ErrorPage extends PageWithScaffoldKey<dynamic> {
         builder: (BuildContext context) => SafeArea(
           child: ScaffoldMessenger(
             key: scaffoldKey,
-            child: const Scaffold(
+            child: Scaffold(
               body: Center(
-                child: Text(
-                    'Connection Error. Please check your internet connection!'),
+                child: Text(message),
               ),
             ),
           ),
