@@ -33,7 +33,16 @@ class AuthBloc extends Bloc<AuthEvent, AuthorizationState> {
       SignInEvent event, Emitter<AuthorizationState> emit) async {
     try {
       if (validateCredentials(event.username, event.password)) {
-        _signInUseCase.execute(<String>[event.username, event.password]);
+        try {
+          print('ecc');
+          _signInUseCase.execute(<String>[event.username, event.password]);
+        } catch (e) {
+          print('ecv');
+          print(e);
+          _appRouter.push(
+              ErrorScreen.page(_exceptionMapper.mapExceptionToErrorText(e)));
+          emit(state);
+        }
         _appRouter.replace(Home.page);
         emit(state.copyWith(
             username: event.username,

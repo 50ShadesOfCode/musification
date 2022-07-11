@@ -16,7 +16,7 @@ class UserCredentials {
 
   Map<String, dynamic> toJson() => {
         'username': username,
-        'authToken': generateMD5(username + generateMD5(password)),
+        'password': password,
       };
 
   String generateMD5(String value) {

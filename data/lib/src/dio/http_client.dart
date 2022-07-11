@@ -19,11 +19,10 @@ class HttpClient {
         _dio = Dio(
           BaseOptions(
             baseUrl: baseUrl,
-            headers: <String, dynamic>{
-              'Content-type': 'application/x-www-form-urlencoded',
+            /*headers: <String, dynamic>{
               'Accept-Charset': 'utf-8',
               'User-Agent': 'DartyFM'
-            },
+            },*/
             contentType: Headers.formUrlEncodedContentType,
             responseType: ResponseType.json,
           ),
@@ -86,13 +85,6 @@ class HttpClient {
         parameters[key] = formatUnicode(text: value);
       }
     });
-    final String sessionKey = _prefsProvider.getSessionKey();
-    if (sessionKey != '') {
-      parameters['sk'] = sessionKey;
-      if (!parameters.containsKey('api_sig')) {
-        parameters['api_sig'] = _getSignature(parameters);
-      }
-    }
     parameters['api_key'] = _API_KEY;
     return parameters;
   }
@@ -103,7 +95,9 @@ class HttpClient {
   }) async {
     parameters['format'] = 'json';
     parameters = _configureParameters(parameters);
+    print('get');
     parameters['method'] = method;
+    parameters['api_sig'] = _getSignature(parameters);
     return (await _dio.get('', queryParameters: parameters)).data;
   }
 
@@ -111,8 +105,10 @@ class HttpClient {
     String method, {
     required Map<String, dynamic> parameters,
   }) async {
+    print('post');
     parameters = _configureParameters(parameters);
     parameters['method'] = method;
+    parameters['api_sig'] = _getSignature(parameters);
     return (await _dio.post('', data: parameters)).data;
   }
 

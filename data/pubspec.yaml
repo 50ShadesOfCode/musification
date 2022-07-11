@@ -20,6 +20,8 @@ dependencies:
   fpmi_music_band:
     path: ../
 
+  
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

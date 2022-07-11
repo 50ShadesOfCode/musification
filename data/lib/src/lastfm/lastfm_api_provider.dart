@@ -12,7 +12,7 @@ class LastFMProvider {
   LastFMProvider({
     required HttpClient client,
   }) : _client = client;
-
+  //TODO : Add case for wrong credits
   Future<String> authenticate({
     required String username,
     required String password,
@@ -21,12 +21,13 @@ class LastFMProvider {
       username: username,
       password: password,
     );
-    final dynamic response = await _client.get(
+    final dynamic response = await _client.post(
       'auth.getMobileSession',
       parameters: credentials.toJson(),
     );
 
-    return Session.fromJson(response['session'] as Map<String, dynamic>)
-        .sessionKey;
+    print(response);
+
+    return Session.fromXml(response as String).sessionKey;
   }
 }
