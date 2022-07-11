@@ -31,9 +31,10 @@ class AuthRepositoryImpl extends AuthRepository {
 
   @override
   Future<void> signIn(String username, String password) async {
-    final String passwordHash = generateMD5(password);
     final String sessionKey = await _apiProvider.authenticate(
-        username: username, passwordHash: passwordHash);
+      username: username,
+      password: password,
+    );
     _prefsProvider.setSessionKey(sessionKey);
   }
 

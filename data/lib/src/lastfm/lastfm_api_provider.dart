@@ -15,23 +15,18 @@ class LastFMProvider {
 
   Future<String> authenticate({
     required String username,
-    required String passwordHash,
+    required String password,
   }) async {
-    final Map<String, String> parameters = <String, String>{
-      'username': username,
-      'authToken': generateMD5(username + passwordHash)
-    };
-
-    final dynamic response =
-        await _client.get('auth.getMobileSession', parameters: parameters);
+    final UserCredentials credentials = UserCredentials(
+      username: username,
+      password: password,
+    );
+    final dynamic response = await _client.get(
+      'auth.getMobileSession',
+      parameters: credentials.toJson(),
+    );
 
     return Session.fromJson(response['session'] as Map<String, dynamic>)
         .sessionKey;
   }
-}
-
-String generateMD5(String value) {
-  final Uint8List content = const Utf8Encoder().convert(value);
-  final Digest digest = md5.convert(content);
-  return hex.encode(digest.bytes);
 }
