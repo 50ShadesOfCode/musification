@@ -1,5 +1,6 @@
 import 'package:authorization/bloc/auth_bloc.dart';
-import 'package:authorization/ui/input_decoration.dart';
+import 'package:authorization/ui/auth_input_field.dart';
+import 'package:authorization/ui/divider.dart';
 import 'package:core/core.dart';
 import 'package:core_ui/core_ui.dart';
 import 'package:flutter/material.dart';
@@ -51,43 +52,26 @@ class _AuthScreenState extends State<AuthScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    SizedBox(
+                    Container(
+                      margin: const EdgeInsets.only(bottom: 32),
                       width: 200,
                       height: 200,
                       child: Image.asset(AppImages.logoPngKey),
                     ),
-                    const SizedBox(
-                      height: 40,
+                    AuthInputField(
+                      controller: usernameController,
+                      func: (String text) {
+                        username = text;
+                      },
+                    ),
+                    AuthInputField(
+                      controller: passwordController,
+                      func: (String text) {
+                        password = text;
+                      },
                     ),
                     Container(
-                      width: 350,
-                      height: 40,
-                      child: TextField(
-                        controller: usernameController,
-                        onChanged: (String text) {
-                          username = text;
-                        },
-                        decoration: inputDecoration,
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 16,
-                    ),
-                    Container(
-                      width: 350,
-                      height: 40,
-                      child: TextField(
-                        controller: passwordController,
-                        onChanged: (String text) {
-                          password = text;
-                        },
-                        decoration: inputDecoration,
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 16,
-                    ),
-                    SizedBox(
+                      margin: const EdgeInsets.only(top: 8, bottom: 180),
                       width: 350,
                       height: 40,
                       child: TextButton(
@@ -106,65 +90,47 @@ class _AuthScreenState extends State<AuthScreen> {
                         child: Text(AppLocalizations.ofGlobalContext('signin')),
                       ),
                     ),
-                    const SizedBox(
-                      height: 180,
-                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        const SizedBox(
-                          width: 150,
-                          child: Divider(
-                            thickness: 1,
-                            color: AppColors.secondary1,
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Text(
-                          AppLocalizations.ofGlobalContext('or'),
-                          style: const TextStyle(
-                            color: AppColors.secondary1,
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        const SizedBox(
-                          width: 150,
-                          child: Divider(
-                            thickness: 1,
-                            color: AppColors.secondary1,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text(
-                          AppLocalizations.ofGlobalContext('notregistered'),
-                          style: const TextStyle(
-                            color: AppColors.secondary1,
-                          ),
-                        ),
-                        TextButton(
-                          onPressed: () => <void>{
-                            BlocProvider.of<AuthBloc>(context)
-                                .add(RegisterEvent())
-                          },
-                          style: TextButton.styleFrom(
-                            primary: AppColors.active,
-                          ),
+                        AuthDivider(),
+                        Container(
+                          margin: const EdgeInsets.symmetric(vertical: 10.0),
                           child: Text(
-                            AppLocalizations.ofGlobalContext('register'),
+                            AppLocalizations.ofGlobalContext('or'),
+                            style: const TextStyle(
+                              color: AppColors.secondary1,
+                            ),
                           ),
                         ),
+                        AuthDivider(),
                       ],
                     ),
-                    const SizedBox(
-                      height: 8,
+                    Container(
+                      margin: const EdgeInsets.only(bottom: 8),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text(
+                            AppLocalizations.ofGlobalContext('notregistered'),
+                            style: const TextStyle(
+                              color: AppColors.secondary1,
+                            ),
+                          ),
+                          TextButton(
+                            onPressed: () => <void>{
+                              BlocProvider.of<AuthBloc>(context)
+                                  .add(RegisterEvent())
+                            },
+                            style: TextButton.styleFrom(
+                              primary: AppColors.active,
+                            ),
+                            child: Text(
+                              AppLocalizations.ofGlobalContext('register'),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),

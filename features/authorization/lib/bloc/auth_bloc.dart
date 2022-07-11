@@ -1,10 +1,8 @@
-import 'package:core/core.dart';
 import 'package:domain/domain.dart';
 import 'package:fpmi_music_band/feature/error_view/error.dart';
 import 'package:fpmi_music_band/feature/home/home.dart';
 import 'package:fpmi_music_band/router/router.dart';
 import 'package:shared_dependencies/bloc.dart';
-import 'package:shared_dependencies/network.dart';
 
 import 'auth_event.dart';
 import 'auth_state.dart';
