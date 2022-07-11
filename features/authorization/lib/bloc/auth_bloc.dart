@@ -50,14 +50,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthorizationState> {
 
   Future<void> _onRegisterEvent(
       RegisterEvent event, Emitter<AuthorizationState> emit) async {
-    final ConnectivityResult connectivityResult =
-        await Connectivity().checkConnectivity();
-    if (connectivityResult == ConnectivityResult.none) {
-      _appRouter.push(ErrorScreen.page(
-        AppLocalizations.ofGlobalContext('errorsNoInternet'),
-      ));
-      emit(state);
-    }
     emit(state.copyWith(
         username: state.username,
         password: state.password,
