@@ -5,5 +5,9 @@
   "onboarding_text_2": "Sound\nthat pleases",
   "onboarding_text_3": "Listen on any device\neven without internet",
   "errorsNoInternet": "No internet. Please, check the internet connection",
-  "errorsServer": "Server error. Please, retry later"
+  "errorsServer": "Server error. Please, retry later",
+  "signin": "Sign In",
+  "register": "Register",
+  "notregistered" : "Don't have an account?",
+  "or" : "or"
 }

@@ -1,5 +1,6 @@
 import 'package:authorization/bloc/auth_bloc.dart';
 import 'package:authorization/ui/input_decoration.dart';
+import 'package:core/core.dart';
 import 'package:core_ui/core_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_dependencies/bloc.dart';
@@ -102,7 +103,7 @@ class _AuthScreenState extends State<AuthScreen> {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20),
                             )),
-                        child: const Text('Sign In'),
+                        child: Text(AppLocalizations.ofGlobalContext('signin')),
                       ),
                     ),
                     const SizedBox(
@@ -110,27 +111,27 @@ class _AuthScreenState extends State<AuthScreen> {
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const <Widget>[
-                        SizedBox(
+                      children: <Widget>[
+                        const SizedBox(
                           width: 150,
                           child: Divider(
                             thickness: 1,
                             color: AppColors.secondary1,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
                         Text(
-                          'or',
-                          style: TextStyle(
+                          AppLocalizations.ofGlobalContext('or'),
+                          style: const TextStyle(
                             color: AppColors.secondary1,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 150,
                           child: Divider(
                             thickness: 1,
@@ -142,9 +143,9 @@ class _AuthScreenState extends State<AuthScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        const Text(
-                          'Don\'t have an account?',
-                          style: TextStyle(
+                        Text(
+                          AppLocalizations.ofGlobalContext('notregistered'),
+                          style: const TextStyle(
                             color: AppColors.secondary1,
                           ),
                         ),
@@ -156,8 +157,8 @@ class _AuthScreenState extends State<AuthScreen> {
                           style: TextButton.styleFrom(
                             primary: AppColors.active,
                           ),
-                          child: const Text(
-                            'Register',
+                          child: Text(
+                            AppLocalizations.ofGlobalContext('register'),
                           ),
                         ),
                       ],
