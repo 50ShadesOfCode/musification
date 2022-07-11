@@ -80,12 +80,7 @@ class HttpClient {
             ),
           );
 
-  Future<dynamic> get(
-    String method, {
-    required Map<String, dynamic> parameters,
-  }) async {
-    parameters['format'] = 'json';
-
+  Map<String, dynamic> _configureParameters(Map<String, dynamic> parameters) {
     parameters.forEach((String key, dynamic value) {
       if (value != null) {
         parameters[key] = formatUnicode(text: value);
@@ -99,8 +94,16 @@ class HttpClient {
       }
     }
     parameters['api_key'] = _API_KEY;
-    parameters['method'] = method;
+    return parameters;
+  }
 
+  Future<dynamic> get(
+    String method, {
+    required Map<String, dynamic> parameters,
+  }) async {
+    parameters['format'] = 'json';
+    parameters = _configureParameters(parameters);
+    parameters['method'] = method;
     return (await _dio.get('', queryParameters: parameters)).data;
   }
 
@@ -108,20 +111,8 @@ class HttpClient {
     String method, {
     required Map<String, dynamic> parameters,
   }) async {
-    parameters.forEach((String key, dynamic value) {
-      if (value != null) {
-        parameters[key] = formatUnicode(text: value);
-      }
-    });
-    parameters['api_key'] = _API_KEY;
+    parameters = _configureParameters(parameters);
     parameters['method'] = method;
-    final String sessionKey = _prefsProvider.getSessionKey();
-    if (sessionKey != '') {
-      parameters['sk'] = sessionKey;
-      if (!parameters.containsKey('api_sig')) {
-        parameters['api_sig'] = _getSignature(parameters);
-      }
-    }
     return (await _dio.post('', data: parameters)).data;
   }
 
@@ -136,7 +127,9 @@ class HttpClient {
 
     signature += _API_SECRET;
 
-    return generateMD5(signature);
+    final Uint8List content = const Utf8Encoder().convert(signature);
+    final Digest digest = md5.convert(content);
+    return hex.encode(digest.bytes);
   }
 }
 
@@ -148,10 +141,4 @@ String formatUnicode({required dynamic text}) {
   } else {
     return text.toString();
   }
-}
-
-String generateMD5(String value) {
-  final Uint8List content = const Utf8Encoder().convert(value);
-  final Digest digest = md5.convert(content);
-  return hex.encode(digest.bytes);
 }
