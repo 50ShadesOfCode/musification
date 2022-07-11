@@ -1,4 +1,5 @@
 import 'package:authorization/bloc/auth_bloc.dart';
+import 'package:authorization/ui/input_decoration.dart';
 import 'package:core_ui/core_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_dependencies/bloc.dart';
@@ -65,16 +66,7 @@ class _AuthScreenState extends State<AuthScreen> {
                         onChanged: (String text) {
                           username = text;
                         },
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            borderSide: BorderSide.none,
-                          ),
-                          contentPadding: EdgeInsets.all(10),
-                          hintText: 'Username',
-                          fillColor: AppColors.secondary2,
-                          filled: true,
-                        ),
+                        decoration: inputDecoration,
                       ),
                     ),
                     const SizedBox(
@@ -88,16 +80,7 @@ class _AuthScreenState extends State<AuthScreen> {
                         onChanged: (String text) {
                           password = text;
                         },
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            borderSide: BorderSide.none,
-                          ),
-                          contentPadding: EdgeInsets.all(10),
-                          hintText: 'Password',
-                          fillColor: AppColors.secondary2,
-                          filled: true,
-                        ),
+                        decoration: inputDecoration,
                       ),
                     ),
                     const SizedBox(
