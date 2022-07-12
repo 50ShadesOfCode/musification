@@ -27,6 +27,7 @@ class OnboardingFormState extends State<OnboardingForm> {
           showNextButton: false,
           showDoneButton: false,
           isProgress: false,
+          freeze: true,
           globalHeader: Align(
             alignment: Alignment.topRight,
             child: Container(
