@@ -11,6 +11,7 @@ class ChooseGenreEvent extends PreferencesEvent {
   });
 }
 
+<<<<<<< HEAD
 class UnchooseGenreEvent extends PreferencesEvent {
   final String title;
 
@@ -19,4 +20,6 @@ class UnchooseGenreEvent extends PreferencesEvent {
   });
 }
 
+=======
+>>>>>>> 176816e (Add genre preferences screen.)
 class DoneChoosingEvent extends PreferencesEvent {}

@@ -52,7 +52,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthorizationState> {
             password: event.password,
             needRegistration: false,
           ));
+<<<<<<< HEAD
           return;
+=======
+>>>>>>> 176816e (Add genre preferences screen.)
         } else {
           _appRouter.replace(Home.page);
           emit(state.copyWith(
@@ -60,8 +63,17 @@ class AuthBloc extends Bloc<AuthEvent, AuthorizationState> {
             password: event.password,
             needRegistration: false,
           ));
+<<<<<<< HEAD
           return;
         }
+=======
+        }
+        emit(state.copyWith(
+          username: event.username,
+          password: event.password,
+          needRegistration: false,
+        ));
+>>>>>>> 176816e (Add genre preferences screen.)
       }
     } on AppException catch (e) {
       _appRouter

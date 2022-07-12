@@ -11,6 +11,7 @@
   "notregistered" : "Нет аккаунта?",
   "or" : "или",
   "done": "Готово",
+<<<<<<< HEAD
   "chooseGenres": "Выберите 3 или более жанров",
   "punk": "Панк",
   "indie": "Инди",
@@ -24,4 +25,7 @@
   "chillout": "Расслабляющая",
   "jazz": "Джаз",
   "classical": "Классическая"
+=======
+  "chooseGenres": "Выберите 3 или более жанров"
+>>>>>>> 176816e (Add genre preferences screen.)
 }

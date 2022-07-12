@@ -18,19 +18,30 @@ class PreferencesBloc extends Bloc<PreferencesEvent, PreferencesState> {
     required SetPreferredUseCase setPreferredUseCase,
   })  : _appRouter = appRouter,
         _setPreferredUseCase = setPreferredUseCase,
+<<<<<<< HEAD
         super(PreferencesState(
+=======
+        super(const PreferencesState(
+>>>>>>> 176816e (Add genre preferences screen.)
           chosenGenres: <String>[],
           chosenGenresAmount: 0,
           isDoneButtonVisible: false,
         )) {
     on<ChooseGenreEvent>(_onChooseGenreEvent);
     on<DoneChoosingEvent>(_onDoneChoosingEvent);
+<<<<<<< HEAD
     on<UnchooseGenreEvent>(_onUnchooseGenreEvent);
+=======
+>>>>>>> 176816e (Add genre preferences screen.)
   }
 
   Future<void> _onChooseGenreEvent(
       ChooseGenreEvent event, Emitter<PreferencesState> emit) async {
+<<<<<<< HEAD
     List<String> chosenGenres = state.chosenGenres;
+=======
+    final List<String> chosenGenres = state.chosenGenres;
+>>>>>>> 176816e (Add genre preferences screen.)
     chosenGenres.add(event.title);
     if (state.chosenGenresAmount + 1 < 3) {
       emit(state.copyWith(
@@ -47,6 +58,7 @@ class PreferencesBloc extends Bloc<PreferencesEvent, PreferencesState> {
     }
   }
 
+<<<<<<< HEAD
   Future<void> _onUnchooseGenreEvent(
       UnchooseGenreEvent event, Emitter<PreferencesState> emit) async {
     List<String> chosenGenres = state.chosenGenres;
@@ -66,6 +78,8 @@ class PreferencesBloc extends Bloc<PreferencesEvent, PreferencesState> {
     }
   }
 
+=======
+>>>>>>> 176816e (Add genre preferences screen.)
   Future<void> _onDoneChoosingEvent(
       DoneChoosingEvent event, Emitter<PreferencesState> emit) async {
     _setPreferredUseCase.execute(state.chosenGenres);
