@@ -12,23 +12,24 @@ class PreferencesForm extends StatefulWidget {
 
 class PreferencesFormState extends State<PreferencesForm> {
   final List<String> _genreTitles = <String>[
-    'Punk',
-    'Indie',
-    'Metal',
-    'Pop',
-    'Rap',
-    'Alternative',
-    'Rock',
-    'Electronic',
-    'Folk',
-    'Chillout',
-    'Jazz',
-    'Classical',
+    AppLocalizations.ofGlobalContext('punk'),
+    AppLocalizations.ofGlobalContext('indie'),
+    AppLocalizations.ofGlobalContext('metal'),
+    AppLocalizations.ofGlobalContext('pop'),
+    AppLocalizations.ofGlobalContext('rap'),
+    AppLocalizations.ofGlobalContext('alternative'),
+    AppLocalizations.ofGlobalContext('rock'),
+    AppLocalizations.ofGlobalContext('electronic'),
+    AppLocalizations.ofGlobalContext('folk'),
+    AppLocalizations.ofGlobalContext('chillout'),
+    AppLocalizations.ofGlobalContext('jazz'),
+    AppLocalizations.ofGlobalContext('classical'),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text(
           AppLocalizations.ofGlobalContext('chooseGenres'),
@@ -40,25 +41,38 @@ class PreferencesFormState extends State<PreferencesForm> {
           return Container(
             margin: const EdgeInsets.all(8),
             child: Column(children: <Widget>[
-              GridView.builder(
-                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                    maxCrossAxisExtent: 112,
-                  ),
-                  itemBuilder: (BuildContext context, int index) {
-                    return GenreCard(
-                      index: index,
-                      title: _genreTitles[index],
-                    );
-                  }),
-              Visibility(
-                visible: state.isDoneButtonVisible,
-                child: TextButton(
-                  onPressed: () {
-                    BlocProvider.of<PreferencesBloc>(context)
-                        .add(DoneChoosingEvent());
-                  },
-                  child: Text(
-                    AppLocalizations.ofGlobalContext('done'),
+              Container(
+                child: GridView.builder(
+                    shrinkWrap: true,
+                    scrollDirection: Axis.vertical,
+                    gridDelegate:
+                        const SliverGridDelegateWithMaxCrossAxisExtent(
+                      maxCrossAxisExtent: 150,
+                      mainAxisExtent: 146,
+                    ),
+                    itemCount: 12,
+                    itemBuilder: (BuildContext context, int index) {
+                      return GenreCard(
+                        index: index,
+                        title: _genreTitles[index],
+                      );
+                    }),
+                margin: const EdgeInsets.only(bottom: 80),
+              ),
+              Container(
+                width: 130,
+                height: 45,
+                child: Visibility(
+                  visible: state.isDoneButtonVisible,
+                  child: TextButton(
+                    style: AppStyles.doneTextButtonStyle,
+                    onPressed: () {
+                      BlocProvider.of<PreferencesBloc>(context)
+                          .add(DoneChoosingEvent());
+                    },
+                    child: Text(
+                      AppLocalizations.ofGlobalContext('done'),
+                    ),
                   ),
                 ),
               ),

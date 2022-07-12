@@ -11,5 +11,17 @@
   "notregistered" : "Don't have an account?",
   "or" : "or",
   "done" : "Done",
-  "chooseGenres": "Choose 3 or more genres you like"
+  "chooseGenres": "Choose 3 or more genres you like",
+  "punk": "Punk",
+  "indie": "Indie",
+  "metal": "Metal",
+  "pop": "Pop",
+  "rap": "Rap",
+  "alternative": "Alternative",
+  "rock": "Rock",
+  "electronic": "Electronic",
+  "folk": "Folk",
+  "chillout": "Chillout",
+  "jazz": "Jazz",
+  "classical": "Classical"
 }

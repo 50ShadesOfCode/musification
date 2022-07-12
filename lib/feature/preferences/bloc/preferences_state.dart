@@ -2,9 +2,9 @@ import 'package:shared_dependencies/utils.dart';
 
 class PreferencesState extends Equatable {
   final int chosenGenresAmount;
-  final List<String> chosenGenres;
+  List<String> chosenGenres;
   final bool isDoneButtonVisible;
-  const PreferencesState({
+  PreferencesState({
     required this.chosenGenresAmount,
     required this.chosenGenres,
     required this.isDoneButtonVisible,

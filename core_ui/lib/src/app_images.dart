@@ -8,6 +8,8 @@ class AppImages {
 
   static const String logoSvgKey = _baseSvgUrl + 'logo.svg';
 
+  static const String circleCheckKey = _baseSvgUrl + 'circle_check.svg';
+
   static List<String> genreImageList = List<String>.generate(
-      12, (int index) => 'genre' + index.toString() + '.png');
+      12, (int index) => _basePngUrl + 'genre' + index.toString() + '.png');
 }

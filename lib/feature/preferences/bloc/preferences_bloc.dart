@@ -18,18 +18,19 @@ class PreferencesBloc extends Bloc<PreferencesEvent, PreferencesState> {
     required SetPreferredUseCase setPreferredUseCase,
   })  : _appRouter = appRouter,
         _setPreferredUseCase = setPreferredUseCase,
-        super(const PreferencesState(
+        super(PreferencesState(
           chosenGenres: <String>[],
           chosenGenresAmount: 0,
           isDoneButtonVisible: false,
         )) {
     on<ChooseGenreEvent>(_onChooseGenreEvent);
     on<DoneChoosingEvent>(_onDoneChoosingEvent);
+    on<UnchooseGenreEvent>(_onUnchooseGenreEvent);
   }
 
   Future<void> _onChooseGenreEvent(
       ChooseGenreEvent event, Emitter<PreferencesState> emit) async {
-    final List<String> chosenGenres = state.chosenGenres;
+    List<String> chosenGenres = state.chosenGenres;
     chosenGenres.add(event.title);
     if (state.chosenGenresAmount + 1 < 3) {
       emit(state.copyWith(
@@ -42,6 +43,25 @@ class PreferencesBloc extends Bloc<PreferencesEvent, PreferencesState> {
         chosenGenresAmount: state.chosenGenresAmount + 1,
         chosenGenres: chosenGenres,
         isDoneButtonVisible: true,
+      ));
+    }
+  }
+
+  Future<void> _onUnchooseGenreEvent(
+      UnchooseGenreEvent event, Emitter<PreferencesState> emit) async {
+    List<String> chosenGenres = state.chosenGenres;
+    chosenGenres.remove(event.title);
+    if (state.chosenGenresAmount - 1 < 3) {
+      emit(state.copyWith(
+        chosenGenresAmount: state.chosenGenresAmount - 1,
+        chosenGenres: chosenGenres,
+        isDoneButtonVisible: false,
+      ));
+    } else {
+      emit(state.copyWith(
+        chosenGenresAmount: state.chosenGenresAmount - 1,
+        chosenGenres: chosenGenres,
+        isDoneButtonVisible: state.isDoneButtonVisible,
       ));
     }
   }

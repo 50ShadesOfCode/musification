@@ -11,4 +11,12 @@ class ChooseGenreEvent extends PreferencesEvent {
   });
 }
 
+class UnchooseGenreEvent extends PreferencesEvent {
+  final String title;
+
+  UnchooseGenreEvent({
+    required this.title,
+  });
+}
+
 class DoneChoosingEvent extends PreferencesEvent {}
