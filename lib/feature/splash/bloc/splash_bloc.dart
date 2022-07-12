@@ -18,12 +18,10 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
   SplashBloc({
     required AppRouter appRouter,
     required IsFirstLaunchUseCase isFirstLaunchUseCase,
-    required SetFirstLaunchUseCase setFirstLaunchUseCase,
     required IsUserAuthorizedUseCase isUserAuthorizedUseCase,
     required GetPreferredUseCase getPreferredUseCase,
   })  : _appRouter = appRouter,
         _isFirstLaunchUseCase = isFirstLaunchUseCase,
-        _setFirstLaunchUseCase = setFirstLaunchUseCase,
         _isUserAuthorizedUseCase = isUserAuthorizedUseCase,
         _getPreferredUseCase = getPreferredUseCase,
         super(SplashInitial()) {
@@ -34,24 +32,25 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
   final AppRouter _appRouter;
   final IsFirstLaunchUseCase _isFirstLaunchUseCase;
   final IsUserAuthorizedUseCase _isUserAuthorizedUseCase;
-  final SetFirstLaunchUseCase _setFirstLaunchUseCase;
 
   Future<void> _onInitEvent(InitEvent event, Emitter<SplashState> emit) async {}
 
   Future<void> _onStartedEvent(
       AppStarted event, Emitter<SplashState> emit) async {
     if (_isFirstLaunchUseCase.execute(NoParams())) {
-      _setFirstLaunchUseCase.execute(NoParams());
       _appRouter.replace(Onboarding.page());
       emit(state);
+      return;
     }
     if (_isUserAuthorizedUseCase.execute(NoParams())) {
       if (_getPreferredUseCase.execute(NoParams()).isEmpty) {
         _appRouter.replace(Preferences.page());
         emit(state);
+        return;
       } else {
         _appRouter.replace(Home.page);
         emit(state);
+        return;
       }
     }
     if (!_isUserAuthorizedUseCase.execute(NoParams())) {

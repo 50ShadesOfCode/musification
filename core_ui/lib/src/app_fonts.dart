@@ -8,7 +8,7 @@ class AppFonts {
     fontFamily: _sfUiFamily,
     fontWeight: FontWeight.w700,
     fontSize: 24,
-    color: AppTheme.primaryColor,
+    color: AppTheme.activeColor,
   );
   static const TextStyle headline3 = TextStyle(
     fontFamily: _sfUiFamily,

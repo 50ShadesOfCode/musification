@@ -1,4 +1,5 @@
 import 'package:authorization/authorization_feature.dart';
+import 'package:domain/domain.dart';
 import 'package:fpmi_music_band/router/router.dart';
 import 'package:shared_dependencies/bloc.dart';
 
@@ -10,10 +11,13 @@ export 'onboarding_state.dart';
 
 class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
   final AppRouter _appRouter;
+  final SetFirstLaunchUseCase _setFirstLaunchUseCase;
 
   OnboardingBloc({
     required AppRouter appRouter,
+    required SetFirstLaunchUseCase setFirstLaunchUseCase,
   })  : _appRouter = appRouter,
+        _setFirstLaunchUseCase = setFirstLaunchUseCase,
         super(const OnboardingState(index: 0)) {
     on<AddEvent>(_onAddEvent);
     on<SkipEvent>(_onSkipEvent);
@@ -22,6 +26,7 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
   Future<void> _onAddEvent(
       AddEvent event, Emitter<OnboardingState> emit) async {
     if (state.index == 2) {
+      _setFirstLaunchUseCase.execute(NoParams());
       _appRouter.replace(AuthFeature.page());
       emit(state);
     } else {

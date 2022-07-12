@@ -3,6 +3,12 @@ import 'package:core_ui/core_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
+List<String> texts = <String>[
+  AppLocalizations.ofGlobalContext('onboarding_text_1'),
+  AppLocalizations.ofGlobalContext('onboarding_text_2'),
+  AppLocalizations.ofGlobalContext('onboarding_text_3'),
+];
+
 List<PageViewModel> pages = <PageViewModel>[
   PageViewModel(
     titleWidget: Text(
@@ -61,12 +67,6 @@ const List<String> icons = <String>[
   'assets/images/png/music_folder.png',
   'assets/images/png/like.png',
   'assets/images/png/earphone.png',
-];
-
-List<String> texts = <String>[
-  AppLocalizations.ofGlobalContext('onboarding_text_1'),
-  AppLocalizations.ofGlobalContext('onboarding_text_2'),
-  AppLocalizations.ofGlobalContext('onboarding_text_3'),
 ];
 
 Widget dots(int index) {

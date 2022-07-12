@@ -43,6 +43,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthorizationState> {
           _appRouter.push(
               ErrorScreen.page(_exceptionMapper.mapExceptionToErrorText(e)));
           emit(state);
+          return;
         }
         if (_getPreferredUseCase.execute(NoParams()).isEmpty) {
           _appRouter.replace(Preferences.page());
@@ -51,6 +52,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthorizationState> {
             password: event.password,
             needRegistration: false,
           ));
+          return;
         } else {
           _appRouter.replace(Home.page);
           emit(state.copyWith(
@@ -58,12 +60,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthorizationState> {
             password: event.password,
             needRegistration: false,
           ));
+          return;
         }
-        emit(state.copyWith(
-          username: event.username,
-          password: event.password,
-          needRegistration: false,
-        ));
       }
     } on AppException catch (e) {
       _appRouter
