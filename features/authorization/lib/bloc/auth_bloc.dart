@@ -53,9 +53,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthorizationState> {
             needRegistration: false,
           ));
 <<<<<<< HEAD
+<<<<<<< HEAD
           return;
 =======
 >>>>>>> 176816e (Add genre preferences screen.)
+=======
+          return;
+>>>>>>> 12f6340 (Add changes from feature/auth.)
         } else {
           _appRouter.replace(Home.page);
           emit(state.copyWith(
@@ -63,6 +67,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthorizationState> {
             password: event.password,
             needRegistration: false,
           ));
+<<<<<<< HEAD
 <<<<<<< HEAD
           return;
         }
@@ -74,6 +79,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthorizationState> {
           needRegistration: false,
         ));
 >>>>>>> 176816e (Add genre preferences screen.)
+=======
+          return;
+        }
+>>>>>>> 12f6340 (Add changes from feature/auth.)
       }
     } on AppException catch (e) {
       _appRouter
