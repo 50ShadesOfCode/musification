@@ -12,3 +12,4 @@ part 'src/app_theme.dart';
 
 part 'src/app_dimensions.dart';
 
+part 'src/app_styles.dart';

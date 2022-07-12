@@ -9,5 +9,7 @@
   "signin": "Sign In",
   "register": "Register",
   "notregistered" : "Don't have an account?",
-  "or" : "or"
+  "or" : "or",
+  "done" : "Done",
+  "chooseGenres": "Choose 3 or more genres you like"
 }

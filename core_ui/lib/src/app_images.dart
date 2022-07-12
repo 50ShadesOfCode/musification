@@ -7,4 +7,7 @@ class AppImages {
   static const String logoPngKey = _basePngUrl + 'logo.png';
 
   static const String logoSvgKey = _baseSvgUrl + 'logo.svg';
+
+  static List<String> genreImageList = List<String>.generate(
+      12, (int index) => 'genre' + index.toString() + '.png');
 }

@@ -81,12 +81,7 @@ class _AuthScreenState extends State<AuthScreen> {
                             password: password,
                           )),
                         },
-                        style: TextButton.styleFrom(
-                            backgroundColor: AppTheme.accentColor,
-                            primary: AppTheme.activeColor,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20),
-                            )),
+                        style: AppStyles.doneTextButtonStyle,
                         child: Text(AppLocalizations.ofGlobalContext('signin')),
                       ),
                     ),

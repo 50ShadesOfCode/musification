@@ -1,6 +1,7 @@
 import 'package:domain/domain.dart';
 import 'package:fpmi_music_band/feature/error_view/error.dart';
 import 'package:fpmi_music_band/feature/home/home.dart';
+import 'package:fpmi_music_band/feature/preferences/preferences.dart';
 import 'package:fpmi_music_band/router/router.dart';
 import 'package:shared_dependencies/bloc.dart';
 
@@ -13,14 +14,17 @@ export 'auth_state.dart';
 class AuthBloc extends Bloc<AuthEvent, AuthorizationState> {
   final AppRouter _appRouter;
   final SignInUseCase _signInUseCase;
+  final GetPreferredUseCase _getPreferredUseCase;
   final AppExceptionMapper _exceptionMapper;
 
   AuthBloc({
     required AppRouter appRouter,
     required SignInUseCase signInUseCase,
+    required GetPreferredUseCase getPreferredUseCase,
     required AppExceptionMapper exceptionMapper,
   })  : _appRouter = appRouter,
         _signInUseCase = signInUseCase,
+        _getPreferredUseCase = getPreferredUseCase,
         _exceptionMapper = exceptionMapper,
         super(const AuthorizationState(
             username: '', password: '', needRegistration: false)) {
@@ -40,11 +44,26 @@ class AuthBloc extends Bloc<AuthEvent, AuthorizationState> {
               ErrorScreen.page(_exceptionMapper.mapExceptionToErrorText(e)));
           emit(state);
         }
-        _appRouter.replace(Home.page);
-        emit(state.copyWith(
+        if (_getPreferredUseCase.execute(NoParams()).isEmpty) {
+          _appRouter.replace(Preferences.page());
+          emit(state.copyWith(
             username: event.username,
             password: event.password,
-            needRegistration: false));
+            needRegistration: false,
+          ));
+        } else {
+          _appRouter.replace(Home.page);
+          emit(state.copyWith(
+            username: event.username,
+            password: event.password,
+            needRegistration: false,
+          ));
+        }
+        emit(state.copyWith(
+          username: event.username,
+          password: event.password,
+          needRegistration: false,
+        ));
       }
     } on AppException catch (e) {
       _appRouter
