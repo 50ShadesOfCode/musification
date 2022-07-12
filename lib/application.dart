@@ -28,10 +28,10 @@ class _ApplicationState extends State<Application> {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        scaffoldBackgroundColor: AppTheme.bgPrimaryColor,
-        appBarTheme: const AppBarTheme(backgroundColor: AppColors.main),
+        scaffoldBackgroundColor: AppTheme.primaryColor,
+        appBarTheme: const AppBarTheme(backgroundColor: AppTheme.primaryColor),
       ),
-      localizationsDelegates: const <LocalizationsDelegate<dynamic>> [
+      localizationsDelegates: const <LocalizationsDelegate<dynamic>>[
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,

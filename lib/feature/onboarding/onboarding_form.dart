@@ -54,13 +54,13 @@ class OnboardingFormState extends State<OnboardingForm> {
             child: ElevatedButton(
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all<Color>(
-                  AppColors.accent,
+                  AppTheme.accentColor,
                 ),
                 fixedSize: MaterialStateProperty.all<Size>(const Size(130, 50)),
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                   RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
-                    side: const BorderSide(color: AppColors.accent),
+                    side: const BorderSide(color: AppTheme.accentColor),
                   ),
                 ),
               ),

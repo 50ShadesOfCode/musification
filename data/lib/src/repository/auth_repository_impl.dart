@@ -24,9 +24,8 @@ class AuthRepositoryImpl extends AuthRepository {
   }
 
   @override
-  Future<void> resetSession() {
-    // TODO: implement resetSession
-    throw UnimplementedError();
+  Future<void> resetSession() async {
+    await _prefsProvider.setSessionKey('');
   }
 
   @override

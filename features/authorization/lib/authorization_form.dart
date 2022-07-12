@@ -82,8 +82,8 @@ class _AuthScreenState extends State<AuthScreen> {
                           )),
                         },
                         style: TextButton.styleFrom(
-                            backgroundColor: AppColors.accent,
-                            primary: AppColors.active,
+                            backgroundColor: AppTheme.accentColor,
+                            primary: AppTheme.activeColor,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20),
                             )),
@@ -99,7 +99,7 @@ class _AuthScreenState extends State<AuthScreen> {
                           child: Text(
                             AppLocalizations.ofGlobalContext('or'),
                             style: const TextStyle(
-                              color: AppColors.secondary1,
+                              color: AppTheme.secondaryColor1,
                             ),
                           ),
                         ),
@@ -114,7 +114,7 @@ class _AuthScreenState extends State<AuthScreen> {
                           Text(
                             AppLocalizations.ofGlobalContext('notregistered'),
                             style: const TextStyle(
-                              color: AppColors.secondary1,
+                              color: AppTheme.secondaryColor1,
                             ),
                           ),
                           TextButton(
@@ -123,7 +123,7 @@ class _AuthScreenState extends State<AuthScreen> {
                                   .add(RegisterEvent())
                             },
                             style: TextButton.styleFrom(
-                              primary: AppColors.active,
+                              primary: AppTheme.activeColor,
                             ),
                             child: Text(
                               AppLocalizations.ofGlobalContext('register'),

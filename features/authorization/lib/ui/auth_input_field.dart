@@ -21,7 +21,7 @@ class AuthInputField extends StatelessWidget {
           ),
           contentPadding: EdgeInsets.all(10),
           hintText: 'Username',
-          fillColor: AppColors.secondary2,
+          fillColor: AppTheme.secondaryColor2,
           filled: true,
         ),
       ),

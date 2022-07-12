@@ -1,10 +1,5 @@
-import 'dart:convert';
-import 'dart:typed_data';
-
 import 'package:data/data.dart';
 import 'package:domain/domain.dart';
-import 'package:shared_dependencies/crypto.dart';
-import 'package:shared_dependencies/utils.dart';
 
 class LastFMProvider {
   final HttpClient _client;
@@ -12,7 +7,6 @@ class LastFMProvider {
   LastFMProvider({
     required HttpClient client,
   }) : _client = client;
-  //TODO : Add case for wrong credits
   Future<String> authenticate({
     required String username,
     required String password,

@@ -34,11 +34,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthorizationState> {
     try {
       if (validateCredentials(event.username, event.password)) {
         try {
-          print('ecc');
           _signInUseCase.execute(<String>[event.username, event.password]);
         } catch (e) {
-          print('ecv');
-          print(e);
           _appRouter.push(
               ErrorScreen.page(_exceptionMapper.mapExceptionToErrorText(e)));
           emit(state);
@@ -72,6 +69,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthorizationState> {
   }
 }
 
+//TODO : Add validation
 bool validateCredentials(String username, String password) {
   if (username.isNotEmpty && password.isNotEmpty) {
     return true;

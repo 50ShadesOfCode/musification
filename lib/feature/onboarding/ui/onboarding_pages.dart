@@ -94,7 +94,7 @@ Widget inactiveDot() {
     height: 8,
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(10),
-      color: AppColors.disabled,
+      color: AppTheme.inactiveColor,
     ),
   );
 }
@@ -105,7 +105,7 @@ Widget activeDot() {
     height: 8,
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(10),
-      color: AppColors.active,
+      color: AppTheme.activeColor,
     ),
   );
 }
