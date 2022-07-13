@@ -11,6 +11,18 @@ dependencies:
   flutter:
     sdk: flutter
 
+  core:
+    path: ../../core
+  
+  domain:
+    path: ../../domain
+
+  data:
+    path: ../../data
+
+  core_ui:
+    path: ../../core_ui
+
   fpmi_music_band:
     path: ../../
 

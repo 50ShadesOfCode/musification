@@ -28,5 +28,7 @@
   "navigationToAlbums": "Альбомы",
   "navigationToArtists" : "Исполнители",
   "navigationToFavourite" : "Избранные",
-  "navigationToProfile" : "Профиль"
+  "navigationToProfile" : "Профиль",
+  "tabToRecommended": "Рекомендованные",
+  "tabToPopular": "Популярные"
 }

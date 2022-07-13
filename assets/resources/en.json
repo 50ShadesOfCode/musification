@@ -28,5 +28,7 @@
   "navigationToAlbums": "Albums",
   "navigationToArtists": "Artists",
   "navigationToFavourite": "Favourite",
-  "navigationToProfile": "Profile"
+  "navigationToProfile": "Profile",
+  "tabToRecommended": "Recommended",
+  "tabToPopular": "Popular"
 }
