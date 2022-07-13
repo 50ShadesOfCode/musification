@@ -19,10 +19,10 @@ class HttpClient {
         _dio = Dio(
           BaseOptions(
             baseUrl: baseUrl,
-            /*headers: <String, dynamic>{
+            headers: <String, dynamic>{
               'Accept-Charset': 'utf-8',
               'User-Agent': 'DartyFM'
-            },*/
+            },
             contentType: Headers.formUrlEncodedContentType,
             responseType: ResponseType.json,
           ),
@@ -93,19 +93,30 @@ class HttpClient {
     String method, {
     required Map<String, dynamic> parameters,
   }) async {
-    parameters['format'] = 'json';
-    parameters = _configureParameters(parameters);
-    print('get');
     parameters['method'] = method;
-    parameters['api_sig'] = _getSignature(parameters);
+    parameters['api_key'] = _API_KEY;
+    parameters['format'] = 'json';
     return (await _dio.get('', queryParameters: parameters)).data;
   }
 
-  Future<dynamic> post(
+  //TODO: implement post
+
+  Future<dynamic> authorizedGet(
     String method, {
     required Map<String, dynamic> parameters,
   }) async {
-    print('post');
+    parameters['format'] = 'json';
+    parameters = _configureParameters(parameters);
+    parameters['method'] = method;
+    parameters['api_sig'] = _getSignature(parameters);
+    //TODO: Add checking for session key
+    return (await _dio.get('', queryParameters: parameters)).data;
+  }
+
+  Future<dynamic> authorizedPost(
+    String method, {
+    required Map<String, dynamic> parameters,
+  }) async {
     parameters = _configureParameters(parameters);
     parameters['method'] = method;
     parameters['api_sig'] = _getSignature(parameters);

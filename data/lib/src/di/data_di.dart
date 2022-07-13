@@ -5,6 +5,7 @@ import 'package:data/src/prefs/prefs_provider.dart';
 import 'package:data/src/repository/auth_repository_impl.dart';
 import 'package:data/src/repository/launch_repository_impl.dart';
 import 'package:data/src/repository/prefs_repository_impl.dart';
+import 'package:data/src/repository/track_repository_impl.dart';
 import 'package:domain/domain.dart';
 
 final DataDI dataDI = DataDI();
@@ -20,6 +21,11 @@ class DataDI {
     appLocator.registerSingleton<LastFMProvider>(
       LastFMProvider(
         client: appLocator.get<HttpClient>(),
+      ),
+    );
+    appLocator.registerLazySingleton<TrackRepository>(
+      () => TrackRepositoryImpl(
+        apiProvider: appLocator.get<LastFMProvider>(),
       ),
     );
     appLocator.registerLazySingleton<LaunchRepository>(
