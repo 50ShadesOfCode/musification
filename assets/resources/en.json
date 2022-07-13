@@ -23,5 +23,10 @@
   "folk": "Folk",
   "chillout": "Chillout",
   "jazz": "Jazz",
-  "classical": "Classical"
+  "classical": "Classical",
+  "navigationToDiscover": "Discover",
+  "navigationToAlbums": "Albums",
+  "navigationToArtists": "Artists",
+  "navigationToFavourite": "Favourite",
+  "navigationToProfile": "Profile"
 }

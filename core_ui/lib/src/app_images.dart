@@ -12,4 +12,17 @@ class AppImages {
 
   static List<String> genreImageList = List<String>.generate(
       12, (int index) => _basePngUrl + 'genre' + index.toString() + '.png');
+
+  static const String chevronLeft = _baseSvgUrl + 'chevron-left.svg';
+
+  static const String chevronDown = _baseSvgUrl + 'chevron-down.svg';
+
+  static const String moreVertical = _baseSvgUrl + 'more-vertical.svg';
+
+  static const String search = _baseSvgUrl + 'search.svg';
+  static const String navigationIconDiscover = _baseSvgUrl + 'search.svg';
+  static const String navigationIconAlbums = _baseSvgUrl + 'albums.svg';
+  static const String navigationIconArtists = _baseSvgUrl + 'artists.svg';
+  static const String navigationIconFavourite = _baseSvgUrl + 'favourite.svg';
+  static const String navigationIconProfile = _baseSvgUrl + 'profile.svg';
 }
