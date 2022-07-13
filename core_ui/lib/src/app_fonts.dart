@@ -56,6 +56,6 @@ class AppFonts {
     fontFamily: _sfUiFamily,
     fontWeight: FontWeight.w400,
     fontSize: 12,
-    color: AppTheme.primaryColor,
+    color: AppTheme.activeColor,
   );
 }

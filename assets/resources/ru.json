@@ -23,5 +23,10 @@
   "folk": "Народная",
   "chillout": "Расслабляющая",
   "jazz": "Джаз",
-  "classical": "Классическая"
+  "classical": "Классическая",
+  "navigationToDiscover": "Discover",
+  "navigationToAlbums": "Альбомы",
+  "navigationToArtists" : "Исполнители",
+  "navigationToFavourite" : "Избранные",
+  "navigationToProfile" : "Профиль"
 }

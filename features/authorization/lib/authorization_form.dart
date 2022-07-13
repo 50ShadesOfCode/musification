@@ -31,6 +31,7 @@ class _AuthScreenState extends State<AuthScreen> {
       body: BlocBuilder<AuthBloc, AuthorizationState>(
         builder: (BuildContext context, AuthorizationState state) {
           if (state.needRegistration) {
+            //TODO: Back button dispatching
             return SafeArea(
               child: WebView(
                 initialUrl: 'https://www.last.fm/join',
