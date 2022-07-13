@@ -1,9 +1,13 @@
 import 'package:core/core.dart';
 import 'package:core_ui/core_ui.dart';
+import 'package:discover/song_list/bloc/song_list_bloc.dart';
+import 'package:discover/song_list/song_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fpmi_music_band/router/router.dart';
 import 'package:fpmi_music_band/widgets/app_bar_widget.dart';
 import 'package:fpmi_music_band/widgets/app_tab_bar_widget.dart';
+import 'package:shared_dependencies/bloc.dart';
 
 class DiscoverForm extends StatefulWidget {
   @override
@@ -71,8 +75,18 @@ class DiscoverFormState extends State<DiscoverForm>
         bottom: _tabBar,
       ),
       body: TabBarView(controller: _tabController, children: <Widget>[
-        Container(),
-        Container(),
+        BlocProvider<SongListBloc>(
+          create: (BuildContext context) => SongListBloc(
+            appRouter: appLocator.get<AppRouter>(),
+          )..add(FetchRecommendedSongs()),
+          child: const SongList(listKey: 'recommended'),
+        ),
+        BlocProvider<SongListBloc>(
+          create: (BuildContext context) => SongListBloc(
+            appRouter: appLocator.get<AppRouter>(),
+          )..add(FetchPopularSongs()),
+          child: const SongList(listKey: 'popular'),
+        ),
       ]),
     );
   }

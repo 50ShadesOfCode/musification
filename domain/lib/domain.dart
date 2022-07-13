@@ -2,6 +2,7 @@ library domain;
 
 export 'src/entities/auth/sign_in_result.dart';
 export 'src/entities/session.dart';
+export 'src/entities/song.dart';
 export 'src/entities/user.dart';
 export 'src/entities/user_credentials.dart';
 export 'src/error_handler/app_exception.dart';

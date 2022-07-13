@@ -20,37 +20,37 @@ class AppFonts {
     fontFamily: _sfUiFamily,
     fontWeight: FontWeight.w600,
     fontSize: 17,
-    color: AppTheme.primaryColor,
+    color: AppTheme.activeColor,
   );
   static const TextStyle bodyBold = TextStyle(
     fontFamily: _sfUiFamily,
     fontWeight: FontWeight.w700,
     fontSize: 14,
-    color: AppTheme.primaryColor,
+    color: AppTheme.activeColor,
   );
   static const TextStyle bodyRegular = TextStyle(
     fontFamily: _sfUiFamily,
     fontWeight: FontWeight.w400,
     fontSize: 14,
-    color: AppTheme.primaryColor,
+    color: AppTheme.activeColor,
   );
   static const TextStyle button = TextStyle(
     fontFamily: _sfUiFamily,
     fontWeight: FontWeight.w500,
     fontSize: 14,
-    color: AppTheme.primaryColor,
+    color: AppTheme.activeColor,
   );
   static const TextStyle googleButton = TextStyle(
     fontFamily: _robotoFamily,
     fontWeight: FontWeight.w500,
     fontSize: 14,
-    color: AppTheme.primaryColor,
+    color: AppTheme.activeColor,
   );
   static const TextStyle caption = TextStyle(
     fontFamily: _sfUiFamily,
     fontWeight: FontWeight.w400,
     fontSize: 14,
-    color: AppTheme.primaryColor,
+    color: AppTheme.activeColor,
   );
   static const TextStyle tips = TextStyle(
     fontFamily: _sfUiFamily,
