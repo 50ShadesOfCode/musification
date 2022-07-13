@@ -1,10 +1,9 @@
 import 'package:core_ui/core_ui.dart';
+import 'package:discover/discover.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:fpmi_music_band/feature/home/bloc/home_bloc.dart';
 import 'package:fpmi_music_band/feature/home/home_navigation_item.dart';
 import 'package:fpmi_music_band/feature/home/mapper/home_navigation_item_mapper.dart';
-import 'package:fpmi_music_band/widgets/app_bar_widget.dart';
 import 'package:shared_dependencies/bloc.dart';
 
 class HomeForm extends StatefulWidget {
@@ -37,7 +36,7 @@ class HomeFormState extends State<HomeForm> with TickerProviderStateMixin {
               controller: _tabController,
               physics: const NeverScrollableScrollPhysics(),
               children: <Widget>[
-                Container(),
+                DiscoverForm(),
                 Container(),
                 Container(),
                 Container(),

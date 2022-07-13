@@ -6,7 +6,7 @@ publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: ^2.16.2
+  sdk: ^2.17.5
 
 dependencies:
   flutter:
@@ -28,6 +28,8 @@ dependencies:
     path: shared_dependencies
   authorization:
     path: features/authorization
+  discover:
+    path: features/discover
   introduction_screen: ^3.0.2
   flutter_svg: ^1.1.1
 
