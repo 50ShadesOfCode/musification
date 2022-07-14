@@ -46,7 +46,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthorizationState> {
           return;
         }
         if (_getPreferredUseCase.execute(NoParams()).isEmpty) {
-          _appRouter.replace(Preferences.page());
+          _appRouter.replace(PreferencesFeature.page());
           emit(state.copyWith(
             username: event.username,
             password: event.password,

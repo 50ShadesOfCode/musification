@@ -44,7 +44,7 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
     }
     if (_isUserAuthorizedUseCase.execute(NoParams())) {
       if (_getPreferredUseCase.execute(NoParams()).isEmpty) {
-        _appRouter.replace(Preferences.page());
+        _appRouter.replace(PreferencesFeature.page());
         emit(state);
         return;
       } else {

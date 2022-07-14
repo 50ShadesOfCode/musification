@@ -40,43 +40,45 @@ class PreferencesFormState extends State<PreferencesForm> {
         builder: (BuildContext context, PreferencesState state) {
           return Container(
             margin: const EdgeInsets.all(8),
-            child: Column(children: <Widget>[
-              Container(
-                child: GridView.builder(
-                    shrinkWrap: true,
-                    scrollDirection: Axis.vertical,
-                    gridDelegate:
-                        const SliverGridDelegateWithMaxCrossAxisExtent(
-                      maxCrossAxisExtent: 150,
-                      mainAxisExtent: 146,
-                    ),
-                    itemCount: 12,
-                    itemBuilder: (BuildContext context, int index) {
-                      return GenreCard(
-                        index: index,
-                        title: _genreTitles[index],
-                      );
-                    }),
-                margin: const EdgeInsets.only(bottom: 80),
-              ),
-              Container(
-                width: 130,
-                height: 45,
-                child: Visibility(
-                  visible: state.isDoneButtonVisible,
-                  child: TextButton(
-                    style: AppStyles.doneTextButtonStyle,
-                    onPressed: () {
-                      BlocProvider.of<PreferencesBloc>(context)
-                          .add(DoneChoosingEvent());
-                    },
-                    child: Text(
-                      AppLocalizations.ofGlobalContext('done'),
+            child: Column(
+              children: <Widget>[
+                Container(
+                  child: GridView.builder(
+                      shrinkWrap: true,
+                      scrollDirection: Axis.vertical,
+                      gridDelegate:
+                          const SliverGridDelegateWithMaxCrossAxisExtent(
+                        maxCrossAxisExtent: 150,
+                        mainAxisExtent: 146,
+                      ),
+                      itemCount: _genreTitles.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return GenreCard(
+                          picture: index,
+                          title: _genreTitles[index],
+                        );
+                      }),
+                  margin: const EdgeInsets.only(bottom: 80),
+                ),
+                Container(
+                  width: 130,
+                  height: 45,
+                  child: Visibility(
+                    visible: state.isDoneButtonVisible,
+                    child: TextButton(
+                      style: AppStyles.doneTextButtonStyle,
+                      onPressed: () {
+                        BlocProvider.of<PreferencesBloc>(context)
+                            .add(DoneChoosingEvent());
+                      },
+                      child: Text(
+                        AppLocalizations.ofGlobalContext('done'),
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ]),
+              ],
+            ),
           );
         },
       ),

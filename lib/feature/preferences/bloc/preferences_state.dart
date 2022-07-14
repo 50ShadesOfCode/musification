@@ -2,15 +2,9 @@ import 'package:shared_dependencies/utils.dart';
 
 class PreferencesState extends Equatable {
   final int chosenGenresAmount;
-<<<<<<< HEAD
   List<String> chosenGenres;
   final bool isDoneButtonVisible;
   PreferencesState({
-=======
-  final List<String> chosenGenres;
-  final bool isDoneButtonVisible;
-  const PreferencesState({
->>>>>>> 176816e (Add genre preferences screen.)
     required this.chosenGenresAmount,
     required this.chosenGenres,
     required this.isDoneButtonVisible,
