@@ -64,9 +64,9 @@ const List<String> icons = <String>[
 ];
 
 List<String> texts = <String>[
-  AppLocalizations.ofGlobalContext('onboarding_text_1'),
-  AppLocalizations.ofGlobalContext('onboarding_text_2'),
-  AppLocalizations.ofGlobalContext('onboarding_text_3'),
+  AppLocalizations.ofGlobalContext('onboarding_music'),
+  AppLocalizations.ofGlobalContext('onboarding_sound'),
+  AppLocalizations.ofGlobalContext('onboarding_listen'),
 ];
 
 Widget dots(int index) {
@@ -94,7 +94,7 @@ Widget inactiveDot() {
     height: 8,
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(10),
-      color: AppTheme.inactiveColor,
+      color: AppTheme.inactivePrimaryColor,
     ),
   );
 }

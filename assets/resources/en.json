@@ -1,9 +1,9 @@
 {
   "next": "Next",
   "skip": "Skip",
-  "onboarding_text_1": "Music collected\nespecially for you",
-  "onboarding_text_2": "Sound\nthat pleases",
-  "onboarding_text_3": "Listen on any device\neven without internet",
+  "onboarding_music": "Music collected\nespecially for you",
+  "onboarding_sound": "Sound\nthat pleases",
+  "onboarding_listen": "Listen on any device\neven without internet",
   "errorsNoInternet": "No internet. Please, check the internet connection",
   "errorsServer": "Server error. Please, retry later",
   "signin": "Sign In",
