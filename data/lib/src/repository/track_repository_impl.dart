@@ -12,4 +12,9 @@ class TrackRepositoryImpl extends TrackRepository {
   Future<List<Song>> getTopTracks() async {
     return await apiProvider.getTopTracks();
   }
+
+  @override
+  Future<List<Song>> getRecommendedTracks(List<String> genres) async {
+    return apiProvider.getRecommendedTracks(genres);
+  }
 }

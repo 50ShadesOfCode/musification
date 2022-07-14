@@ -17,9 +17,6 @@ class DiscoverForm extends StatefulWidget {
 
 class DiscoverFormState extends State<DiscoverForm>
     with TickerProviderStateMixin {
-  static const int _recommendedTabIndex = 0;
-  static const int _popularTabIndex = 1;
-
   late TabController _tabController;
 
   @override
@@ -82,6 +79,8 @@ class DiscoverFormState extends State<DiscoverForm>
       body: TabBarView(controller: _tabController, children: <Widget>[
         BlocProvider<SongListBloc>(
           create: (BuildContext context) => SongListBloc(
+            getRecommendedTracksUseCase:
+                appLocator.get<GetRecommendedTracksUseCase>(),
             appRouter: appLocator.get<AppRouter>(),
             getTopTracksUseCase: appLocator.get<GetTopTracksUseCase>(),
           )..add(FetchRecommendedSongs()),
@@ -89,6 +88,8 @@ class DiscoverFormState extends State<DiscoverForm>
         ),
         BlocProvider<SongListBloc>(
           create: (BuildContext context) => SongListBloc(
+            getRecommendedTracksUseCase:
+                appLocator.get<GetRecommendedTracksUseCase>(),
             appRouter: appLocator.get<AppRouter>(),
             getTopTracksUseCase: appLocator.get<GetTopTracksUseCase>(),
           )..add(FetchPopularSongs()),

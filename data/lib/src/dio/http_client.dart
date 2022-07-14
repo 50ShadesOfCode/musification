@@ -90,7 +90,7 @@ class HttpClient {
     parameters['method'] = method;
     parameters['api_key'] = _API_KEY;
     parameters['format'] = 'json';
-    Response<Map<String, dynamic>> res =
+    final Response<Map<String, dynamic>> res =
         await _dio.get('', queryParameters: parameters);
     return res.data!;
   }

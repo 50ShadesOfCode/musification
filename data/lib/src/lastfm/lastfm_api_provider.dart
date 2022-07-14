@@ -1,8 +1,5 @@
-import 'dart:convert';
-
 import 'package:data/data.dart';
 import 'package:domain/domain.dart';
-import 'package:shared_dependencies/dio.dart';
 
 class LastFMProvider {
   final HttpClient _client;
@@ -38,5 +35,27 @@ class LastFMProvider {
       tracks.length,
       (int index) => Song.fromJson(tracks[index] as Map<String, dynamic>),
     );
+  }
+
+  Future<List<Song>> getRecommendedTracks(List<String> genres) async {
+    List<Song> result = <Song>[];
+    List<List<dynamic>> response = <List<dynamic>>[];
+
+    for (final String genre in genres) {
+      response.add(
+        (await _client.get(
+          'tag.gettoptracks',
+          parameters: <String, dynamic>{
+            'tag': genre,
+          },
+        ))['tracks']['track'] as List<dynamic>,
+      );
+    }
+    for (final List<dynamic> songList in response) {
+      for (int i = 0; i < 50; i++) {
+        result.add(Song.fromJson(songList[i] as Map<String, dynamic>));
+      }
+    }
+    return result;
   }
 }

@@ -1,7 +1,6 @@
 import 'package:core_ui/core_ui.dart';
 import 'package:discover/song_list/bloc/song_list_bloc.dart';
 import 'package:discover/widgets/song_tile.dart';
-import 'package:domain/domain.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_dependencies/bloc.dart';
 

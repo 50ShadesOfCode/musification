@@ -11,10 +11,13 @@ export 'song_list_state.dart';
 class SongListBloc extends Bloc<SongListEvent, SongListState> {
   final AppRouter _appRouter;
   final GetTopTracksUseCase _getTopTracksUseCase;
+  final GetRecommendedTracksUseCase _getRecommendedTracksUseCase;
   SongListBloc({
+    required GetRecommendedTracksUseCase getRecommendedTracksUseCase,
     required AppRouter appRouter,
     required GetTopTracksUseCase getTopTracksUseCase,
   })  : _appRouter = appRouter,
+        _getRecommendedTracksUseCase = getRecommendedTracksUseCase,
         _getTopTracksUseCase = getTopTracksUseCase,
         super(
           SongListState(
@@ -39,7 +42,8 @@ class SongListBloc extends Bloc<SongListEvent, SongListState> {
       fetchingRecommendedInProgressState:
           state.fetchingRecommendedInProgressState,
     ));
-    List<Song> popularSongs = await _getTopTracksUseCase.execute(NoParams());
+    final List<Song> popularSongs =
+        await _getTopTracksUseCase.execute(NoParams());
     emit(state.copyWith(
       popularSongs: popularSongs,
       recommendedSongs: state.recommendedSongs,
