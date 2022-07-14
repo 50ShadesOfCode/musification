@@ -1,3 +1,4 @@
+import 'package:core_ui/core_ui.dart';
 import 'package:discover/song_list/bloc/song_list_bloc.dart';
 import 'package:discover/widgets/song_tile.dart';
 import 'package:domain/domain.dart';
@@ -26,10 +27,17 @@ class _SongListState extends State<SongList> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SongListBloc, SongListState>(
-      builder: (BuildContext context, SongListState state) =>
-          ScrollConfiguration(
+        builder: (BuildContext context, SongListState state) {
+      if (state.fetchingPopularInProgressState) {
+        return const Center(
+          child: CircularProgressIndicator(
+            color: AppTheme.secondaryColor1,
+          ),
+        );
+      }
+      return ScrollConfiguration(
         behavior: const ScrollBehavior().copyWith(overscroll: false),
-        child: ListView.builder(
+        child: ListView.separated(
           itemCount: listKey == 'popular'
               ? state.popularSongs.length
               : state.recommendedSongs.length,
@@ -40,8 +48,19 @@ class _SongListState extends State<SongList> {
                   : state.recommendedSongs[index],
             );
           },
+          separatorBuilder: (BuildContext context, int index) {
+            return Container(
+              margin: const EdgeInsets.symmetric(horizontal: 16),
+              width: 100,
+              padding: EdgeInsets.zero,
+              height: 0.5,
+              decoration: const BoxDecoration(
+                color: AppTheme.secondaryColor1,
+              ),
+            );
+          },
         ),
-      ),
-    );
+      );
+    });
   }
 }

@@ -44,6 +44,11 @@ class DataDI {
         prefsProvider: appLocator.get<PrefsProvider>(),
       ),
     );
+    appLocator.registerFactory<GetTopTracksUseCase>(
+      () => GetTopTracksUseCase(
+        trackRepository: appLocator.get<TrackRepository>(),
+      ),
+    );
     appLocator.registerFactory<GetPreferredUseCase>(
       () => GetPreferredUseCase(
         prefsRepository: appLocator.get<PrefsRepository>(),

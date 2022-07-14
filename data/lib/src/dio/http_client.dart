@@ -89,14 +89,16 @@ class HttpClient {
     return parameters;
   }
 
-  Future<dynamic> get(
+  Future<Map<String, dynamic>> get(
     String method, {
     required Map<String, dynamic> parameters,
   }) async {
     parameters['method'] = method;
     parameters['api_key'] = _API_KEY;
     parameters['format'] = 'json';
-    return (await _dio.get('', queryParameters: parameters)).data;
+    Response<Map<String, dynamic>> res =
+        await _dio.get('', queryParameters: parameters);
+    return res.data!;
   }
 
   //TODO: implement post

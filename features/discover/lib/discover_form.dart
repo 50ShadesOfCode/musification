@@ -2,6 +2,7 @@ import 'package:core/core.dart';
 import 'package:core_ui/core_ui.dart';
 import 'package:discover/song_list/bloc/song_list_bloc.dart';
 import 'package:discover/song_list/song_list.dart';
+import 'package:domain/domain.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:fpmi_music_band/router/router.dart';
@@ -78,12 +79,14 @@ class DiscoverFormState extends State<DiscoverForm>
         BlocProvider<SongListBloc>(
           create: (BuildContext context) => SongListBloc(
             appRouter: appLocator.get<AppRouter>(),
+            getTopTracksUseCase: appLocator.get<GetTopTracksUseCase>(),
           )..add(FetchRecommendedSongs()),
           child: const SongList(listKey: 'recommended'),
         ),
         BlocProvider<SongListBloc>(
           create: (BuildContext context) => SongListBloc(
             appRouter: appLocator.get<AppRouter>(),
+            getTopTracksUseCase: appLocator.get<GetTopTracksUseCase>(),
           )..add(FetchPopularSongs()),
           child: const SongList(listKey: 'popular'),
         ),

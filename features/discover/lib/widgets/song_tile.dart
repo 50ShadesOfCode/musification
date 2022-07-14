@@ -16,8 +16,7 @@ class SongTile extends StatelessWidget {
       color: AppTheme.primaryColor,
       elevation: 0,
       child: Container(
-          width: double.infinity,
-          margin: const EdgeInsets.symmetric(horizontal: 24),
+          margin: const EdgeInsets.symmetric(horizontal: 16),
           padding: const EdgeInsets.symmetric(vertical: Dimensions.SPACE_8),
           child: InkWell(
             onTap: () {},
@@ -31,25 +30,35 @@ class SongTile extends StatelessWidget {
                         width: 41,
                         height: 41,
                         decoration: BoxDecoration(
+                          color: Colors.white,
                           borderRadius: BorderRadius.circular(8),
+                          image: DecorationImage(
+                            fit: BoxFit.fill,
+                            image: NetworkImage(
+                              song.imageUrl,
+                            ),
+                          ),
                         ),
-                        child: Image.network(song.imageUrl),
                       ),
-                      Container(
-                        margin: const EdgeInsets.symmetric(horizontal: 16),
-                        child: Column(
-                          children: <Widget>[
-                            Text(
-                              song.title,
-                              style: AppFonts.bodyBold,
-                            ),
-                            Text(
-                              song.artist,
-                              style: AppFonts.bodyRegular.copyWith(
-                                color: AppTheme.inactiveColor,
+                      Flexible(
+                        child: Container(
+                          margin: const EdgeInsets.symmetric(horizontal: 16),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: <Widget>[
+                              Text(
+                                song.title,
+                                style: AppFonts.bodyBold,
                               ),
-                            ),
-                          ],
+                              Text(
+                                song.artist,
+                                style: AppFonts.bodyRegular.copyWith(
+                                  color: AppTheme.inactiveColor,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ],
@@ -63,8 +72,13 @@ class SongTile extends StatelessWidget {
                           .copyWith(color: AppTheme.inactiveColor),
                     ),
                     IconButton(
+                        padding: EdgeInsets.zero,
                         color: AppTheme.inactiveColor,
-                        icon: SvgPicture.asset(AppImages.moreVertical),
+                        icon: SvgPicture.asset(
+                          AppImages.moreVertical,
+                          width: 20,
+                          height: 20,
+                        ),
                         onPressed: () {}),
                   ],
                 )

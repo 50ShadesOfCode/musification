@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:data/data.dart';
 import 'package:domain/domain.dart';
+import 'package:shared_dependencies/dio.dart';
 
 class LastFMProvider {
   final HttpClient _client;
@@ -28,16 +29,14 @@ class LastFMProvider {
   }
 
   Future<List<Song>> getTopTracks() async {
-    final dynamic response = await _client.get(
+    final Map<String, dynamic> response = await _client.get(
       'chart.gettoptracks',
       parameters: <String, dynamic>{'limit': 100},
     );
-    final dynamic responseData = jsonDecode(response as String);
-    final List<Map<String, dynamic>> tracks =
-        responseData['tracks']['track'] as List<Map<String, dynamic>>;
+    final List<dynamic> tracks = response['tracks']['track'] as List<dynamic>;
     return List<Song>.generate(
       tracks.length,
-      (int index) => Song.fromJson(tracks[index]),
+      (int index) => Song.fromJson(tracks[index] as Map<String, dynamic>),
     );
   }
 }

@@ -6,7 +6,7 @@ class Song {
   final String imageUrl;
   //TODO : Add artist serialization
   final String artist;
-  final String duration;
+  late String duration;
   Song({
     required this.title,
     required this.imageUrl,
@@ -16,7 +16,17 @@ class Song {
 
   Song.fromJson(Map<String, dynamic> json)
       : title = json['name'] as String,
-        duration = json['duration'] as String,
         artist = json['artist']['name'] as String,
-        imageUrl = (json['image'] as List<dynamic>)[0]['#text'] as String;
+        imageUrl = (json['image'] as List<dynamic>)[0]['#text'] as String {
+    duration = parseDuration(json['duration'] as String);
+  }
+
+  String parseDuration(String durations) {
+    final int dur = int.parse(durations);
+    final int min = dur ~/ 60;
+    final int sec = dur % 60;
+    return min.toString() +
+        ':' +
+        (sec > 10 ? sec.toString() : '0' + sec.toString());
+  }
 }

@@ -46,6 +46,7 @@ class HomeFormState extends State<HomeForm> with TickerProviderStateMixin {
             Align(
               alignment: Alignment.bottomCenter,
               child: Container(
+                color: AppTheme.primaryColor,
                 height: Dimensions.ITEM_HEIGHT_56,
                 child: TabBar(
                   labelPadding: EdgeInsets.zero,
