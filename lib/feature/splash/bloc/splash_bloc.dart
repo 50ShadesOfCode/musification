@@ -19,7 +19,7 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
     required AppRouter appRouter,
     required IsFirstLaunchUseCase isFirstLaunchUseCase,
     required IsUserAuthorizedUseCase isUserAuthorizedUseCase,
-    required GetPreferredUseCase getPreferredUseCase,
+    required GetPreferredGenresUseCase getPreferredUseCase,
   })  : _appRouter = appRouter,
         _isFirstLaunchUseCase = isFirstLaunchUseCase,
         _isUserAuthorizedUseCase = isUserAuthorizedUseCase,
@@ -28,7 +28,7 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
     on<InitEvent>(_onInitEvent);
     on<AppStarted>(_onStartedEvent);
   }
-  final GetPreferredUseCase _getPreferredUseCase;
+  final GetPreferredGenresUseCase _getPreferredUseCase;
   final AppRouter _appRouter;
   final IsFirstLaunchUseCase _isFirstLaunchUseCase;
   final IsUserAuthorizedUseCase _isUserAuthorizedUseCase;

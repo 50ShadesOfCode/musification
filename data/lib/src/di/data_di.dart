@@ -56,8 +56,8 @@ class DataDI {
         trackRepository: appLocator.get<TrackRepository>(),
       ),
     );
-    appLocator.registerFactory<GetPreferredUseCase>(
-      () => GetPreferredUseCase(
+    appLocator.registerFactory<GetPreferredGenresUseCase>(
+      () => GetPreferredGenresUseCase(
         prefsRepository: appLocator.get<PrefsRepository>(),
       ),
     );

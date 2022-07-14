@@ -27,7 +27,15 @@ class _SongListState extends State<SongList> {
   Widget build(BuildContext context) {
     return BlocBuilder<SongListBloc, SongListState>(
         builder: (BuildContext context, SongListState state) {
-      if (state.fetchingPopularInProgressState) {
+      if (state.fetchingPopularInProgressState && listKey == 'popular') {
+        return const Center(
+          child: CircularProgressIndicator(
+            color: AppTheme.secondaryColor,
+          ),
+        );
+      }
+      if (state.fetchingRecommendedInProgressState &&
+          listKey == 'recommended') {
         return const Center(
           child: CircularProgressIndicator(
             color: AppTheme.secondaryColor,

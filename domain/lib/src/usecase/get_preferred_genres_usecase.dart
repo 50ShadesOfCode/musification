@@ -1,9 +1,9 @@
 import 'package:domain/domain.dart';
 
-class GetPreferredUseCase extends UseCase<List<String>, NoParams> {
+class GetPreferredGenresUseCase extends UseCase<List<String>, NoParams> {
   final PrefsRepository _prefsRepository;
 
-  GetPreferredUseCase({
+  GetPreferredGenresUseCase({
     required PrefsRepository prefsRepository,
   }) : _prefsRepository = prefsRepository;
 

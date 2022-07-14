@@ -14,13 +14,13 @@ export 'auth_state.dart';
 class AuthBloc extends Bloc<AuthEvent, AuthorizationState> {
   final AppRouter _appRouter;
   final SignInUseCase _signInUseCase;
-  final GetPreferredUseCase _getPreferredUseCase;
+  final GetPreferredGenresUseCase _getPreferredUseCase;
   final AppExceptionMapper _exceptionMapper;
 
   AuthBloc({
     required AppRouter appRouter,
     required SignInUseCase signInUseCase,
-    required GetPreferredUseCase getPreferredUseCase,
+    required GetPreferredGenresUseCase getPreferredUseCase,
     required AppExceptionMapper exceptionMapper,
   })  : _appRouter = appRouter,
         _signInUseCase = signInUseCase,

@@ -18,7 +18,7 @@ class SplashPage extends PageWithScaffoldKey<dynamic> {
             appRouter: appLocator.get<AppRouter>(),
             isFirstLaunchUseCase: appLocator.get<IsFirstLaunchUseCase>(),
             isUserAuthorizedUseCase: appLocator.get<IsUserAuthorizedUseCase>(),
-            getPreferredUseCase: appLocator.get<GetPreferredUseCase>(),
+            getPreferredUseCase: appLocator.get<GetPreferredGenresUseCase>(),
           )..add(InitEvent()),
           child: SafeArea(
             child: ScaffoldMessenger(

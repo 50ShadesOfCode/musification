@@ -79,6 +79,8 @@ class DiscoverFormState extends State<DiscoverForm>
       body: TabBarView(controller: _tabController, children: <Widget>[
         BlocProvider<SongListBloc>(
           create: (BuildContext context) => SongListBloc(
+            getPreferredGenresUseCase:
+                appLocator.get<GetPreferredGenresUseCase>(),
             getRecommendedTracksUseCase:
                 appLocator.get<GetRecommendedTracksUseCase>(),
             appRouter: appLocator.get<AppRouter>(),
@@ -88,6 +90,8 @@ class DiscoverFormState extends State<DiscoverForm>
         ),
         BlocProvider<SongListBloc>(
           create: (BuildContext context) => SongListBloc(
+            getPreferredGenresUseCase:
+                appLocator.get<GetPreferredGenresUseCase>(),
             getRecommendedTracksUseCase:
                 appLocator.get<GetRecommendedTracksUseCase>(),
             appRouter: appLocator.get<AppRouter>(),
