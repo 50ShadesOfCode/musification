@@ -8,54 +8,45 @@ class AppFonts {
     fontFamily: _sfUiFamily,
     fontWeight: FontWeight.w700,
     fontSize: 24,
-    color: AppTheme.activeColor,
   );
   static const TextStyle headline3 = TextStyle(
     fontFamily: _sfUiFamily,
     fontWeight: FontWeight.w700,
     fontSize: 18,
-    color: AppTheme.activeColor,
   );
   static const TextStyle headline2 = TextStyle(
     fontFamily: _sfUiFamily,
     fontWeight: FontWeight.w600,
     fontSize: 17,
-    color: AppTheme.activeColor,
   );
   static const TextStyle bodyBold = TextStyle(
     fontFamily: _sfUiFamily,
     fontWeight: FontWeight.w700,
     fontSize: 14,
-    color: AppTheme.activeColor,
   );
   static const TextStyle bodyRegular = TextStyle(
     fontFamily: _sfUiFamily,
     fontWeight: FontWeight.w400,
     fontSize: 14,
-    color: AppTheme.activeColor,
   );
   static const TextStyle button = TextStyle(
     fontFamily: _sfUiFamily,
     fontWeight: FontWeight.w500,
     fontSize: 14,
-    color: AppTheme.activeColor,
   );
   static const TextStyle googleButton = TextStyle(
     fontFamily: _robotoFamily,
     fontWeight: FontWeight.w500,
     fontSize: 14,
-    color: AppTheme.activeColor,
   );
   static const TextStyle caption = TextStyle(
     fontFamily: _sfUiFamily,
     fontWeight: FontWeight.w400,
     fontSize: 14,
-    color: AppTheme.activeColor,
   );
   static const TextStyle tips = TextStyle(
     fontFamily: _sfUiFamily,
     fontWeight: FontWeight.w400,
     fontSize: 12,
-    color: AppTheme.activeColor,
   );
 }

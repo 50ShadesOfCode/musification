@@ -11,12 +11,15 @@ import 'package:domain/domain.dart';
 final DataDI dataDI = DataDI();
 
 class DataDI {
+  static const String _base_url = 'http://ws.audioscrobbler.com/2.0/';
+
   Future<void> initDependencies() async {
     await initPrefs();
     appLocator.registerSingleton<HttpClient>(
       HttpClient(
-          prefsProvider: appLocator.get<PrefsProvider>(),
-          baseUrl: 'http://ws.audioscrobbler.com/2.0/'),
+        prefsProvider: appLocator.get<PrefsProvider>(),
+        baseUrl: _base_url,
+      ),
     );
     appLocator.registerSingleton<LastFMProvider>(
       LastFMProvider(

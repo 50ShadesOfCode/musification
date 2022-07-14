@@ -31,7 +31,7 @@ class _SongListState extends State<SongList> {
       if (state.fetchingPopularInProgressState) {
         return const Center(
           child: CircularProgressIndicator(
-            color: AppTheme.secondaryColor1,
+            color: AppTheme.secondaryColor,
           ),
         );
       }
@@ -55,7 +55,7 @@ class _SongListState extends State<SongList> {
               padding: EdgeInsets.zero,
               height: 0.5,
               decoration: const BoxDecoration(
-                color: AppTheme.secondaryColor1,
+                color: AppTheme.secondaryColor,
               ),
             );
           },

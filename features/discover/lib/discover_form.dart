@@ -36,7 +36,7 @@ class DiscoverFormState extends State<DiscoverForm>
 
   AppTabBarWidget get _tabBar => AppTabBarWidget(
         controller: _tabController,
-        bgColorTab: AppTheme.inactiveColor,
+        bgColorTab: AppTheme.inactivePrimaryColor,
         indicatorColor: AppTheme.activeColor,
         labelColor: AppTheme.primaryColor,
         unselectedLabelColor: AppTheme.primaryColor,

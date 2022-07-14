@@ -49,7 +49,9 @@ extension HomeNavItemViewMapper on HomeNavigationItem {
           height: 20,
           child: SvgPicture.asset(
             _getIconAssetPath(),
-            color: isSelected ? AppTheme.activeColor : AppTheme.inactiveColor,
+            color: isSelected
+                ? AppTheme.activeColor
+                : AppTheme.inactivePrimaryColor,
           ),
         ),
         const SizedBox(
@@ -58,7 +60,9 @@ extension HomeNavItemViewMapper on HomeNavigationItem {
         Text(
           toViewString(),
           style: AppFonts.tips.copyWith(
-            color: isSelected ? AppTheme.activeColor : AppTheme.inactiveColor,
+            color: isSelected
+                ? AppTheme.activeColor
+                : AppTheme.inactivePrimaryColor,
           ),
         ),
         const SizedBox(height: 6),

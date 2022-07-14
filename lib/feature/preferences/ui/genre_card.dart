@@ -5,10 +5,10 @@ import 'package:fpmi_music_band/feature/preferences/bloc/preferences_bloc.dart';
 import 'package:shared_dependencies/bloc.dart';
 
 class GenreCard extends StatefulWidget {
-  final int index;
+  final int picture;
   final String title;
   const GenreCard({
-    required this.index,
+    required this.picture,
     required this.title,
   });
 
@@ -17,17 +17,16 @@ class GenreCard extends StatefulWidget {
 }
 
 class GenreCardState extends State<GenreCard> {
-  late int index;
+  late int picture;
   late String title;
 
-  late bool isVisible;
+  bool isVisible = false;
 
   @override
   void initState() {
     super.initState();
-    index = widget.index;
+    picture = widget.picture;
     title = widget.title;
-    isVisible = false;
   }
 
   @override
@@ -35,13 +34,21 @@ class GenreCardState extends State<GenreCard> {
     return GestureDetector(
       onTap: () {
         if (!isVisible) {
-          BlocProvider.of<PreferencesBloc>(context)
-              .add(ChooseGenreEvent(title: title.toLowerCase()));
+          BlocProvider.of<PreferencesBloc>(context).add(
+            ChooseGenreEvent(
+              title: title.toLowerCase(),
+            ),
+          );
         } else {
-          BlocProvider.of<PreferencesBloc>(context)
-              .add(UnchooseGenreEvent(title: title.toLowerCase()));
+          BlocProvider.of<PreferencesBloc>(context).add(
+            UnchooseGenreEvent(
+              title: title.toLowerCase(),
+            ),
+          );
         }
-        isVisible = !isVisible;
+        setState(() {
+          isVisible = !isVisible;
+        });
       },
       child: Container(
         child: Column(
@@ -49,7 +56,7 @@ class GenreCardState extends State<GenreCard> {
           children: <Widget>[
             Stack(
               alignment: AlignmentDirectional.topEnd,
-              children: [
+              children: <Widget>[
                 Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
@@ -57,9 +64,13 @@ class GenreCardState extends State<GenreCard> {
                   width: 98,
                   height: 98,
                   margin: const EdgeInsets.only(
-                      top: 8, bottom: 16, left: 8, right: 8),
+                    top: 8,
+                    bottom: 16,
+                    left: 8,
+                    right: 8,
+                  ),
                   child: Image.asset(
-                    AppImages.genreImageList[index],
+                    AppImages.genreImageList[picture],
                     width: 98,
                     height: 98,
                   ),

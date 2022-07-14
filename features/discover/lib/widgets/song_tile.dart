@@ -54,7 +54,7 @@ class SongTile extends StatelessWidget {
                               Text(
                                 song.artist,
                                 style: AppFonts.bodyRegular.copyWith(
-                                  color: AppTheme.inactiveColor,
+                                  color: AppTheme.inactivePrimaryColor,
                                 ),
                               ),
                             ],
@@ -69,11 +69,11 @@ class SongTile extends StatelessWidget {
                     Text(
                       song.duration,
                       style: AppFonts.bodyRegular
-                          .copyWith(color: AppTheme.inactiveColor),
+                          .copyWith(color: AppTheme.inactivePrimaryColor),
                     ),
                     IconButton(
                         padding: EdgeInsets.zero,
-                        color: AppTheme.inactiveColor,
+                        color: AppTheme.inactivePrimaryColor,
                         icon: SvgPicture.asset(
                           AppImages.moreVertical,
                           width: 20,
