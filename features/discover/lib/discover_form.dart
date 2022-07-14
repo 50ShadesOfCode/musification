@@ -40,7 +40,9 @@ class DiscoverFormState extends State<DiscoverForm>
         indicatorColor: AppTheme.activeColor,
         labelColor: AppTheme.primaryColor,
         unselectedLabelColor: AppTheme.primaryColor,
-        labelStyle: AppFonts.bodyBold,
+        labelStyle: AppFonts.sfUi14Bold.copyWith(
+          color: AppTheme.activeColor,
+        ),
         padding: const EdgeInsets.only(
           bottom: Dimensions.PADDING_24,
           left: Dimensions.PADDING_24,
@@ -63,9 +65,11 @@ class DiscoverFormState extends State<DiscoverForm>
         automaticallyImplyLeading: false,
         height: 140,
         centerTitle: true,
-        title: const Text(
+        title: Text(
           'Discover',
-          style: AppFonts.headline3,
+          style: AppFonts.sfUi18Bold.copyWith(
+            color: AppTheme.activeColor,
+          ),
         ),
         actions: <Widget>[
           IconButton(

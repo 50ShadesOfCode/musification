@@ -59,7 +59,7 @@ extension HomeNavItemViewMapper on HomeNavigationItem {
         ),
         Text(
           toViewString(),
-          style: AppFonts.tips.copyWith(
+          style: AppFonts.sfUi12Regular.copyWith(
             color: isSelected
                 ? AppTheme.activeColor
                 : AppTheme.inactivePrimaryColor,

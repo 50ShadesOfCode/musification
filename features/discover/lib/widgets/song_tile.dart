@@ -49,11 +49,13 @@ class SongTile extends StatelessWidget {
                             children: <Widget>[
                               Text(
                                 song.title,
-                                style: AppFonts.bodyBold,
+                                style: AppFonts.sfUi14Bold.copyWith(
+                                  color: AppTheme.activeColor,
+                                ),
                               ),
                               Text(
                                 song.artist,
-                                style: AppFonts.bodyRegular.copyWith(
+                                style: AppFonts.sfUi14Regular.copyWith(
                                   color: AppTheme.inactivePrimaryColor,
                                 ),
                               ),
@@ -68,7 +70,7 @@ class SongTile extends StatelessWidget {
                   children: <Widget>[
                     Text(
                       song.duration,
-                      style: AppFonts.bodyRegular
+                      style: AppFonts.sfUi14Regular
                           .copyWith(color: AppTheme.inactivePrimaryColor),
                     ),
                     IconButton(
