@@ -13,7 +13,7 @@ class UserCredentials {
     required this.password,
   });
 
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => <String, dynamic>{
         'username': username,
         'password': password,
       };

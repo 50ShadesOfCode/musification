@@ -33,7 +33,9 @@ class PreferencesFormState extends State<PreferencesForm> {
       appBar: AppBar(
         title: Text(
           AppLocalizations.ofGlobalContext('chooseGenres'),
-          style: AppFonts.headline3,
+          style: AppFonts.sfUi18Bold.copyWith(
+            color: AppTheme.activeColor,
+          ),
         ),
       ),
       body: BlocBuilder<PreferencesBloc, PreferencesState>(

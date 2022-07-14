@@ -16,7 +16,6 @@ class DataDI {
     await initPrefs();
     appLocator.registerSingleton<HttpClient>(
       HttpClient(
-        prefsProvider: appLocator.get<PrefsProvider>(),
         baseUrl: _base_url,
       ),
     );

@@ -19,7 +19,7 @@ class PreferencesBloc extends Bloc<PreferencesEvent, PreferencesState> {
   })  : _appRouter = appRouter,
         _setPreferredUseCase = setPreferredUseCase,
         super(PreferencesState(
-          chosenGenres: <String>[],
+          chosenGenres: const <String>[],
           chosenGenresAmount: 0,
           isDoneButtonVisible: false,
         )) {

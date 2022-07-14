@@ -11,7 +11,6 @@
   "notregistered" : "Don't have an account?",
   "or" : "or",
   "done" : "Done",
-<<<<<<< HEAD
   "chooseGenres": "Choose 3 or more genres you like",
   "punk": "Punk",
   "indie": "Indie",
@@ -25,7 +24,4 @@
   "chillout": "Chillout",
   "jazz": "Jazz",
   "classical": "Classical"
-=======
-  "chooseGenres": "Choose 3 or more genres you like"
->>>>>>> 176816e (Add genre preferences screen.)
 }
