@@ -41,7 +41,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthorizationState> {
           _signInUseCase.execute(<String>[event.username, event.password]);
         } catch (e) {
           _appRouter.push(
-              ErrorScreen.page(_exceptionMapper.mapExceptionToErrorText(e)));
+              ErrorRoute.page(_exceptionMapper.mapExceptionToErrorText(e)));
           emit(state);
           return;
         }
@@ -65,7 +65,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthorizationState> {
       }
     } on AppException catch (e) {
       _appRouter
-          .push(ErrorScreen.page(_exceptionMapper.mapExceptionToErrorText(e)));
+          .push(ErrorRoute.page(_exceptionMapper.mapExceptionToErrorText(e)));
     }
   }
 

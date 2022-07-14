@@ -6,7 +6,6 @@ import 'package:shared_dependencies/utils.dart';
 
 class UserCredentials {
   String username;
-
   String password;
 
   UserCredentials({
