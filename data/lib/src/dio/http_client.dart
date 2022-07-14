@@ -1,22 +1,18 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
-import 'package:data/src/prefs/prefs_provider.dart';
 import 'package:domain/domain.dart';
 import 'package:shared_dependencies/crypto.dart';
 import 'package:shared_dependencies/dio.dart';
-import 'package:shared_dependencies/network.dart';
 import 'package:shared_dependencies/utils.dart';
 
 class HttpClient {
   final Dio _dio;
-  final PrefsProvider _prefsProvider;
   static const String _API_KEY = '9f40d4ad9040a038459af70e0aa6801f';
   static const String _API_SECRET = '378a01463883c3c136ee38e970fb5a74';
 
-  HttpClient({required PrefsProvider prefsProvider, required String baseUrl})
-      : _prefsProvider = prefsProvider,
-        _dio = Dio(
+  HttpClient({required String baseUrl})
+      : _dio = Dio(
           BaseOptions(
             baseUrl: baseUrl,
             headers: <String, dynamic>{
