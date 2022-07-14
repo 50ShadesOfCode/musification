@@ -94,7 +94,7 @@ class _AuthScreenState extends State<AuthScreen> {
                           child: Text(
                             AppLocalizations.ofGlobalContext('or'),
                             style: const TextStyle(
-                              color: AppTheme.secondaryColor1,
+                              color: AppTheme.secondaryColor,
                             ),
                           ),
                         ),
@@ -109,7 +109,7 @@ class _AuthScreenState extends State<AuthScreen> {
                           Text(
                             AppLocalizations.ofGlobalContext('notregistered'),
                             style: const TextStyle(
-                              color: AppTheme.secondaryColor1,
+                              color: AppTheme.secondaryColor,
                             ),
                           ),
                           TextButton(

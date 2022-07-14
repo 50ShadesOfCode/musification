@@ -8,7 +8,7 @@ class AuthDivider extends StatelessWidget {
       width: 150,
       child: Divider(
         thickness: 1,
-        color: AppTheme.secondaryColor1,
+        color: AppTheme.secondaryColor,
       ),
     );
   }

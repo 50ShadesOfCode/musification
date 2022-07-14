@@ -64,9 +64,7 @@ class HttpClient {
                 return handler.next(response);
               },
               onError: (DioError error, ErrorInterceptorHandler handler) async {
-                final ConnectivityResult connectivityResult =
-                    await Connectivity().checkConnectivity();
-                if (connectivityResult == ConnectivityResult.none) {
+                if (error.type == DioErrorType.connectTimeout) {
                   throw NoInternetError('No internet connection');
                 }
 
