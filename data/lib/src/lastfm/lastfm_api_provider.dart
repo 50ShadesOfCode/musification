@@ -51,6 +51,8 @@ class LastFMProvider {
         ))['tracks']['track'] as List<dynamic>,
       );
     }
+    print(genres);
+    print(response);
     for (final List<dynamic> songList in response) {
       for (int i = 0; i < 50; i++) {
         result.add(Song.fromJson(songList[i] as Map<String, dynamic>));

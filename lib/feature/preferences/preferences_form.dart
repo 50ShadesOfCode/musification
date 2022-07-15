@@ -11,19 +11,19 @@ class PreferencesForm extends StatefulWidget {
 }
 
 class PreferencesFormState extends State<PreferencesForm> {
-  final List<String> _genreTitles = <String>[
-    AppLocalizations.ofGlobalContext('punk'),
-    AppLocalizations.ofGlobalContext('indie'),
-    AppLocalizations.ofGlobalContext('metal'),
-    AppLocalizations.ofGlobalContext('pop'),
-    AppLocalizations.ofGlobalContext('rap'),
-    AppLocalizations.ofGlobalContext('alternative'),
-    AppLocalizations.ofGlobalContext('rock'),
-    AppLocalizations.ofGlobalContext('electronic'),
-    AppLocalizations.ofGlobalContext('folk'),
-    AppLocalizations.ofGlobalContext('chillout'),
-    AppLocalizations.ofGlobalContext('jazz'),
-    AppLocalizations.ofGlobalContext('classical'),
+  final List<String> _genres = <String>[
+    'punk',
+    'indie',
+    'metal',
+    'pop',
+    'rap',
+    'alternative',
+    'rock',
+    'electronic',
+    'folk',
+    'chillout',
+    'jazz',
+    'classical',
   ];
 
   @override
@@ -53,11 +53,11 @@ class PreferencesFormState extends State<PreferencesForm> {
                         maxCrossAxisExtent: 150,
                         mainAxisExtent: 146,
                       ),
-                      itemCount: _genreTitles.length,
+                      itemCount: _genres.length,
                       itemBuilder: (BuildContext context, int index) {
                         return GenreCard(
                           picture: index,
-                          title: _genreTitles[index],
+                          genre: _genres[index],
                         );
                       }),
                   margin: const EdgeInsets.only(bottom: 80),

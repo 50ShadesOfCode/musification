@@ -4,18 +4,18 @@ import 'package:flutter/material.dart';
 abstract class PreferencesEvent {}
 
 class ChooseGenreEvent extends PreferencesEvent {
-  final String title;
+  final String genre;
 
   ChooseGenreEvent({
-    required this.title,
+    required this.genre,
   });
 }
 
 class UnchooseGenreEvent extends PreferencesEvent {
-  final String title;
+  final String genre;
 
   UnchooseGenreEvent({
-    required this.title,
+    required this.genre,
   });
 }
 

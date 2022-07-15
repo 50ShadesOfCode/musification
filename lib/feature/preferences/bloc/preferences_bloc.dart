@@ -19,7 +19,7 @@ class PreferencesBloc extends Bloc<PreferencesEvent, PreferencesState> {
   })  : _appRouter = appRouter,
         _setPreferredUseCase = setPreferredUseCase,
         super(PreferencesState(
-          chosenGenres: const <String>[],
+          chosenGenres: <String>[],
           chosenGenresAmount: 0,
           isDoneButtonVisible: false,
         )) {
@@ -31,7 +31,7 @@ class PreferencesBloc extends Bloc<PreferencesEvent, PreferencesState> {
   Future<void> _onChooseGenreEvent(
       ChooseGenreEvent event, Emitter<PreferencesState> emit) async {
     List<String> chosenGenres = state.chosenGenres;
-    chosenGenres.add(event.title);
+    chosenGenres.add(event.genre);
     if (state.chosenGenresAmount + 1 < 3) {
       emit(state.copyWith(
         chosenGenresAmount: state.chosenGenresAmount + 1,
@@ -50,7 +50,7 @@ class PreferencesBloc extends Bloc<PreferencesEvent, PreferencesState> {
   Future<void> _onUnchooseGenreEvent(
       UnchooseGenreEvent event, Emitter<PreferencesState> emit) async {
     List<String> chosenGenres = state.chosenGenres;
-    chosenGenres.remove(event.title);
+    chosenGenres.remove(event.genre);
     if (state.chosenGenresAmount - 1 < 3) {
       emit(state.copyWith(
         chosenGenresAmount: state.chosenGenresAmount - 1,

@@ -1,3 +1,4 @@
+import 'package:core/core.dart';
 import 'package:core_ui/core_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -6,10 +7,10 @@ import 'package:shared_dependencies/bloc.dart';
 
 class GenreCard extends StatefulWidget {
   final int picture;
-  final String title;
+  final String genre;
   const GenreCard({
     required this.picture,
-    required this.title,
+    required this.genre,
   });
 
   @override
@@ -18,7 +19,7 @@ class GenreCard extends StatefulWidget {
 
 class GenreCardState extends State<GenreCard> {
   late int picture;
-  late String title;
+  late String genre;
 
   bool isVisible = false;
 
@@ -26,7 +27,7 @@ class GenreCardState extends State<GenreCard> {
   void initState() {
     super.initState();
     picture = widget.picture;
-    title = widget.title;
+    genre = widget.genre;
   }
 
   @override
@@ -36,13 +37,13 @@ class GenreCardState extends State<GenreCard> {
         if (!isVisible) {
           BlocProvider.of<PreferencesBloc>(context).add(
             ChooseGenreEvent(
-              title: title.toLowerCase(),
+              genre: genre.toLowerCase(),
             ),
           );
         } else {
           BlocProvider.of<PreferencesBloc>(context).add(
             UnchooseGenreEvent(
-              title: title.toLowerCase(),
+              genre: genre.toLowerCase(),
             ),
           );
         }
@@ -83,7 +84,7 @@ class GenreCardState extends State<GenreCard> {
             ),
             Container(
               child: Text(
-                title,
+                AppLocalizations.ofGlobalContext(genre),
                 style: const TextStyle(
                   color: AppTheme.activeColor,
                 ),
