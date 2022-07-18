@@ -1,6 +1,7 @@
 import 'package:core/core.dart';
 import 'package:core_ui/core_ui.dart';
 import 'package:discover/bloc/discover_bloc.dart';
+import 'package:discover/search/bloc/search_bloc.dart';
 import 'package:discover/search/search_form.dart';
 import 'package:discover/song_list/bloc/song_list_bloc.dart';
 import 'package:discover/song_list/song_list.dart';
@@ -59,62 +60,73 @@ class DiscoverFormState extends State<DiscoverForm>
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<DiscoverBloc, DiscoverState>(
-      builder: (BuildContext context, DiscoverState state) => PageView(
-        physics: const NeverScrollableScrollPhysics(),
-        controller: state.pageController,
-        children: <Widget>[
-          Scaffold(
-            appBar: AppBarWidget(
-              automaticallyImplyLeading: false,
-              height: 140,
-              centerTitle: true,
-              title: Text(
-                'Discover',
-                style: AppFonts.sfUi18Bold.copyWith(
-                  color: AppTheme.activeColor,
+    return BlocProvider<DiscoverBloc>(
+      create: (BuildContext context) => DiscoverBloc(
+        appRouter: appLocator.get<AppRouter>(),
+      ),
+      child: BlocBuilder<DiscoverBloc, DiscoverState>(
+        builder: (BuildContext context, DiscoverState state) => PageView(
+          physics: const NeverScrollableScrollPhysics(),
+          controller: state.pageController,
+          children: <Widget>[
+            Scaffold(
+              appBar: AppBarWidget(
+                automaticallyImplyLeading: false,
+                height: 140,
+                centerTitle: true,
+                title: Text(
+                  'Discover',
+                  style: AppFonts.sfUi18Bold.copyWith(
+                    color: AppTheme.activeColor,
+                  ),
                 ),
+                actions: <Widget>[
+                  IconButton(
+                    onPressed: () {
+                      BlocProvider.of<DiscoverBloc>(context)
+                          .add(SearchPressedEvent());
+                    },
+                    icon: SvgPicture.asset(AppImages.search),
+                  )
+                ],
+                bottom: _tabBar,
               ),
-              actions: <Widget>[
-                IconButton(
-                  onPressed: () {
-                    BlocProvider.of<DiscoverBloc>(context).add(SearchEvent());
-                  },
-                  icon: SvgPicture.asset(AppImages.search),
-                )
-              ],
-              bottom: _tabBar,
+              body: TabBarView(
+                controller: _tabController,
+                children: <Widget>[
+                  BlocProvider<SongListBloc>(
+                    create: (BuildContext context) => SongListBloc(
+                      getPreferredGenresUseCase:
+                          appLocator.get<GetPreferredGenresUseCase>(),
+                      getRecommendedTracksUseCase:
+                          appLocator.get<GetRecommendedTracksUseCase>(),
+                      appRouter: appLocator.get<AppRouter>(),
+                      getTopTracksUseCase:
+                          appLocator.get<GetTopTracksUseCase>(),
+                    )..add(FetchRecommendedSongs()),
+                    child: const SongList(listKey: 'recommended'),
+                  ),
+                  BlocProvider<SongListBloc>(
+                    create: (BuildContext context) => SongListBloc(
+                      getPreferredGenresUseCase:
+                          appLocator.get<GetPreferredGenresUseCase>(),
+                      getRecommendedTracksUseCase:
+                          appLocator.get<GetRecommendedTracksUseCase>(),
+                      appRouter: appLocator.get<AppRouter>(),
+                      getTopTracksUseCase:
+                          appLocator.get<GetTopTracksUseCase>(),
+                    )..add(FetchPopularSongs()),
+                    child: const SongList(listKey: 'popular'),
+                  ),
+                ],
+              ),
             ),
-            body: TabBarView(
-              controller: _tabController,
-              children: <Widget>[
-                BlocProvider<SongListBloc>(
-                  create: (BuildContext context) => SongListBloc(
-                    getPreferredGenresUseCase:
-                        appLocator.get<GetPreferredGenresUseCase>(),
-                    getRecommendedTracksUseCase:
-                        appLocator.get<GetRecommendedTracksUseCase>(),
-                    appRouter: appLocator.get<AppRouter>(),
-                    getTopTracksUseCase: appLocator.get<GetTopTracksUseCase>(),
-                  )..add(FetchRecommendedSongs()),
-                  child: const SongList(listKey: 'recommended'),
-                ),
-                BlocProvider<SongListBloc>(
-                  create: (BuildContext context) => SongListBloc(
-                    getPreferredGenresUseCase:
-                        appLocator.get<GetPreferredGenresUseCase>(),
-                    getRecommendedTracksUseCase:
-                        appLocator.get<GetRecommendedTracksUseCase>(),
-                    appRouter: appLocator.get<AppRouter>(),
-                    getTopTracksUseCase: appLocator.get<GetTopTracksUseCase>(),
-                  )..add(FetchPopularSongs()),
-                  child: const SongList(listKey: 'popular'),
-                ),
-              ],
+            BlocProvider<SearchBloc>(
+              create: (BuildContext context) => SearchBloc(),
+              child: SearchForm(),
             ),
-          ),
-          SearchForm(),
-        ],
+          ],
+        ),
       ),
     );
   }

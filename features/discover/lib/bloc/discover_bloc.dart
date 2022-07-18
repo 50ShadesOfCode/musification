@@ -13,12 +13,19 @@ class DiscoverBloc extends Bloc<DiscoverEvent, DiscoverState> {
   DiscoverBloc({required AppRouter appRouter})
       : _appRouter = appRouter,
         super(DiscoverState(pageController: PageController())) {
-    on<SearchEvent>(_onSearchEvent);
+    on<SearchPressedEvent>(_onSearchEvent);
+    on<CancelPressedEvent>(_onCancelPressedEvent);
   }
   Future<void> _onSearchEvent(
-      SearchEvent event, Emitter<DiscoverState> emit) async {
+      SearchPressedEvent event, Emitter<DiscoverState> emit) async {
     state.pageController.jumpToPage(1);
     //_appRouter.push(Search.page());
+    emit(state);
+  }
+
+  Future<void> _onCancelPressedEvent(
+      CancelPressedEvent event, Emitter<DiscoverState> emit) async {
+    state.pageController.jumpToPage(0);
     emit(state);
   }
 }

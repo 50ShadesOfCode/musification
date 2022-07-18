@@ -30,5 +30,7 @@
   "navigationToFavourite": "Favourite",
   "navigationToProfile": "Profile",
   "tabToRecommended": "Recommended",
-  "tabToPopular": "Popular"
+  "tabToPopular": "Popular",
+  "cancel": "Cancel",
+  "searchLabel": "Enter album, track or artist"
 }

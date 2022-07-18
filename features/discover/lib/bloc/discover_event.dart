@@ -3,4 +3,6 @@ import 'package:flutter/foundation.dart';
 @immutable
 abstract class DiscoverEvent {}
 
-class SearchEvent extends DiscoverEvent {}
+class SearchPressedEvent extends DiscoverEvent {}
+
+class CancelPressedEvent extends DiscoverEvent {}
