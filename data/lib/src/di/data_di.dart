@@ -6,17 +6,16 @@ import 'package:data/src/repository/auth_repository_impl.dart';
 import 'package:data/src/repository/launch_repository_impl.dart';
 import 'package:data/src/repository/prefs_repository_impl.dart';
 import 'package:domain/domain.dart';
+import 'package:fpmi_music_band/config.dart';
 
 final DataDI dataDI = DataDI();
 
 class DataDI {
-  static const String _base_url = 'http://ws.audioscrobbler.com/2.0/';
-
   Future<void> initDependencies() async {
     await initPrefs();
     appLocator.registerSingleton<HttpClient>(
       HttpClient(
-        baseUrl: _base_url,
+        baseUrl: Config.base_url,
       ),
     );
     appLocator.registerSingleton<LastFMProvider>(
