@@ -3,12 +3,18 @@ import 'package:core_ui/core_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
+List<String> texts = <String>[
+  AppLocalizations.ofGlobalContext('onboarding_music'),
+  AppLocalizations.ofGlobalContext('onboarding_sound'),
+  AppLocalizations.ofGlobalContext('onboarding_listen'),
+];
+
 List<PageViewModel> pages = <PageViewModel>[
   PageViewModel(
     titleWidget: Text(
       texts[0],
       textAlign: TextAlign.center,
-      style: AppFonts.headline1,
+      style: AppFonts.sfUi24bold.copyWith(color: AppTheme.activeColor),
     ),
     image: Container(
         width: 100,
@@ -25,7 +31,7 @@ List<PageViewModel> pages = <PageViewModel>[
     titleWidget: Text(
       texts[1],
       textAlign: TextAlign.center,
-      style: AppFonts.headline1,
+      style: AppFonts.sfUi24bold.copyWith(color: AppTheme.activeColor),
     ),
     image: Container(
         width: 100,
@@ -42,7 +48,7 @@ List<PageViewModel> pages = <PageViewModel>[
     titleWidget: Text(
       texts[2],
       textAlign: TextAlign.center,
-      style: AppFonts.headline1,
+      style: AppFonts.sfUi24bold.copyWith(color: AppTheme.activeColor),
     ),
     image: Container(
         width: 100,
@@ -61,12 +67,6 @@ const List<String> icons = <String>[
   'assets/images/png/music_folder.png',
   'assets/images/png/like.png',
   'assets/images/png/earphone.png',
-];
-
-List<String> texts = <String>[
-  AppLocalizations.ofGlobalContext('onboarding_music'),
-  AppLocalizations.ofGlobalContext('onboarding_sound'),
-  AppLocalizations.ofGlobalContext('onboarding_listen'),
 ];
 
 Widget dots(int index) {

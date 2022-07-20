@@ -4,7 +4,9 @@ import 'package:data/src/lastfm/lastfm_api_provider.dart';
 import 'package:data/src/prefs/prefs_provider.dart';
 import 'package:data/src/repository/auth_repository_impl.dart';
 import 'package:data/src/repository/launch_repository_impl.dart';
+import 'package:data/src/repository/prefs_repository_impl.dart';
 import 'package:domain/domain.dart';
+import 'package:fpmi_music_band/config.dart';
 
 final DataDI dataDI = DataDI();
 
@@ -13,8 +15,8 @@ class DataDI {
     await initPrefs();
     appLocator.registerSingleton<HttpClient>(
       HttpClient(
-          prefsProvider: appLocator.get<PrefsProvider>(),
-          baseUrl: 'http://ws.audioscrobbler.com/2.0/'),
+        baseUrl: Config.base_url,
+      ),
     );
     appLocator.registerSingleton<LastFMProvider>(
       LastFMProvider(
@@ -30,6 +32,21 @@ class DataDI {
       () => AuthRepositoryImpl(
         apiProvider: appLocator.get<LastFMProvider>(),
         prefsProvider: appLocator.get<PrefsProvider>(),
+      ),
+    );
+    appLocator.registerLazySingleton<PrefsRepository>(
+      () => PrefsRepositoryImpl(
+        prefsProvider: appLocator.get<PrefsProvider>(),
+      ),
+    );
+    appLocator.registerFactory<GetPreferredUseCase>(
+      () => GetPreferredUseCase(
+        prefsRepository: appLocator.get<PrefsRepository>(),
+      ),
+    );
+    appLocator.registerFactory<SetPreferredUseCase>(
+      () => SetPreferredUseCase(
+        prefsRepository: appLocator.get<PrefsRepository>(),
       ),
     );
     appLocator.registerFactory<IsFirstLaunchUseCase>(

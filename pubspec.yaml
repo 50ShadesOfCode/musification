@@ -29,6 +29,7 @@ dependencies:
   authorization:
     path: features/authorization
   introduction_screen: ^3.0.2
+  flutter_svg: ^1.1.1
 
 dev_dependencies:
   flutter_test:

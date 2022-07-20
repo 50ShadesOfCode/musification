@@ -7,6 +7,8 @@ class PrefsProvider {
 
   static const String _keySessionKey = 'sessionKey';
 
+  static const String _keyPreferredGenres = 'preferredGenres';
+
   Future<void> initializeSharedPreferences() async {
     _sharedPreferences = await SharedPreferences.getInstance();
   }
@@ -27,5 +29,13 @@ class PrefsProvider {
   String getSessionKey() {
     final String? sessionKey = _sharedPreferences.getString(_keySessionKey);
     return sessionKey ?? '';
+  }
+
+  Future<void> setPreferredGenres(List<String> preferred) async {
+    await _sharedPreferences.setStringList(_keyPreferredGenres, preferred);
+  }
+
+  List<String> getPreferredGenres() {
+    return _sharedPreferences.getStringList(_keyPreferredGenres) ?? <String>[];
   }
 }

@@ -1,4 +1,5 @@
 import 'package:core/core.dart';
+import 'package:domain/domain.dart';
 import 'package:flutter/material.dart';
 import 'package:fpmi_music_band/feature/onboarding/bloc/onboarding_bloc.dart';
 import 'package:fpmi_music_band/feature/onboarding/onboarding_form.dart';
@@ -14,6 +15,7 @@ class OnboardingPage extends PageWithScaffoldKey<dynamic> {
         builder: (BuildContext context) => BlocProvider<OnboardingBloc>(
           create: (_) => OnboardingBloc(
             appRouter: appLocator.get<AppRouter>(),
+            setFirstLaunchUseCase: appLocator.get<SetFirstLaunchUseCase>(),
           ),
           child: SafeArea(
             child: ScaffoldMessenger(

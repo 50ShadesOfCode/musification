@@ -4,58 +4,44 @@ class AppFonts {
   static const String _robotoFamily = 'Roboto';
   static const String _sfUiFamily = 'SF UI Display';
 
-  static const TextStyle headline1 = TextStyle(
+  static const TextStyle sfUi24bold = TextStyle(
     fontFamily: _sfUiFamily,
     fontWeight: FontWeight.w700,
     fontSize: 24,
-    color: AppTheme.primaryColor,
   );
-  static const TextStyle headline3 = TextStyle(
+  static const TextStyle sfUi18Bold = TextStyle(
     fontFamily: _sfUiFamily,
     fontWeight: FontWeight.w700,
     fontSize: 18,
-    color: AppTheme.primaryColor,
   );
-  static const TextStyle headline2 = TextStyle(
+  static const TextStyle sfUi17Semibold = TextStyle(
     fontFamily: _sfUiFamily,
     fontWeight: FontWeight.w600,
     fontSize: 17,
-    color: AppTheme.primaryColor,
   );
-  static const TextStyle bodyBold = TextStyle(
+  static const TextStyle sfUi14Bold = TextStyle(
     fontFamily: _sfUiFamily,
     fontWeight: FontWeight.w700,
     fontSize: 14,
-    color: AppTheme.primaryColor,
   );
-  static const TextStyle bodyRegular = TextStyle(
+  static const TextStyle sfUi14Regular = TextStyle(
     fontFamily: _sfUiFamily,
     fontWeight: FontWeight.w400,
     fontSize: 14,
-    color: AppTheme.primaryColor,
   );
-  static const TextStyle button = TextStyle(
+  static const TextStyle sfUi14Medium = TextStyle(
     fontFamily: _sfUiFamily,
     fontWeight: FontWeight.w500,
     fontSize: 14,
-    color: AppTheme.primaryColor,
   );
-  static const TextStyle googleButton = TextStyle(
+  static const TextStyle roboto14Medium = TextStyle(
     fontFamily: _robotoFamily,
     fontWeight: FontWeight.w500,
     fontSize: 14,
-    color: AppTheme.primaryColor,
   );
-  static const TextStyle caption = TextStyle(
-    fontFamily: _sfUiFamily,
-    fontWeight: FontWeight.w400,
-    fontSize: 14,
-    color: AppTheme.primaryColor,
-  );
-  static const TextStyle tips = TextStyle(
+  static const TextStyle sfUi12Regular = TextStyle(
     fontFamily: _sfUiFamily,
     fontWeight: FontWeight.w400,
     fontSize: 12,
-    color: AppTheme.primaryColor,
   );
 }

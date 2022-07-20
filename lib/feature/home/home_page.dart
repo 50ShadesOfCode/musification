@@ -13,11 +13,13 @@ class HomePage extends Page<void> {
   Route<dynamic> createRoute(BuildContext context) {
     return MaterialPageRoute<void>(
       settings: this,
-      builder: (BuildContext context) => const Scaffold(
+      builder: (BuildContext context) => Scaffold(
         body: Center(
           child: Text(
             'Home',
-            style: AppFonts.headline1,
+            style: AppFonts.sfUi24bold.copyWith(
+              color: AppTheme.activeColor,
+            ),
           ),
         ),
       ),

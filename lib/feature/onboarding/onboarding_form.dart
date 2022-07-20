@@ -27,6 +27,7 @@ class OnboardingFormState extends State<OnboardingForm> {
           showNextButton: false,
           showDoneButton: false,
           isProgress: false,
+          freeze: true,
           globalHeader: Align(
             alignment: Alignment.topRight,
             child: Container(
@@ -42,7 +43,8 @@ class OnboardingFormState extends State<OnboardingForm> {
                 child: Text(
                   AppLocalizations.ofGlobalContext('skip'),
                   textAlign: TextAlign.center,
-                  style: AppFonts.button,
+                  style: AppFonts.sfUi14Medium
+                      .copyWith(color: AppTheme.activeColor),
                 ),
               ),
             ),
@@ -73,7 +75,8 @@ class OnboardingFormState extends State<OnboardingForm> {
               },
               child: Text(
                 AppLocalizations.ofGlobalContext('next'),
-                style: AppFonts.button,
+                style:
+                    AppFonts.sfUi14Medium.copyWith(color: AppTheme.activeColor),
               ),
             ),
           ),
