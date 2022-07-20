@@ -1,0 +1,27 @@
+name: authorization
+description: A new Flutter package project.
+version: 0.0.1
+homepage:
+publish_to: 'none'
+
+environment:
+  sdk: ">=2.16.2 <3.0.0"
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  fpmi_music_band:
+    path: ../../
+
+  shared_dependencies:
+    path: ../../shared_dependencies
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.1
+
+flutter:

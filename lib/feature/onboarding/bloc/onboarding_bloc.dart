@@ -1,4 +1,4 @@
-import 'package:fpmi_music_band/feature/home/home.dart';
+import 'package:authorization/authorization_feature.dart';
 import 'package:fpmi_music_band/router/router.dart';
 import 'package:shared_dependencies/bloc.dart';
 
@@ -20,10 +20,9 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
   }
 
   Future<void> _onAddEvent(
-      OnboardingEvent event, Emitter<OnboardingState> emit) async {
+      AddEvent event, Emitter<OnboardingState> emit) async {
     if (state.index == 2) {
-      //TODO : Set to login
-      _appRouter.replace(Home.page);
+      _appRouter.replace(AuthFeature.page());
       emit(state);
     } else {
       emit(state.copyWith(index: state.index + 1));
@@ -31,9 +30,8 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
   }
 
   Future<void> _onSkipEvent(
-      OnboardingEvent event, Emitter<OnboardingState> emit) async {
-    //TODO : Set to login
-    _appRouter.replace(Home.page);
+      SkipEvent event, Emitter<OnboardingState> emit) async {
+    _appRouter.replace(AuthFeature.page());
     emit(state);
   }
 }

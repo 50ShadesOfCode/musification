@@ -8,7 +8,6 @@ import 'package:shared_dependencies/bloc.dart';
 
 import 'bloc/splash_bloc.dart';
 
-
 class SplashPage extends PageWithScaffoldKey<dynamic> {
   @override
   Route<dynamic> createRoute(BuildContext context) =>
@@ -17,8 +16,9 @@ class SplashPage extends PageWithScaffoldKey<dynamic> {
         builder: (BuildContext context) => BlocProvider<SplashBloc>(
           create: (_) => SplashBloc(
             appRouter: appLocator.get<AppRouter>(),
-            firstLaunchUseCase: appLocator.get<IsFirstLaunchUseCase>(),
+            isFirstLaunchUseCase: appLocator.get<IsFirstLaunchUseCase>(),
             setFirstLaunchUseCase: appLocator.get<SetFirstLaunchUseCase>(),
+            isUserAuthorizedUseCase: appLocator.get<IsUserAuthorizedUseCase>(),
           )..add(InitEvent()),
           child: SafeArea(
             child: ScaffoldMessenger(
