@@ -122,7 +122,14 @@ class DiscoverFormState extends State<DiscoverForm>
               ),
             ),
             BlocProvider<SearchBloc>(
-              create: (BuildContext context) => SearchBloc(),
+              create: (BuildContext context) => SearchBloc(
+                getSearchHistoryUseCase:
+                    appLocator.get<GetSearchHistoryUseCase>(),
+                setSearchHistoryUseCase:
+                    appLocator.get<SetSearchHistoryUseCase>(),
+              )..add(
+                  InitEvent(),
+                ),
               child: SearchForm(),
             ),
           ],

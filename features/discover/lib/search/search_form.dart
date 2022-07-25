@@ -2,6 +2,7 @@ import 'package:core/core.dart';
 import 'package:core_ui/core_ui.dart';
 import 'package:discover/bloc/discover_bloc.dart';
 import 'package:discover/search/bloc/search_bloc.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shared_dependencies/bloc.dart';
@@ -45,7 +46,9 @@ class SearchFormState extends State<SearchForm> {
               child: TextField(
                 onChanged: (String value) {
                   BlocProvider.of<SearchBloc>(context).add(
-                    UpdateSearchEvent(searchValue: value),
+                    UpdateSearchEvent(
+                      searchValue: value,
+                    ),
                   );
                 },
                 controller: searchController,
@@ -62,8 +65,17 @@ class SearchFormState extends State<SearchForm> {
                   ),
                   prefixIcon: Padding(
                     padding: const EdgeInsets.all(10.0),
-                    child: SvgPicture.asset(
-                      AppImages.search,
+                    child: IconButton(
+                      icon: SvgPicture.asset(
+                        AppImages.search,
+                      ),
+                      onPressed: () {
+                        BlocProvider.of<SearchBloc>(context).add(
+                          OnSearchPressedEvent(
+                            searchValue: searchController.text,
+                          ),
+                        );
+                      },
                     ),
                   ),
                   suffixIcon: Container(
@@ -72,9 +84,7 @@ class SearchFormState extends State<SearchForm> {
                     child: IconButton(
                       icon: const Icon(Icons.clear),
                       color: AppTheme.activeColor,
-                      onPressed: () {
-                        searchController.clear();
-                      },
+                      onPressed: searchController.clear,
                     ),
                   ),
                   border: InputBorder.none,
@@ -82,6 +92,65 @@ class SearchFormState extends State<SearchForm> {
               ),
             ),
           ),
+        ),
+        body: PageView(
+          physics: const NeverScrollableScrollPhysics(),
+          children: <Widget>[
+            ScrollConfiguration(
+              behavior: const ScrollBehavior().copyWith(overscroll: false),
+              child: ListView.separated(
+                itemCount: state.searchHistory.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Card(
+                    elevation: 0,
+                    color: AppTheme.primaryColor,
+                    child: Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 24),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: Dimensions.SPACE_8,
+                        vertical: Dimensions.SPACE_16,
+                      ),
+                      child: InkWell(
+                        onTap: () {},
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            Text(
+                              state.searchHistory[index],
+                              style: AppFonts.sfUi14Regular.copyWith(
+                                color: AppTheme.secondaryColor,
+                              ),
+                            ),
+                            IconButton(
+                              onPressed: () {
+                                BlocProvider.of<SearchBloc>(context).add(
+                                  RemoveHistoryElementEvent(index: index),
+                                );
+                              },
+                              icon: const Icon(
+                                CupertinoIcons.clear,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                },
+                separatorBuilder: (BuildContext context, int index) {
+                  return Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 24),
+                    padding: EdgeInsets.zero,
+                    height: 0.5,
+                    width: 100,
+                    decoration: const BoxDecoration(
+                      color: AppTheme.secondaryColor,
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
         ),
       ),
     );

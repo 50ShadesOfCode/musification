@@ -9,6 +9,8 @@ class PrefsProvider {
 
   static const String _keyPreferredGenres = 'preferredGenres';
 
+  static const String _keySearchHistory = 'searchHistory';
+
   Future<void> initializeSharedPreferences() async {
     _sharedPreferences = await SharedPreferences.getInstance();
   }
@@ -37,5 +39,13 @@ class PrefsProvider {
 
   List<String> getPreferredGenres() {
     return _sharedPreferences.getStringList(_keyPreferredGenres) ?? <String>[];
+  }
+
+  Future<void> setSearchHistory(List<String> history) async {
+    _sharedPreferences.setStringList(_keySearchHistory, history);
+  }
+
+  List<String> getSearchHistory() {
+    return _sharedPreferences.getStringList(_keySearchHistory) ?? <String>[];
   }
 }

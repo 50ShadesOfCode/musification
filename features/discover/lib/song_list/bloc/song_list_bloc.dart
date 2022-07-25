@@ -33,7 +33,6 @@ class SongListBloc extends Bloc<SongListEvent, SongListState> {
     on<FetchRecommendedSongs>(_onFetchRecommendedSongs);
     on<FetchPopularSongs>(_onFetchPopularSongs);
   }
-  //TODO : Add fetching from API
   Future<void> _onFetchRecommendedSongs(
       FetchRecommendedSongs event, Emitter<SongListState> emit) async {
     emit(

@@ -10,11 +10,21 @@ class PrefsRepositoryImpl extends PrefsRepository {
 
   @override
   Future<void> setPreferredGenres(List<String> preferred) async {
-    await _prefsProvider.setPreferredGenres(preferred);
+    _prefsProvider.setPreferredGenres(preferred);
   }
 
   @override
   List<String> getPreferredGenres() {
     return _prefsProvider.getPreferredGenres();
+  }
+
+  @override
+  Future<void> setSearchHistory(List<String> history) async {
+    _prefsProvider.setSearchHistory(history);
+  }
+
+  @override
+  List<String> getSearchHistory() {
+    return _prefsProvider.getSearchHistory();
   }
 }
