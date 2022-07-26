@@ -1,7 +1,7 @@
 import 'package:core_ui/core_ui.dart';
 import 'package:discover/discover.dart';
 import 'package:flutter/material.dart';
-import 'package:fpmi_music_band/feature/home/bloc/home_bloc.dart';
+import 'package:fpmi_music_band/feature/home/home_bloc/home_bloc.dart';
 import 'package:fpmi_music_band/feature/home/home_navigation_item.dart';
 import 'package:fpmi_music_band/feature/home/mapper/home_navigation_item_mapper.dart';
 import 'package:shared_dependencies/bloc.dart';

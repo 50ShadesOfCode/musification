@@ -32,6 +32,8 @@ dependencies:
     path: features/discover
   introduction_screen: ^3.0.2
   flutter_svg: ^1.1.1
+  just_audio: ^0.9.28
+  audio_session: ^0.1.10
 
 dev_dependencies:
   flutter_test:

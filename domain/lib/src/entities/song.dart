@@ -1,6 +1,3 @@
-import 'package:json_annotation/json_annotation.dart';
-
-//TODO: Add serialization
 class Song {
   final String title;
   final String imageUrl;
