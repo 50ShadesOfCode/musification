@@ -1,9 +1,19 @@
 import 'package:domain/domain.dart';
 
 class QueueState {
-  List<Song> queue;
-
+  SongQueue songQueue;
+  int index;
   QueueState({
-    required this.queue,
+    required this.songQueue,
+    required this.index,
   });
+
+  QueueState copyWith({
+    required SongQueue songQueue,
+    required int index,
+  }) =>
+      QueueState(
+        index: index,
+        songQueue: songQueue,
+      );
 }

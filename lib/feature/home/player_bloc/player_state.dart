@@ -1,6 +1,7 @@
 import 'package:domain/domain.dart';
 import 'package:just_audio/just_audio.dart';
 
+//Keep queue and playing index here
 class AppPlayerState {
   final AudioPlayer audioPlayer;
   final bool isPlaying;

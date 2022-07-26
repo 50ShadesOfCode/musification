@@ -22,6 +22,7 @@ class SongTile extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: Dimensions.SPACE_8),
         child: InkWell(
           onTap: () {
+            //TODO: Add queue, title and index to playevent
             BlocProvider.of<PlayerBloc>(context).add(PlayEvent(song: song));
           },
           child: Row(
