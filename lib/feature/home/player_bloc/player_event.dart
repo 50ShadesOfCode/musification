@@ -6,6 +6,8 @@ abstract class PlayerEvent {}
 
 class OpenPlayerEvent extends PlayerEvent {}
 
+class HidePlayerEvent extends PlayerEvent {}
+
 class InitEvent extends PlayerEvent {}
 
 class PauseEvent extends PlayerEvent {}

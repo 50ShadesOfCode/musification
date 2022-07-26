@@ -26,7 +26,9 @@ class HomePage extends Page<void> {
             ),
           ),
           BlocProvider<PlayerBloc>(
-            create: (BuildContext context) => PlayerBloc()..add(InitEvent()),
+            create: (BuildContext context) => PlayerBloc(
+              appRouter: appLocator.get<AppRouter>(),
+            )..add(InitEvent()),
           )
         ],
         child: HomeForm(),
