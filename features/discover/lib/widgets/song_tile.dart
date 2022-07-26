@@ -2,6 +2,8 @@ import 'package:core_ui/core_ui.dart';
 import 'package:domain/domain.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:fpmi_music_band/feature/home/player_bloc/player_bloc.dart';
+import 'package:shared_dependencies/bloc.dart';
 
 class SongTile extends StatelessWidget {
   final Song song;
@@ -19,7 +21,9 @@ class SongTile extends StatelessWidget {
         margin: const EdgeInsets.symmetric(horizontal: 16),
         padding: const EdgeInsets.symmetric(vertical: Dimensions.SPACE_8),
         child: InkWell(
-          onTap: () {},
+          onTap: () {
+            BlocProvider.of<PlayerBloc>(context).add(PlayEvent(song: song));
+          },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[

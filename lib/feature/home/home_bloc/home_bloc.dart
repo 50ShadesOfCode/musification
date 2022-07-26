@@ -17,7 +17,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         super(const HomeState(
           title: 'Discover',
           selectedTab: HomeNavigationItem.DISCOVER,
-          playingEntity: null,
         )) {
     on<ChangeTab>(_onChangeTab);
   }
@@ -27,7 +26,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       state.copyWith(
         title: state.title,
         selectedTab: event.tab,
-        playingEntity: state.playingEntity,
       ),
     );
   }

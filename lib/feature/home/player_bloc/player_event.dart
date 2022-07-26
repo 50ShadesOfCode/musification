@@ -4,6 +4,8 @@ import 'package:flutter/foundation.dart';
 @immutable
 abstract class PlayerEvent {}
 
+class OpenPlayerEvent extends PlayerEvent {}
+
 class InitEvent extends PlayerEvent {}
 
 class PauseEvent extends PlayerEvent {}

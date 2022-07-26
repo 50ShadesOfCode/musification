@@ -1,4 +1,5 @@
 import 'package:audio_session/audio_session.dart';
+import 'package:domain/domain.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:shared_dependencies/bloc.dart';
 
@@ -9,7 +10,12 @@ export 'player_event.dart';
 export 'player_state.dart';
 
 class PlayerBloc extends Bloc<PlayerEvent, AppPlayerState> {
-  PlayerBloc() : super(AppPlayerState(audioPlayer: AudioPlayer())) {
+  PlayerBloc()
+      : super(AppPlayerState(
+          audioPlayer: AudioPlayer(),
+          isPlaying: false,
+          playingEntity: null,
+        )) {
     on<InitEvent>(_onInitEvent);
     on<PlayEvent>(_onPlayEvent);
     on<PauseEvent>(_onPauseEvent);
@@ -24,6 +30,7 @@ class PlayerBloc extends Bloc<PlayerEvent, AppPlayerState> {
         onError: (Object e, StackTrace stackTrace) {
       print('A stream error occurred: $e');
     });
+    emit(state);
   }
 
   Future<void> _onPlayEvent(
@@ -33,7 +40,10 @@ class PlayerBloc extends Bloc<PlayerEvent, AppPlayerState> {
           'https://s3.amazonaws.com/scifri-episodes/scifri20181123-episode.mp3')));
     } catch (e) {
       print('Error loading audio source: $e');
+      emit(state.copyWith(isPlaying: false));
+      return;
     }
+    emit(state.copyWith(isPlaying: true));
   }
 
   Future<void> _onPauseEvent(
