@@ -1,8 +1,9 @@
 import 'package:audio_session/audio_session.dart';
+import 'package:discover/player/player.dart';
+import 'package:domain/domain.dart';
 import 'package:fpmi_music_band/router/router.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:shared_dependencies/bloc.dart';
-import 'package:discover/player/player.dart';
 
 import 'player_event.dart';
 import 'player_state.dart';
@@ -10,17 +11,25 @@ import 'player_state.dart';
 export 'player_event.dart';
 export 'player_state.dart';
 
+//TODO: Add carouselcontroller to state
 class PlayerBloc extends Bloc<PlayerEvent, AppPlayerState> {
   final AppRouter _appRouter;
 
   PlayerBloc({
     required AppRouter appRouter,
   })  : _appRouter = appRouter,
-        super(AppPlayerState(
-          audioPlayer: AudioPlayer(),
-          isPlaying: false,
-          playingEntity: null,
-        )) {
+        super(
+          AppPlayerState(
+            audioPlayer: AudioPlayer(),
+            isPlaying: false,
+            playingEntity: null,
+            index: 0,
+            songQueue: SongQueue(
+              queue: <Song>[],
+              title: '',
+            ),
+          ),
+        ) {
     on<InitEvent>(_onInitEvent);
     on<PlayEvent>(_onPlayEvent);
     on<PauseEvent>(_onPauseEvent);
@@ -48,15 +57,25 @@ class PlayerBloc extends Bloc<PlayerEvent, AppPlayerState> {
 
   Future<void> _onPlayEvent(
       PlayEvent event, Emitter<AppPlayerState> emit) async {
+    //TODO: Find better api:)
     try {
       await state.audioPlayer.setAudioSource(AudioSource.uri(Uri.parse(
           'https://s3.amazonaws.com/scifri-episodes/scifri20181123-episode.mp3')));
     } catch (e) {
       print('Error loading audio source: $e');
-      emit(state.copyWith(isPlaying: false));
+      emit(state.copyWith(
+        isPlaying: false,
+        songQueue: state.songQueue,
+        index: state.index,
+      ));
       return;
     }
-    emit(state.copyWith(isPlaying: true));
+    emit(state.copyWith(
+      isPlaying: true,
+      songQueue: event.queue,
+      index: state.index,
+      playingEntity: event.song,
+    ));
   }
 
   Future<void> _onPauseEvent(
@@ -73,7 +92,7 @@ class PlayerBloc extends Bloc<PlayerEvent, AppPlayerState> {
 
   Future<void> _onOpenPlayerEvent(
       OpenPlayerEvent event, Emitter<AppPlayerState> emit) async {
-    _appRouter.push(Player.page(state.playingEntity!, state.audioPlayer));
+    _appRouter.push(Player.page());
     emit(state);
   }
 

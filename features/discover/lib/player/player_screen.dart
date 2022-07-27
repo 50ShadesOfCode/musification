@@ -1,6 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:core/core.dart';
 import 'package:core_ui/core_ui.dart';
-import 'package:discover/player/bloc/queue_bloc.dart';
 import 'package:domain/domain.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -9,35 +9,15 @@ import 'package:just_audio/just_audio.dart';
 import 'package:shared_dependencies/bloc.dart';
 
 class PlayerScreen extends StatefulWidget {
-  final Song song;
-  final AudioPlayer audioPlayer;
-
-  PlayerScreen({
-    required this.song,
-    required this.audioPlayer,
-  });
-
   @override
   _PlayerScreenState createState() => _PlayerScreenState();
 }
 
 class _PlayerScreenState extends State<PlayerScreen> {
-  //unnecessary parameters if using playerbloc
-  late Song song;
-  late AudioPlayer audioPlayer;
-
-  @override
-  void initState() {
-    super.initState();
-    song = widget.song;
-    audioPlayer = widget.audioPlayer;
-  }
-
   @override
   Widget build(BuildContext context) {
-    //Use blocbuilder with playerbloc instead
-    return BlocBuilder<QueueBloc, QueueState>(
-      builder: (BuildContext context, QueueState state) => Scaffold(
+    return BlocBuilder<PlayerBloc, AppPlayerState>(
+      builder: (BuildContext context, AppPlayerState state) => Scaffold(
         appBar: AppBar(
           leading: IconButton(
             onPressed: () {
@@ -57,7 +37,7 @@ class _PlayerScreenState extends State<PlayerScreen> {
                 ),
               ),
               Text(
-                state.songQueue.title,
+                AppLocalizations.ofGlobalContext(state.songQueue.title + 'Key'),
                 style: AppFonts.sfUi18Bold.copyWith(
                   color: AppTheme.activeColor,
                 ),
@@ -73,10 +53,20 @@ class _PlayerScreenState extends State<PlayerScreen> {
               CarouselSlider.builder(
                 itemCount: state.songQueue.queue.length,
                 itemBuilder: (BuildContext context, int index, int realIndex) =>
-                    Container(),
+                    Container(
+                  width: 213,
+                  height: 213,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Image.network(state.playingEntity!.imageUrl),
+                ),
                 options: CarouselOptions(
                   autoPlay: false,
                   enlargeCenterPage: true,
+                  aspectRatio: 2.0,
+                  enableInfiniteScroll: false,
+                  initialPage: state.index,
                 ),
               ),
             ],

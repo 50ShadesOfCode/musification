@@ -1,4 +1,3 @@
-import 'package:domain/domain.dart';
 import 'package:fpmi_music_band/feature/home/home_navigation_item.dart';
 
 class HomeState {

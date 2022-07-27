@@ -32,5 +32,7 @@
   "tabToRecommended": "Рекомендованные",
   "tabToPopular": "Популярные",
   "cancel": "Назад",
-  "searchLabel": "Трек, альбом, исполнитель"
+  "searchLabel": "Трек, альбом, исполнитель",
+  "recommendedKey": "Рекомендованные",
+  "popularKey": "Популярные"
 }

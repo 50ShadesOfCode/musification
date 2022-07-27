@@ -15,8 +15,12 @@ class PauseEvent extends PlayerEvent {}
 class ResumeEvent extends PlayerEvent {}
 
 class PlayEvent extends PlayerEvent {
+  SongQueue queue;
+  final int index;
   final Song song;
   PlayEvent({
+    required this.queue,
+    required this.index,
     required this.song,
   });
 }
