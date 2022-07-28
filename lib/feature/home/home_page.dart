@@ -1,4 +1,5 @@
 import 'package:core/core.dart';
+import 'package:data/data.dart';
 import 'package:flutter/material.dart';
 import 'package:fpmi_music_band/feature/home/home.dart';
 import 'package:fpmi_music_band/feature/home/home_bloc/home_bloc.dart';
@@ -27,6 +28,7 @@ class HomePage extends Page<void> {
           ),
           BlocProvider<PlayerBloc>(
             create: (BuildContext context) => PlayerBloc(
+              audioProvider: appLocator.get<AudioProvider>(),
               appRouter: appLocator.get<AppRouter>(),
             )..add(InitEvent()),
           )

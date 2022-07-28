@@ -48,16 +48,9 @@ class HomeFormState extends State<HomeForm> with TickerProviderStateMixin {
             Align(
               alignment: Alignment.bottomCenter,
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
-                  /*BlocBuilder<PlayerBloc, AppPlayerState>(
-                    builder: (BuildContext context, AppPlayerState state) =>
-                        PlayerWidget(
-                      playingEntity: state.playingEntity,
-                    ),
-                  ),*/
-                  Container(
-                    height: 50,
-                  ),
+                  PlayerWidget(),
                   Container(
                     color: AppTheme.primaryColor,
                     height: Dimensions.ITEM_HEIGHT_56,

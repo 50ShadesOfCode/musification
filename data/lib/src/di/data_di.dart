@@ -7,6 +7,7 @@ import 'package:data/src/repository/launch_repository_impl.dart';
 import 'package:data/src/repository/prefs_repository_impl.dart';
 import 'package:data/src/repository/track_repository_impl.dart';
 import 'package:domain/domain.dart';
+import 'package:just_audio/just_audio.dart';
 
 final DataDI dataDI = DataDI();
 
@@ -18,6 +19,11 @@ class DataDI {
     appLocator.registerSingleton<HttpClient>(
       HttpClient(
         baseUrl: _base_url,
+      ),
+    );
+    appLocator.registerLazySingleton<AudioProvider>(
+      () => AudioProvider(
+        audioPlayer: AudioPlayer(),
       ),
     );
     appLocator.registerSingleton<LastFMProvider>(
