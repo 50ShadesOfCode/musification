@@ -1,6 +1,7 @@
 library domain;
 
 export 'src/entities/auth/sign_in_result.dart';
+export 'src/entities/position_data.dart';
 export 'src/entities/queue.dart';
 export 'src/entities/session.dart';
 export 'src/entities/song.dart';

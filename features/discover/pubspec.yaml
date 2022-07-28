@@ -30,6 +30,7 @@ dependencies:
     path: ../../shared_dependencies
 
   carousel_slider: ^4.1.1
+  rxdart: ^0.27.5
 
 
 dev_dependencies:

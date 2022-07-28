@@ -6,7 +6,7 @@ import 'package:fpmi_music_band/feature/home/player_bloc/player_bloc.dart';
 import 'package:shared_dependencies/bloc.dart';
 
 class PlayerWidget extends StatefulWidget {
-  final Song playingEntity;
+  final Song? playingEntity;
 
   const PlayerWidget({
     required this.playingEntity,
@@ -17,7 +17,7 @@ class PlayerWidget extends StatefulWidget {
 }
 
 class _PlayerWidgetState extends State<PlayerWidget> {
-  late Song song;
+  late Song? song;
   double _slider = 0;
 
   @override
@@ -30,8 +30,9 @@ class _PlayerWidgetState extends State<PlayerWidget> {
   Widget build(BuildContext context) {
     return BlocBuilder<PlayerBloc, AppPlayerState>(
         builder: (BuildContext context, AppPlayerState state) {
-      if (state.isPlaying) {
+      if (state.isPlaying && song != null) {
         return Container(
+          height: Dimensions.ITEM_HEIGHT_56,
           margin: const EdgeInsets.symmetric(horizontal: 16),
           padding: const EdgeInsets.symmetric(vertical: Dimensions.SPACE_8),
           child: InkWell(
@@ -53,7 +54,7 @@ class _PlayerWidgetState extends State<PlayerWidget> {
                           image: DecorationImage(
                             fit: BoxFit.fill,
                             image: NetworkImage(
-                              song.imageUrl,
+                              song!.imageUrl,
                             ),
                           ),
                         ),
@@ -66,13 +67,13 @@ class _PlayerWidgetState extends State<PlayerWidget> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: <Widget>[
                               Text(
-                                song.title,
+                                song!.title,
                                 style: AppFonts.sfUi14Bold.copyWith(
                                   color: AppTheme.activeColor,
                                 ),
                               ),
                               Text(
-                                song.artist,
+                                song!.artist,
                                 style: AppFonts.sfUi14Regular.copyWith(
                                   color: AppTheme.inactivePrimaryColor,
                                 ),
@@ -87,7 +88,7 @@ class _PlayerWidgetState extends State<PlayerWidget> {
                 Row(
                   children: <Widget>[
                     Text(
-                      song.duration,
+                      song!.duration,
                       style: AppFonts.sfUi14Regular
                           .copyWith(color: AppTheme.inactivePrimaryColor),
                     ),

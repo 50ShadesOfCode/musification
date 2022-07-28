@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 @immutable
 abstract class PlayerEvent {}
 
+//TODO: Add animations for opening and closing player
 class OpenPlayerEvent extends PlayerEvent {}
 
 class HidePlayerEvent extends PlayerEvent {}
@@ -24,3 +25,7 @@ class PlayEvent extends PlayerEvent {
     required this.song,
   });
 }
+
+class PlayNextEvent extends PlayerEvent {}
+
+class PlayPreviousEvent extends PlayerEvent {}
