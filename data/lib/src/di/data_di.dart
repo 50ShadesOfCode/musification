@@ -21,8 +21,8 @@ class DataDI {
         baseUrl: _base_url,
       ),
     );
-    appLocator.registerLazySingleton<AudioProvider>(
-      () => AudioProvider(
+    appLocator.registerSingleton<AudioProvider>(
+      AudioProvider(
         audioPlayer: AudioPlayer(),
       ),
     );

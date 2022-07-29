@@ -15,7 +15,7 @@ class PlayerPage extends Page<dynamic> {
         create: (BuildContext context) => PlayerBloc(
           audioProvider: appLocator.get<AudioProvider>(),
           appRouter: appLocator.get<AppRouter>(),
-        ),
+        )..add(InitEvent()),
         child: PlayerScreen(),
       ),
     );

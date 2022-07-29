@@ -1,3 +1,4 @@
+import 'package:audio_session/audio_session.dart';
 import 'package:domain/domain.dart';
 import 'package:just_audio/just_audio.dart';
 
@@ -32,5 +33,10 @@ class AudioProvider {
     } catch (e) {
       print('Error loading audio source: $e');
     }
+  }
+
+  Future<void> init() async {
+    final AudioSession session = await AudioSession.instance;
+    await session.configure(const AudioSessionConfiguration.music());
   }
 }

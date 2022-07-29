@@ -25,8 +25,8 @@ class PlayerBloc extends Bloc<PlayerEvent, AppPlayerState> {
         _audioProvider = audioProvider,
         super(
           AppPlayerState(
-            carouselController: CarouselController(),
             audioPlayer: AudioPlayer(),
+            carouselController: CarouselController(),
             isPlaying: false,
             playingEntity: null,
             index: 0,
@@ -46,15 +46,22 @@ class PlayerBloc extends Bloc<PlayerEvent, AppPlayerState> {
 
   Future<void> _onInitEvent(
       InitEvent event, Emitter<AppPlayerState> emit) async {
-    final AudioSession session = await AudioSession.instance;
-    await session.configure(const AudioSessionConfiguration.music());
-
-    emit(state);
+    emit(
+      state.copyWith(
+        audioPlayer: _audioProvider.audioPlayer,
+        index: _audioProvider.index ?? 0,
+        songQueue: _audioProvider.songQueue ?? state.songQueue,
+        isPlaying: _audioProvider.audioPlayer.playing,
+        playingEntity: _audioProvider.playingEntity,
+      ),
+    );
+    print(state.playingEntity);
   }
 
   Future<void> _onHidePlayerEvent(
       HidePlayerEvent event, Emitter<AppPlayerState> emit) async {
     _appRouter.pop();
+    _audioProvider.audioPlayer.play();
     emit(state);
   }
 
@@ -74,24 +81,27 @@ class PlayerBloc extends Bloc<PlayerEvent, AppPlayerState> {
   Future<void> _onPauseEvent(
       PauseEvent event, Emitter<AppPlayerState> emit) async {
     state.audioPlayer.pause();
-    emit(state);
+    emit(state.copyWith(
+      index: state.index,
+      songQueue: state.songQueue,
+      isPlaying: false,
+    ));
   }
 
   Future<void> _onResumeEvent(
       ResumeEvent event, Emitter<AppPlayerState> emit) async {
     state.audioPlayer.play();
-    emit(state);
+    emit(state.copyWith(
+      index: state.index,
+      songQueue: state.songQueue,
+      isPlaying: true,
+    ));
   }
 
   Future<void> _onOpenPlayerEvent(
       OpenPlayerEvent event, Emitter<AppPlayerState> emit) async {
+    print(_audioProvider.playingEntity!.title);
     _appRouter.push(Player.page());
     emit(state);
-  }
-
-  @override
-  Future<void> close() async {
-    state.audioPlayer.dispose();
-    super.close();
   }
 }

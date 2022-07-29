@@ -84,13 +84,17 @@ class _PlayerScreenState extends State<PlayerScreen> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            state.playingEntity!.title,
+                            state.playingEntity != null
+                                ? state.playingEntity!.title
+                                : '',
                             style: AppFonts.sfUi14Bold.copyWith(
                               color: AppTheme.activeColor,
                             ),
                           ),
                           Text(
-                            state.playingEntity!.artist,
+                            state.playingEntity != null
+                                ? state.playingEntity!.artist
+                                : '',
                             style: AppFonts.sfUi14Regular.copyWith(
                               color: AppTheme.inactivePrimaryColor,
                             ),

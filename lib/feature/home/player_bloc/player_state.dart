@@ -19,17 +19,18 @@ class AppPlayerState {
   });
 
   AppPlayerState copyWith({
+    AudioPlayer? audioPlayer,
     required int index,
     required SongQueue songQueue,
     required bool isPlaying,
     Song? playingEntity,
   }) =>
       AppPlayerState(
+        audioPlayer: audioPlayer ?? this.audioPlayer,
         carouselController: carouselController,
         index: index,
         songQueue: songQueue,
-        audioPlayer: audioPlayer,
         isPlaying: isPlaying,
-        playingEntity: playingEntity,
+        playingEntity: playingEntity ?? this.playingEntity,
       );
 }
